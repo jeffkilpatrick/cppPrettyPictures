@@ -5,6 +5,7 @@ cc_test(
         "fun/CoordinateFunctionTest.cc",
         "fun/ConstantFunctionTest.cc",
         "fun/NegateFunctionTest.cc",
+        "fun/RoundFunctionTest.cc",
     ],
     copts = [
         "-Iinclude", # TODO-jrk: this should be handled by //include/pp:headers

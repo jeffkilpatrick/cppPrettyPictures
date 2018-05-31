@@ -8,5 +8,6 @@ cc_library(
         "fun/IFunction.h",
         "fun/IFunctionGenerator.h",
         "fun/NegateFunction.h",
+        "fun/RoundFunction.h",
     ],
 )
