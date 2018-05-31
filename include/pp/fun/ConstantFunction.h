@@ -11,6 +11,7 @@ namespace pp {
         ConstantFunction(float constant);
 
         float Eval(float x, float y) const override;
+        std::string ToString() const override;
 
     private:
         float m_constant;

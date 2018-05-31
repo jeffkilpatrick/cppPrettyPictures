@@ -11,6 +11,7 @@ namespace pp {
         RoundDownFunction(IFunctionPtr arg);
 
         float Eval(float x, float y) const override;
+        std::string ToString() const override;
     };
 
     class RoundDownFunctionGenerator : public IUnaryFunctionGenerator {
@@ -26,6 +27,7 @@ namespace pp {
         RoundUpFunction(IFunctionPtr arg);
 
         float Eval(float x, float y) const override;
+        std::string ToString() const override;
     };
 
     class RoundUpFunctionGenerator : public IUnaryFunctionGenerator {

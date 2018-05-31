@@ -11,6 +11,11 @@ float XFunction::Eval(float x, float y) const
     return x;
 }
 
+std::string XFunction::ToString() const
+{
+    return "x";
+}
+
 pp::Arity XFunctionGenerator::GetArity() const
 {
     return Arity::Nonary;
@@ -26,6 +31,11 @@ pp::IFunctionPtr XFunctionGenerator::Make()
 float YFunction::Eval(float x, float y) const
 {
     return y;
+}
+
+std::string YFunction::ToString() const
+{
+    return "y";
 }
 
 pp::Arity YFunctionGenerator::GetArity() const

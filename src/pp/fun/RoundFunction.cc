@@ -15,6 +15,11 @@ float RoundDownFunction::Eval(float x, float y) const
     return std::floor(EvalArg(x, y));
 }
 
+std::string RoundDownFunction::ToString() const
+{
+    return "(floor " + ArgString() + ")";
+}
+
 pp::Arity RoundDownFunctionGenerator::GetArity() const
 {
     return Arity::Unary;
@@ -34,6 +39,11 @@ RoundUpFunction::RoundUpFunction(IFunctionPtr arg)
 float RoundUpFunction::Eval(float x, float y) const
 {
     return std::ceil(EvalArg(x, y));
+}
+
+std::string RoundUpFunction::ToString() const
+{
+    return "(ceil " + ArgString() + ")";
 }
 
 pp::Arity RoundUpFunctionGenerator::GetArity() const

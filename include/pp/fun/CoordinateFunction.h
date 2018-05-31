@@ -10,6 +10,7 @@ namespace pp {
     class XFunction : public INonaryFunction {
     public:
         float Eval(float x, float y) const override;
+        std::string ToString() const override;
     };
 
     class XFunctionGenerator : public INonaryFunctionGenerator {
@@ -23,6 +24,7 @@ namespace pp {
     class YFunction : public INonaryFunction {
     public:
         float Eval(float x, float y) const override;
+        std::string ToString() const override;
     };
 
     class YFunctionGenerator : public INonaryFunctionGenerator {

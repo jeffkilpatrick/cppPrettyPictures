@@ -17,6 +17,11 @@ float AtanFunction::Eval(float x, float y) const
     return std::atan(EvalArg(x, y));
 }
 
+std::string AtanFunction::ToString() const
+{
+    return "(atan " + ArgString() + ")";
+}
+
 pp::Arity AtanFunctionGenerator::GetArity() const
 {
     return Arity::Unary;
@@ -38,6 +43,11 @@ float CosFunction::Eval(float x, float y) const
     return std::cos(EvalArg(x, y));
 }
 
+std::string CosFunction::ToString() const
+{
+    return "(cos " + ArgString() + ")";
+}
+
 pp::Arity CosFunctionGenerator::GetArity() const
 {
     return Arity::Unary;
@@ -57,6 +67,11 @@ SinFunction::SinFunction(IFunctionPtr arg)
 float SinFunction::Eval(float x, float y) const
 {
     return std::sin(EvalArg(x, y));
+}
+
+std::string SinFunction::ToString() const
+{
+    return "(sin " + ArgString() + ")";
 }
 
 pp::Arity SinFunctionGenerator::GetArity() const

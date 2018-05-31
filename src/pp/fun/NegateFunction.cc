@@ -13,6 +13,11 @@ float NegateFunction::Eval(float x, float y) const
     return -1.0f * EvalArg(x, y);
 }
 
+std::string NegateFunction::ToString() const
+{
+    return "(neg " + ArgString() + ")";
+}
+
 // --------------------------------------------------------------------
 
 pp::Arity NegateFunctionGenerator::GetArity() const

@@ -1,6 +1,8 @@
 #include "pp/fun/Arity.h"
 #include "pp/fun/ConstantFunction.h"
 
+#include <sstream>
+
 using pp::ConstantFunction;
 using pp::ConstantFunctionGenerator;
 
@@ -13,6 +15,13 @@ ConstantFunction::ConstantFunction(float constant)
 float ConstantFunction::Eval(float x, float y) const
 {
     return m_constant;
+}
+
+std::string ConstantFunction::ToString() const
+{
+    std::ostringstream str;
+    str << m_constant;
+    return str.str();
 }
 
 // --------------------------------------------------------------------

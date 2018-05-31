@@ -1,6 +1,8 @@
 #pragma once
 
+#include <ios>
 #include <memory>
+#include <string>
 
 namespace pp {
 
@@ -12,6 +14,7 @@ namespace pp {
         virtual ~IFunction();
 
         virtual float Eval(float x, float y) const = 0;
+        virtual std::string ToString() const = 0;
     };
 
     /** A function taking no arguments **/
@@ -26,6 +29,7 @@ namespace pp {
 
     protected:
         float EvalArg(float x, float y) const;
+        std::string ArgString() const;
 
     private:
         IFunctionPtr m_fun;
@@ -62,4 +66,6 @@ namespace pp {
         IFunctionPtr m_fun1;
         IFunctionPtr m_fun2;
     };
+
+    std::ostream& operator<<(std::ostream& s, const IFunction& fun);
 }

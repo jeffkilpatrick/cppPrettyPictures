@@ -11,6 +11,7 @@ namespace pp {
         NegateFunction(IFunctionPtr arg);
 
         float Eval(float x, float y) const override;
+        std::string ToString() const override;
     };
 
     class NegateFunctionGenerator : public IUnaryFunctionGenerator {
