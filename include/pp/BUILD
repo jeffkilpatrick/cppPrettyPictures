@@ -2,6 +2,7 @@ cc_library(
     name="headers",
     visibility  = ["//visibility:public"],
     hdrs = [
+        "Generate.h",
         "Registry.h",
         "fun/Arity.h",
         "fun/ConstantFunction.h",

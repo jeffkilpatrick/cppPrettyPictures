@@ -13,6 +13,8 @@ namespace pp {
         using GeneratorFactory = std::function<IFunctionGeneratorPtr()>;
 
         Registry();
+        Registry& operator=(const Registry&) = delete;
+        Registry& operator=(Registry&&) = delete;
 
         IFunctionGeneratorPtr GetRandom();
 
