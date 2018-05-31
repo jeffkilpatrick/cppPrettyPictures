@@ -2,6 +2,7 @@ cc_test(
     name = "fun-test",
     size = "small",
     srcs = [
+        "RegistryTest.cc",
         "fun/CoordinateFunctionTest.cc",
         "fun/ConstantFunctionTest.cc",
         "fun/NegateFunctionTest.cc",

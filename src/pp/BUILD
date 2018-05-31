@@ -8,6 +8,7 @@ cc_library(
         "-Iinclude", # TODO-jrk: this should be handled by //include/pp:headers
     ],
     srcs = [
+        "Registry.cc",
         "fun/ConstantFunction.cc",
         "fun/CoordinateFunction.cc",
         "fun/IFunction.cc",
