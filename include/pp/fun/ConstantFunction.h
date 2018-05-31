@@ -6,7 +6,7 @@
 #include <random>
 
 namespace pp {
-    class ConstantFunction : public INonaryFunction {
+    class PP_EXPORT ConstantFunction final : public INonaryFunction {
     public:
         ConstantFunction(float constant);
 
@@ -17,7 +17,7 @@ namespace pp {
         float m_constant;
     };
 
-    class ConstantFunctionGenerator : public INonaryFunctionGenerator {
+    class PP_EXPORT ConstantFunctionGenerator final : public INonaryFunctionGenerator {
     public:
         ConstantFunctionGenerator();
         Arity GetArity() const override;

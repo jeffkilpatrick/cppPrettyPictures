@@ -1,5 +1,7 @@
 #pragma once
 
+#include "pp/utility/Exports.h"
+
 #include <memory>
 
 namespace pp {
@@ -7,5 +9,5 @@ namespace pp {
     class Registry;
     using IFunctionPtr = std::unique_ptr<class IFunction>;
 
-    IFunctionPtr RandomExpression(Registry& r);
+    PP_EXPORT IFunctionPtr RandomExpression(Registry& r);
 }

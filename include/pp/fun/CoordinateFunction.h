@@ -7,13 +7,13 @@
 
 namespace pp {
 
-    class XFunction : public INonaryFunction {
+    class PP_EXPORT XFunction final : public INonaryFunction {
     public:
         float Eval(float x, float y) const override;
         std::string ToString() const override;
     };
 
-    class XFunctionGenerator : public INonaryFunctionGenerator {
+    class XFunctionGenerator final : public INonaryFunctionGenerator {
     public:
         Arity GetArity() const override;
         IFunctionPtr Make() override;
@@ -21,16 +21,15 @@ namespace pp {
 
     // ---------------------------------------------------------------------
 
-    class YFunction : public INonaryFunction {
+    class PP_EXPORT YFunction final : public INonaryFunction {
     public:
         float Eval(float x, float y) const override;
         std::string ToString() const override;
     };
 
-    class YFunctionGenerator : public INonaryFunctionGenerator {
+    class YFunctionGenerator final : public INonaryFunctionGenerator {
     public:
         Arity GetArity() const override;
         IFunctionPtr Make() override;
     };
-
 }

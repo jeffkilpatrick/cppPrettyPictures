@@ -12,5 +12,6 @@ cc_library(
         "fun/NegateFunction.h",
         "fun/RoundFunction.h",
         "fun/TrigFunction.h",
+        "utility/Exports.h",
     ],
 )

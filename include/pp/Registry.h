@@ -1,5 +1,7 @@
 #pragma once
 
+#include "pp/utility/Exports.h"
+
 #include <functional>
 #include <random>
 #include <vector>
@@ -7,7 +9,7 @@
 namespace pp {
     using IFunctionGeneratorPtr = std::unique_ptr<class IFunctionGenerator>;
 
-    class Registry
+    class PP_EXPORT Registry
     {
     public:
         using GeneratorFactory = std::function<IFunctionGeneratorPtr()>;

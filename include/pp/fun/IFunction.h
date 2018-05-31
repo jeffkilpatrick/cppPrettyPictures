@@ -1,5 +1,6 @@
 #pragma once
 
+#include "pp/utility/Exports.h"
 #include <ios>
 #include <memory>
 #include <string>
@@ -8,7 +9,7 @@ namespace pp {
 
     using IFunctionPtr = std::unique_ptr<class IFunction>;
 
-    class IFunction
+    class PP_EXPORT IFunction
     {
     public:
         virtual ~IFunction();
@@ -18,11 +19,11 @@ namespace pp {
     };
 
     /** A function taking no arguments **/
-    class INonaryFunction : public IFunction
+    class PP_EXPORT INonaryFunction : public IFunction
     { };
 
     /** A function taking one argument **/
-    class IUnaryFunction : public IFunction
+    class PP_EXPORT IUnaryFunction : public IFunction
     {
     public:
         IUnaryFunction(IFunctionPtr fun);
@@ -36,7 +37,7 @@ namespace pp {
     };
 
     /** A function taking two arguments **/
-    class IBinaryFunction : public IFunction
+    class PP_EXPORT IBinaryFunction : public IFunction
     {
     public:
         IBinaryFunction(IFunctionPtr fun0, IFunctionPtr fun1);
@@ -51,7 +52,7 @@ namespace pp {
     };
 
     /** A function taking three arguments **/
-    class ITrinaryFunction : public IFunction
+    class PP_EXPORT ITrinaryFunction : public IFunction
     {
     public:
         ITrinaryFunction(IFunctionPtr fun0, IFunctionPtr fun1, IFunctionPtr fun2);
@@ -67,5 +68,5 @@ namespace pp {
         IFunctionPtr m_fun2;
     };
 
-    std::ostream& operator<<(std::ostream& s, const IFunction& fun);
+    PP_EXPORT std::ostream& operator<<(std::ostream& s, const IFunction& fun);
 }

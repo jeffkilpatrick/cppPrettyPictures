@@ -7,7 +7,7 @@
 
 namespace pp {
 
-    class AtanFunction : public IUnaryFunction {
+    class PP_EXPORT AtanFunction final : public IUnaryFunction {
     public:
         AtanFunction(IFunctionPtr arg);
 
@@ -15,7 +15,7 @@ namespace pp {
         std::string ToString() const override;
     };
 
-    class AtanFunctionGenerator : public IUnaryFunctionGenerator {
+    class PP_EXPORT AtanFunctionGenerator final : public IUnaryFunctionGenerator {
     public:
         Arity GetArity() const override;
         IFunctionPtr Make(IFunctionPtr arg) override;
@@ -23,7 +23,7 @@ namespace pp {
 
     // ---------------------------------------------------------------------
 
-    class CosFunction : public IUnaryFunction {
+    class PP_EXPORT CosFunction final : public IUnaryFunction {
     public:
         CosFunction(IFunctionPtr arg);
 
@@ -31,7 +31,7 @@ namespace pp {
         std::string ToString() const override;
     };
 
-    class CosFunctionGenerator : public IUnaryFunctionGenerator {
+    class PP_EXPORT CosFunctionGenerator final : public IUnaryFunctionGenerator {
     public:
         Arity GetArity() const override;
         IFunctionPtr Make(IFunctionPtr arg) override;
@@ -39,7 +39,7 @@ namespace pp {
 
     // ---------------------------------------------------------------------
 
-    class SinFunction : public IUnaryFunction {
+    class PP_EXPORT SinFunction final : public IUnaryFunction {
     public:
         SinFunction(IFunctionPtr arg);
 
@@ -47,7 +47,7 @@ namespace pp {
         std::string ToString() const override;
     };
 
-    class SinFunctionGenerator : public IUnaryFunctionGenerator {
+    class PP_EXPORT SinFunctionGenerator final : public IUnaryFunctionGenerator {
     public:
         Arity GetArity() const override;
         IFunctionPtr Make(IFunctionPtr arg) override;

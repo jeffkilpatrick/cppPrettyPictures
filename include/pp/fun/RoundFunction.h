@@ -6,7 +6,7 @@
 #include <random>
 
 namespace pp {
-    class RoundDownFunction : public IUnaryFunction {
+    class PP_EXPORT RoundDownFunction final : public IUnaryFunction {
     public:
         RoundDownFunction(IFunctionPtr arg);
 
@@ -14,7 +14,7 @@ namespace pp {
         std::string ToString() const override;
     };
 
-    class RoundDownFunctionGenerator : public IUnaryFunctionGenerator {
+    class PP_EXPORT RoundDownFunctionGenerator final : public IUnaryFunctionGenerator {
     public:
         Arity GetArity() const override;
         IFunctionPtr Make(IFunctionPtr arg) override;
@@ -22,7 +22,7 @@ namespace pp {
 
     // ---------------------------------------------------------------------
 
-    class RoundUpFunction : public IUnaryFunction {
+    class PP_EXPORT RoundUpFunction final : public IUnaryFunction {
     public:
         RoundUpFunction(IFunctionPtr arg);
 
@@ -30,7 +30,7 @@ namespace pp {
         std::string ToString() const override;
     };
 
-    class RoundUpFunctionGenerator : public IUnaryFunctionGenerator {
+    class PP_EXPORT RoundUpFunctionGenerator final : public IUnaryFunctionGenerator {
     public:
         Arity GetArity() const override;
         IFunctionPtr Make(IFunctionPtr arg) override;
