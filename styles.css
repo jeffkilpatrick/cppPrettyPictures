@@ -1,0 +1,237 @@
+body {
+	background-color: #ace;
+	color: black    ; 
+	font-family: "Helvetica Neue", HelveticaNeue, Helvetica, sans-serif;
+	margin: 0; padding: 0;
+}
+.sans {
+	font-family: "Helvetica Neue", HelveticaNeue, Helvetica, sans-serif;
+}
+.serif {
+	font-family: Palatino, "Book Antiqua", serif;
+}
+.amp {
+	font-family: Palatino, "Book Antiqua", serif;
+	font-style: italic;
+}
+tt, code { 
+	font-family: "Bitstream Vera Sans Mono", "Monaco", "Consolas", monospace;
+}
+a:link, a:visited {
+	color: #135;
+}
+a:hover, a:active {
+	color: #246;
+	background-color: #8ac;
+}
+#header a:hover, #header a:active { background-color: inherit; }
+
+h1, h2, h3 {
+	letter-spacing: -0.05em;
+}
+h1 { font-size: 300%; margin: 0 0.25em; }
+h2 { font-size: 175%; }
+h3 { font-size: 120%; }
+h4 { font-size: 100%; font-style: italic; }
+.inline { display: inline; }
+h4.inline { margin-right: 0.75em; }
+h5 {
+	text-transform: uppercase;
+	letter-spacing: 0.2em;
+	font-size: 80%;
+}
+#header {
+	padding-top: 32px;
+	padding-bottom: 10px;
+	background-color: black;
+	color: white;
+	text-align: center; 
+}
+#header h1 { font-size: 400%; }
+#header h1 a { text-decoration: none; }
+#header em {
+	color: #9bd;
+	font-style: normal;
+}
+#header a {
+    color: white;
+}
+
+#content {
+	margin: 24px 15%;
+	line-height: 120%;
+}
+
+#content h3 {
+	clear: both; padding-top: 6px;
+	border-top: 1px solid black;
+	margin-top: 30px;
+	font-size: 120%;
+}
+#content hr {
+	clear: both; padding-top: 6px;
+	border: 0;
+	border-top: 1px solid black;
+	margin-top: 30px;
+}
+.tooltip { cursor: help; }
+/*.tooltip:after { font-size: 50%; content: "?"; vertical-align: top;
+	margin-right: -0.25em; }*/
+
+ul {
+    padding-left: 3em;
+}
+li {
+	margin-bottom: 0.5em; 
+}
+
+code, pre, tt {
+    font-family: "Bitstream Vera Sans Mono", "Consolas", "Lucida Console", monospace;
+}
+code, pre { background-color: #9bd; }
+pre { padding: 4px; font-size: 90%; }
+
+.sidebar {
+    border-left: 3px solid #967;
+    padding-left: 8px;
+}
+
+blockquote {
+    margin-left: 2em;
+}
+
+.tabs {
+    text-align: center;
+    text-transform: uppercase; 
+    letter-spacing: 0.2em;
+    font-size: 90%;
+    font-weight: bold;
+    margin-right: 0.5em;
+}
+.tabs ul { display: inline; padding: 0; }
+.tabs ul>li {
+    list-style-type: none;
+    display: inline;
+}
+.tabs a { text-decoration: none; }
+li.folder {
+    list-style-type: none;
+    padding-left: 16px;
+	background: url(img/folder.png) no-repeat 0 50%;
+}
+li.file {
+    list-style-type: none;
+    padding-left: 16px;
+	background: url(img/file.png) no-repeat 0 50%;
+}
+
+table.schedule {
+	border-width: 0px 0px 0px 0px;
+	border-spacing: 3px;
+	border-style: none none none none;
+	border-collapse: separate;
+}
+table.schedule th {
+	border-width: 1px 1px 1px 1px;
+	padding: 2px 2px 2px 2px;
+	border-style: dotted dotted dotted dotted;
+	-moz-border-radius: 0px 0px 0px 0px;
+}
+table.schedule td {
+	border-width: 1px 1px 1px 1px;
+	padding: 2px 2px 2px 2px;
+	border-style: dotted dotted dotted dotted;
+	-moz-border-radius: 0px 0px 0px 0px;
+	background-color: #9bd;
+}
+.new, .updated {
+	padding: 0.2em 1em 0 1em;
+	margin: 0 1em;
+	background-color: #bdf !important;
+	color: black;
+	font-size: 80%;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+}
+
+dl dl { 
+	clear: left;
+}
+dt { 
+	float: left;
+	margin-right: 1em;
+	font-weight: bold;
+	font-style: italic;
+}
+dd {
+	margin-bottom: 0.75em;
+}
+
+dl dl dt {
+	font-weight: normal;
+}
+dl dl dd {
+	margin-bottom: 0.25em;
+}
+
+#toc {
+  width: 40%; float: right; 
+	background-color: white;
+	border: 1px solid black; 
+	margin-left: 1em; 
+	margin-top: 3em;
+	font-family: sans-serif;
+	font-size: small;
+}
+#toc h3 { 
+	text-align: center;
+	color: white;
+	background-color: black;
+	border: none;
+	font-size: 100%;
+	text-transform: uppercase;
+	letter-spacing: 0.2em;
+	margin: 0; padding: 2px; }
+#content h3 { clear: none; }
+
+@media print {
+    div.tabs { display: none; }
+    #content {margin:0;}
+    #header {
+        text-align:left; border-bottom: 2px solid black; color: black;
+        margin-bottom: 20pt;
+        padding-bottom: 3pt;
+        font-weight: bold;
+    }
+    body, #header { margin-top: 0; padding-top: 0; }
+    #header h1 {font-size: 100%; display: inline; }
+    #header h1, #header a, #header em { color: black; text-decoration: none; }
+    #header h1:after { content: ": ";}
+    a { color: blue; }
+    pre { 
+        border: 1pt dashed black;
+    }
+	#toc {
+		width: inherit;
+		float: none;
+		background-color: inherit;
+		border: none;
+		margin: 0;
+		font-size: inherit;
+		font-family: inherit;
+	}
+	#toc h3 {
+	clear: both; padding-top: 6px;
+	border-top: 1px solid black;
+	margin-top: 30px;
+	font-size: 120%;
+		text-transform: inherit;
+		letter-spacing: inherit;
+		color: inherit;
+		background-color: inherit;
+		font-weight: bold;
+		text-align: left;
+	}
+	  
+}

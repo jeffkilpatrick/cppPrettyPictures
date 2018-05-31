@@ -1,0 +1,516 @@
+<html>
+<head>
+	<title>comp314: project 3: pretty pictures</title>
+	<link rel="stylesheet" href="styles.css" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+</head>
+<body>
+  <div id="header">
+    <h1><a href="http://sys.cs.rice.edu/course/comp314/10/">comp<em>314</em></a></h1>
+    applied algorithms and data structures 
+    <em>&bull;</em>
+    x-list: elec322
+    <em>&bull;</em>
+    spring 2010 
+    <em>&bull;</em> 
+    <a href="http://www.rice.edu/">rice university</a>
+  </div>
+
+<body>
+
+  <div id="content">
+
+    <div class="tabs">
+      <ul>
+      <li><a href="../index.html">Home</a>.</li>
+      <li><a href="../schedule.html">Schedule</a>.</li>
+      <li><a href="../homework.html">Homeworks</a>.</li>
+      <li><a href="../projects.html">Projects</a>.</li>
+      </ul>
+    </div>
+
+
+<h2>p3: pretty pictures (via genetic algorithms)</h2>
+
+<p><i>First version: 09-Nov-1999 by <a
+href="http://www.cs.rice.edu/~dwallach/">Dan S. Wallach</a>; revised 2007 by {adamstep, derrley, dsandler}</i></p>
+
+      <!-- note for 2010: animation "requirement" is now optional -->
+
+<div id="toc">
+<h3><a name="TOC"></a>Table of Contents</h3>
+
+<ul>
+        <li><a href="#teams">Prologue: Project teams</a></li>
+        <li><a href="#intro">Introduction</a></li>
+        <li><a href="#ui">User interface requirements</a></li>
+        <li><a href="#functions">How to render a function</a></li>
+        <li><a href="#breeding">Breeding functions?</a></li>
+        <!--<li><a href="#anim">Animations</a></li>-->
+        <li><a href="#files">Writing your pictures to disk</li>
+        <li><a href="#concurrency">Concurrency Requirements</a></li>
+        <li><a href="#features">Specific requirements</li>
+        <li><a href="#final">Final submission</a></li>
+        <li><a href="#optional">Optional stuff</a></li>
+</ul>
+</div>
+
+<h3><a name="deadlines"></a>Deadlines</h3>
+
+<p>Sign up for your <a href="meetings.cgi">milestone meetings</a>!</p>
+
+<table border=1>
+  <tr><td>Tue 30 March</td><td>Announce your partnerships to the TAs (ASAP!)</td></tr>
+  <tr><td>Tue 6 April</td><td>Spec due (12:01am)</td></tr>
+  <tr><td>Thu 15 April</td><td>Beta due (12:01am)</td></tr>
+  <tr><td>Fri 22 April</td><td>Final due (last day of class!)</td></tr>
+</table>
+
+<h3><a name="teams"></a>Prologue: Project teams</h3>
+<p>
+Momma always said, &ldquo;Give &rsquo;em the good news first. It&rsquo;ll soften the blow.&rdquo; Project 3 will be completed by student groups of no more than two students (possibly with one group of three), and most of you will be delighted to discover that we&rsquo;re allowing each student to choose his or her partner for project 3. <i>Each group must announce its membership by email to <b>mdietz@</b> no later than Tuesday, 30 March.</i>  Any student who has not submitted a choice will be paired arbitrarily by the grading staff on Wednesday. Please make your submission as soon as you and your partner have entered into an agreement to work together. Also, please do not submit a choice <i>before</i> you have entered into an agreement with your submitted chosen partner.  (If we receive conflicting information from different members of a team, we will attempt to notify the parties involved in a timely manner, but we might decide to pair you up randomly instead.  You have been warned!)
+</p>
+
+<p>
+Please choose your partner for this project wisely. Project 3 requires more design, thought, and lines of code than either of the other projects you have worked on in this class. Please be sure to choose someone with whose schedule <em>significantly</em> overlaps your own. While there are times you will want to split up (divide and conquer?) work for this project, more often&mdash;especially in the early design phase&mdash;you will want to work closely with your partner. 
+</p>
+
+<!--
+<h4>Teams:</h4>
+<pre>
+p3g01 = mhk1, rkm1
+p3g02 = deb2, can1, drf1
+p3g03 = naf2, nsb1
+p3g04 = rwb1, sbj1
+p3g05 = llm1, pnk1
+p3g06 = jkb2, tbm1
+p3g07 = iv2, ma7
+p3g08 = awp1, gac1
+p3g09 = tjd4741, cja3
+</pre>
+-->
+
+<h3><a name="intro"></a>Introduction</h3>
+
+<p>Project 3 is called &ldquo;Pretty Pictures&rdquo; because you (the student) will be building an application that can be used to generate quite interesting pictures. The specifics of these pictures and of the application come in the following sections.
+
+<p>In order to be successful in project 3, you must be proficient in many of the areas covered in the course during the semester. What follows, here, is a general outline of what you&rsquo;ll be required to implement in your version of Pretty Pictures. Details for each of these list items come later in this document. Consider each of these major features equally weighted with all others.
+  <ul>
+  <li><a href="#ui">User Interface</a>: Your application must be driven by a usable, event-driven GUI interface written in Java&rsquo;s Swing framework. This interface must behave much like any web-browser does. Namely, it must have a forward, a back, a stop, and a reload button, and each of these must have sensible behaviors. This means that different "views" the user comes into contact with must behave much like web pages do, and your application must behave much like a web browser does.</li>
+  
+  <li><a href="#functions">Functions</a>: Your application must allow the user to see the picture which represents a mathematical function that is composed only of specific intrinsic functions.</li>
+  
+  <li><a href="#breeding">Breeding</a>: Your application must allow the user to choose any set of rendered functions and <i>breed</i> them. Breeding a set of functions should generate a newer "generation" of functions. Each member of this newer generation should have specific traits and characteristics taken from members of its parent generation.</li>
+<!--
+ <li><a href="#animation">Animation</a>: Your application must be able to generate a genetic animation between any two rendered functions. This genetic animation is a bit more complicated (and quite a bit more awesome) than a simple fade-out/fade-in. </li>
+-->
+  
+  <li><a href="#files">Files</a>: Your application must be able to save both rendered images to disk. (You&rsquo;ll find these images make spiffy desktop backgrounds.)</li>
+  
+  <li><a href="#concurrency">Concurrency</a>: When the user asks your application to attempt to complete any of these required tasks, the application must (1) remain responsive and (2) give progress feedback. This means that your application will fail if it does not correctly make use of Java&rsquo;s concurrency features.
+  </ul>
+
+<h3><a name="ui"></a>User interface requirements</h3>
+<p>
+The user interface for your program will be modeled after that of a <strong>Web browser</strong>.  (This is actually a gift in disguise; we&rsquo;re saving you the burden of inventing an entirely new interface metaphor on top of all the other work you have to do.)
+</p>
+<p>
+In particular, your program will present most information in a single, central content area.  You must implement a history (again, like browser history) for the various views that appear in this content area; the user may navigate the history with <strong>Back</strong> and <strong>Forward</strong> buttons, and can consult a history list to jump to an arbitrary point forward or backward in time.  (There are some tricky edge cases here: What if a user goes back, and then launches off in a different direction?  When in doubt, fire up your favorite browser and see how it&rsquo;s done there.)
+</p><p>
+You will also have a <strong>Stop</strong> button that aborts all computation immediately (even if in the middle of doing something), as well as a <strong>Restart</strong> button that flushes what you&rsquo;ve got and starts over.
+</p>
+
+<p><b>You must document your user interface in your spec.</b>  For the spec deadline we will expect preliminary diagrams (<i>viz.</i>, &ldquo;wireframes&rdquo;) covering all major windows and views of your application, including a description of how all the pieces fit together to let the user accomplish tasks (&ldquo;scenarios&rdquo; or &ldquo;use cases&rdquo;).  Where appropriate, defend your interface design in terms of principles and patterns of &ldquo;good&rdquo; UI (cite <a href="../schedule.html">lecture</a> or outside sources as necessary). As your interface design evolves over the course of the project, you must update your spec to reflect the changes, just as you do when the software design changes.
+</p>
+
+<p>We encourage you to be creative in this project; if you feel you can make a more usable program by expanding beyond the Web browser model, go for it.  However, if you deviate significantly from what is described here, you <em>must</em> defend your decisions in your specification.  Please keep in mind that the minimum requirement (which you are not given liberty to change) is the basic feature set of a Web browser as described above. </p>
+
+<p>
+We strongly encourage simple, informal <strong>user testing</strong> of the user interface. (That is, unit tests are <i>required</i> for the correctness of your code, and user tests are <em>recommended</em> for the &ldquo;correctness&rdquo; of your user interface.)  Sit your test subjects (<i>e.g.</i> significant other, roommates, etc.) down in front of your program, explain its general purpose, and then <i>silently</i> watch them play.  It should be an enlightening, frustrating, and fun experience, and it will give you a reality check on your design.  (Remember: &ldquo;the designer is a bad test subject: he or she knows too much.&rdquo;)  You might consider including any particularly illuminating user test anecdotes in your spec, too.
+</p>
+
+<p>
+We recommend you investigate the various GUI building tools available to you within Eclipse (just install <a href="http://www.eclipse.org/vep/">VEP</a>, but note that <a href="http://wiki.eclipse.org/VE/Update">installation is tricky</a>, and at least for now requires you to install <a href="http://www.eclipse.org/downloads/download.php?file=/eclipse/downloads/drops/R-3.5.2-201002111343/eclipse-SDK-3.5.2-macosx-cocoa.tar.gz">Eclipse "Classic"</a>).  If you can't get VEP to work for you, try out <a href="http://netbeans.org">NetBeans</a>, which has a GUI builder built in.  Writing the code for a GUI by hand can be a bit tedious.
+</p>
+
+<p>
+We require that your program be structured in the traditional "model-view-controller" model.  The model is the machinery that knows how to deal with genetic algorithms and images.  It should know nothing of Java Swing.  The View is the GUI, with code probably generated by an Eclipse plug-in.  When you set up all the callbacks (actionListeners, etc.), just have them call into your Controller, which is where all the real work of managing your program should happen.
+</p>
+
+<p>
+Swing resource: Sun has a <a href="http://java.sun.com/docs/books/tutorial/uiswing/index.html">nice online tutorial</a> to using Swing, including a walk through using the NetBeans GUI builder.
+</p>
+
+<h3><a name="functions"></a>How to render functions</h3>
+<p>
+Here&rsquo;s the general idea: a picture is really a function that maps points (X,Y) to colors (R,G,B).  You evaluate this function once for each pixel on the screen and store the results. 
+</p>
+<p>
+Your application will be able to render any function built out of members of a rich set of intrinsic functions.  Each function is defined as taking zero or more floating-point arguments and returning a floating-point value. This function will then be evaluated for each pixel (i.e., looping over X and Y) and for each color channel (R,G,B).
+</p>
+
+<p>
+We will define an image over X and Y from -1 to 1.  The upper left corner of the image will be (-1, 1), which is to say, it will be the usual Cartesian coordinates you do on paper rather than the backward geometry you see in many computer graphics libraries.
+</p>
+
+<p>
+You must support everything below (and feel free to add additional stuff).  You should scale things such that the minimum (R,G,B) value is (-1, -1, -1) and the maximum value is (1, 1, 1), mapping to pure black and pure white, respectively.
+</p>
+
+<ul>
+  <li><strong>Zero arguments</strong></li>
+      <ul>
+	<li>Constants [-1, 1]</li>
+	<li>The variables X and Y (the target pixel you&rsquo;re evaluating)</li>
+      </ul>
+  <li><strong>One argument</strong></li>
+      <ul>
+	<li>Negate</li>
+	<li>Round-down and round-up</li>
+	<li>Sin, Cos, ATan (trigonometric functions)</li>
+	<li>Exponentiate, Log</li>
+	<li>Absolute value</li>
+	<li>Clip (result is clipped to [-1,1])
+	    <ul>
+	      <li>Clip(0.5) = 0.5</li>
+	      <li>Clip(1.5) = 1.0</li>
+	      <li>Clip(-1.5) = -1.0</li>
+	      <li>Clip(10) = 1.0</li>
+	    </ul></li>
+	<li>Wrap (result is wrapped to [-1,1])
+	    <ul>
+	      <li>Wrap(0.5) = 0.5</li>
+	      <li>Wrap(1.5) = -0.5</li>
+	      <li>Wrap(-1.5) = 0.5</li>
+	      <li>Wrap(10) = 0</li>
+	    </ul></li>
+      </ul>
+  <li><strong>Two arguments</strong></li>
+      <ul>
+	<li>Add, subtract, multiply, divide</li>
+	<li>Inner product - returns a constant value (r1*r2 + g1*g2 + b1*b2) for all three color channels</li>
+	<li>External image (X and Y inputs to this
+	    function return the colors of the image)
+	    <ul>
+	      <li>Clipping version (points outside the box are clipped
+		  back to the unit box)</li>
+	      <li>Tiling version (points outside the box are brought
+		  back inside the box using a modulo-like operation)</li>
+	    </ul></li>
+	<li><a href="http://www.noisemachine.com/talk1/">Perlin noise</a> (<a href="http://mrl.nyu.edu/~perlin/noise/">Java source code available</a>)
+	    <ul>
+	      <li>Grayscale noise (same value for R, G, and B)</li>
+	      <li>Color noise (different values for R, G, and B)</li>
+	    </ul>
+	    The source code you&rsquo;re given includes a function <i>noise</i>
+	    that maps (X,Y,Z) to a floating point number between -1 and 1
+            (not unlike sine and cosine).  You really want
+	    to be able to evaluate three of these at the same time (one
+	    each for R, G, and B).  You probably want to use different
+            Z-values for the color-noise version.</li>
+      </ul>
+  <li><strong>Three arguments</strong></li>
+      <ul>
+	<li>Dissolve - Dissolve between the first argument and the second argument as a function of the third</li>
+	    <ul>
+	      <li>Dissolve(x,y,0) = x</li>
+	      <li>Dissolve(x,y,0.2) = x*0.2 + y*0.8</li>
+	      <li>Dissolve(x,y,1) = y</li>
+	      <li>and follow either wrapping or clipping for values beyond 0 or 1</li>
+      </ul>
+  <li><strong>Special one-argument</strong></li>
+      <ul>
+	<li>RGB-To-YCrCb - this converts from the RGB color-space that
+            you know to a luminance / chrominance space commonly used
+	    in digital television and other applications (see 
+	    below).</li>
+	<li>YCrCb-To-RGB - this is the inverse operation to the above.</li>
+      </ul>
+</ul>
+
+<p>
+Now, not all of these functions are defined continuously.  You should have
+appropriate error handling (i.e., just define divide-by-zero to return zero
+and continue onward).
+</p>
+
+<p>
+The color space converter intrinsic functions are implemented using the following system of equations:
+</p>
+<pre>
+   Y  =  0.2989 R + 0.5866 G + 0.1145 B
+   Cb = -0.1687 R - 0.3312 G + 0.5000 B
+   Cr =  0.5000 R - 0.4183 G - 0.0816 B
+</pre>
+
+<pre>
+   R = Y             + 1.4022 Cr
+   G = Y - 0.3456 Cb - 0.7145 Cr
+   B = Y + 1.7710 Cb
+</pre>
+
+<p>
+When your genetic images start combining color space changes with
+piecewise multiplication, you&rsquo;ll start getting some very pretty visual effects.
+</p>
+
+<p>
+It is important to note that you&rsquo;ll need to make a decision about how functions and constants are represented in your design. A naive approach may only allow color to be introduced into pictures via Perlin noise or external images. This approach is <i>not</i> acceptable. 
+</p>
+
+<p>
+You have two options for how to represent functions and two options for how to represent constants:
+  <ul>
+  <li>You may represent constants either as numbers or as ordered triples (R, G, B). </li>
+  <li>You may design functions to operate on ordered triples (R, G, B) or on single numbers.</li>
+  </ul>
+</p>
+
+<p>
+If functions operate on ordered triples, then constants must also be defined as ordered triples. In this situation, constants represent solid colors. If functions operate on single numbers, your constants must be single numbers as well. In this case, there must be three independent trees defined in a function (one to operate on each of (R, G, B)). This second method allows for slightly more interesting pictures (different functions are operating in each of the color channels) but they also tend to be a bit more &ldquo;busy.&rdquo; Which of these methods you prefer is a matter of taste.  <b>This design decision should be laid out clearly in your spec.</b>
+</p>
+
+<h3><a name="breeding"></a>Breeding functions?</h3>
+<p>
+This portion of the assignment is based on a paper written in 1991 by Karl Sims, <a href="http://www.karlsims.com/papers/siggraph91.html">Artificial Evolution for Computer Graphics</a>.  Scroll down to the bottom of his Web page and check out the pretty pictures.  For a whizzy Web implementation of the same thing, check out <a href="http://www.random-art.org/">The Gallery of Random Art</a>.  You should consider the Sims paper to be a part of your assignment specification.
+</p>
+
+<p>
+It's not as crazy as it sounds.  While there are a number of techniques available, you will use the same technique as Sims does in section 4.3 ("Mating Symbolic Expressions").  The idea is that any function can be represented as a tree (where leafs of this tree are either variables {x,y} or constants, and these leaves are joined to a head by intrinsic functions.) You may find it useful to think of these functions as S-Expressions. For example, the function (Add x y) would be represented by a tree whose head is Add. Add's left child would be x (which is a leaf) and Add's right child would be y (which is also a leaf). Given two trees, Sims describes two forms of breeding which can be performed on them:
+</p>
+
+<ul>
+<li>To create a child from two parents which are similar in their genotype, recursively traverse both parents.  So long as the parents are the same, the child will be the same as the parent.  Once a difference is reached, randomly choose one parent or the other.</li>
+
+<li>If the two parents have unrelated genotypes, they won't be able to breed together as above.  Instead, take a random clipping from one parent and splice it onto a copy of the other parent at a random location, replacing whatever was there before.</li>
+</ul>
+
+<p>
+Your Pretty Pictures implementation must allow the user to successively create generations of pictures. In order to create a new generation, the user must select which pictures he or she would like to include in the parent set. Members in arbitrary pairs in this set are then bred with each other. The resulting genotypes create a new generation. 
+</p>
+
+<p>
+In addition to evolution through breeding, you should also support evolution through <i>mutation</i>.  Mutation means replacing an existing node in the tree with something generated at random (or tweaking some existing constant within the tree).  <b>Cool points:</b> you could try a variety of different mutation strategies.  One option is simply pruning the tree with increasing probability as the depth increases.  Or, you could do something akin to normal breeding, except your mutation might cross-breed a picture with itself.  You could even look at doing tree rotations!  In nature, <a href="http://judson.blogs.nytimes.com/2008/04/01/a-random-analysis/">real mutation is quite complex</a>.  You may find that different mutation strategies yield very different results.
+</p>
+
+<h3><a name="files"></a>Writing your pictures to disk</h3>
+
+<p>
+The user should have the ability to save any picture he or she generates in the program. As a minimum, Pretty Pictures should be able to export pictures to PNG files. Do <i>not</i> export JPEGs (or any other lossy format). Do <i>not</i> export bitmaps. After writing gzip, you should understand the value of compression.
+</p>
+
+<p>
+The <a href="http://www.libpng.org/pub/png/">PNG</a> (Portable Network Graphics) format [<a href="http://en.wikipedia.org/wiki/PNG">Wikipedia</a>] is a capable image format.  A PNG is organized into "chunks"; the simplest PNG is a header chunk, a DEFLATEd (!) image data chunk, and a footer chunk.  You can support PNG in one of two ways:
+	<ol>
+	<li>You can write the PNG format yourself, which is pretty easy if you poke around the <a href="http://www.libpng.org/pub/png/spec/iso/">spec</a>&mdash;<em>much</em> easier than gzip, since you only need to write "type 2" (8-bit-per-channel RGB) images.  You can make use of Java's DEFLATE classes here too.</li>
+	<li>You can use the <code>javax.imageio</code> classes built into Java.  (This is the easy way out.)</li>
+	</ol>
+</p>
+
+<h3><a name="concurrency"></a>Concurrency requirements</h3>
+
+<p>
+There are two equally important aspects of Pretty Pictures that require concurrency.
+<ul>
+<li>Because core functionality in Pretty Pictures requires the use of long running algorithms (like image rendering), it is very important that your implementation allows the the GUI to always be responsive. You must do this by keeping long running computation in non-event threads. These long running computations must yield control to the event thread often enough to allow the event thread to respond to user input. Naturally, then, the user should be able to kill computation running in the background (via the stop button), be able to start the computation over (via the reload button), and be kept up to date about the progress of said computation. For the purpose of image rendering, we require that this "feedback" be incremental presentation of the image itself. When Pretty Pictures is rendering an image, you should be reminded of what it was like to load a web page full of pictures on a dial-up internet connection.</li>
+
+<li>You're also required to concurrently render more than one image at a time in the portion of your implementation of Pretty Pictures that displays the image grid. Think carefully about what methods of synchronization are required to do this. More than one solution is acceptable. Rendering images in order (one at a time) is not one of them.  If you're not sure, we recommend you use Java's thread pooling mechanism, e.g.,
+<pre>
+import java.util.concurrent.*;
+
+public class Main {
+    private static final int NTHREADS = 10;
+
+    public static void main(String[] args) {
+	ExecutorService executor = Executors.newFixedThreadPool(NTHREADS);
+
+	// taskList is a list of class instances that
+	// implement Runnable -- exactly like when
+	// you start a Thread from scratch.  Each
+	// task, for you, might be responsible for
+        // rendering one scanline of pixels.
+	for (Runnable worker: taskList)
+		executor.execute(worker);
+
+	// This will make the executor accept no new threads
+	// and finish all existing threads in the queue
+	executor.shutdown();
+
+	// Wait until all threads are finished.  The awaitTermination
+	// method returns 'true' when they're all done.
+	while (!executor.awaitTermination(60L, TimeUnit.SECONDS)) ;
+
+	System.out.println("Finished all threads");
+    }
+}
+</pre>
+Note:
+even though this particular thread is blocking, your GUI thread could still call the <pre>executor.shutdownNow()</pre> method, perhaps after the user clicks the "stop" button, which would then at least stop new tasks from starting.
+</li>
+    
+</ul>
+</p>
+
+<h3><a name="features"></a>Specific requirements</h3>
+
+<p>
+Now that Project 3's conceptual features have been specified, we can specify how these requirements should translate into your user interface.
+</p>
+
+<p>Your program <i>must</i> have the following sections ("pages," if you will):</p>
+<ul>
+  <li>Your program must have a grid section which contains a set of thumbnails. There can be variable number of thumbnails on this page, but your implementation must support the simultaneous rendering of at least twenty five pictures. The set of thumbnails in this area represents the current generation. The user should be given controls to select members of this generation which will serve as parents for the next generation. In addition, the user should be able to set a mutation rate. The user should be able to save and load the state of this page (that is, the set of genotypes for the current generation). This is similar to the "favorites" or "bookmarks" feature offered in most browsers.</li>
+  <li>Your program must have a section which can display any rendered image by itself at a resolution which is user defined. There must be a simple link system between a thumbnail on the grid and the image at full size. (If you're ever confused about how your program should behave, think carefully about the browser metaphor. On most websites, the user is offered an easy method of navigation from a thumbnail to a full sized image -- the mouse click. This area of the program should also give the user the option to save his rendered image to disk.</li>
+  <li>Your program should have an area which allows the user to load arbitrary image files from disk for user in the "ExternalImage" intrinsic function. You are only required to support the PNG format.</li>
+<!--
+  <li>Your program should have an area which plays an animation much like youtube plays silly videos. It is important to note that while it is only required that you write animations to disk as successive image dumps, you are <i>required</i> to support live preview of these animations in your program. There should be an intuitive link between this area of the program and the grid area, which will allow the user to animate a transition between any two images he or she has bred. This area should be able to generate an animation of user defined resolution and frame rate.</li>
+</li>
+-->
+</ul>
+
+As long as you meet these requirements, you are given liberty to design your user interface however you feel is most usable. If you are ever unsure of the usability of an aspect of your design, ask someone (anyone, really). You're most likely a computer geek (like I am) if you're taking this class, which means you have friends that use lots of computer programs and probably have opinions about user interface design.
+
+If your grader feels a part of your user interface design is particularly unusable, you will be <i>required</i> to fix your design by your final submission. Failure to do so will result in a loss of points.
+
+<h3><a name="final"></a>Final submission</h3>
+<p>
+In the end, you will have created a program that lets you explore
+cool images.  As part of your final submission, you will create
+a Web page for all the world to see, that has three of your favorite
+images (rendered at 600x600 pixel resolution) as well as a screen-dump
+of your GUI as it's running with the user selecting images.
+For each
+of the three images, your Web page should also show the genotype
+of the image.  You should also support the generation of significantly
+larger images for printing (e.g., Costco can print 12x18" photos at
+300dpi, which is 3600x5400 pixels).
+</p><p>
+To help your T.A.s (and yourself), you should also generate a
+Web page with a bunch of test images.  You should have one image
+per intrinsic in your genome to prove to yourself (and to us) that
+you are implementing that intrinsic function properly.  For example,
+color Perlin noise should look different from black and white Perlin
+noise.  To demonstrate your RGB-To-YCrCb and reverse functions,
+you should probably choose suitable inputs, such as sweeps from
+left to right with black to white or red to green.  You may find
+you want to add other intrinsic functions to help you with this
+testing.  That's fine, but consider that you've already got some
+fairly powerful intrinsic functions already in there.
+</p>
+
+<p>
+As soon as you've got a URL, even if there's nothing there
+yet, e-mail your grading group.  We'll set up a big web page so
+you can look at each others' pretty pictures.
+</p>
+
+<h3><a name="optional"></a>Optional stuff</h3>
+<p>
+Pretty Pictures (with no additional requirements) requires a substantial time commitment to be done right. However, if you're confident that your implementation is entirely bug-free and feature-complete, and you're looking for some extra points, try some of these additional features:
+</p>
+<ul>
+
+<li>Normally, computer graphics images are defined to be a two-dimensional
+array of (R,G,B) tuples, where
+each value is a single byte (usually from zero through 255).
+The functions described above, however, are described "continuously"
+from -1.0 to 1.0.  When you convert from an integer pixel coordinate to
+a floating-point phenotype coordinate, and then look up a value in
+an embedded image (converting back to integer pixels again), it's possible for the image coordinates
+to map somewhere <i>in between</i> the discrete pixel points.
+The solution you need to use is called <i>bilinear interpolation</i>.
+In one dimension, interpolation is easy.  If <i>x</i> is a value between
+zero and one, and you have <i>P0</i> and <i>P1</i> at each point, the
+linear interpolation is (1-<i>x</i>)*<i>P0</i> + <i>x</i>*<i>P1</i>.
+In two dimensions, your sample point is usually inside a box with four
+samples on each edge.  The way to think of the solution is that you
+first compute the linear interpolation in the <i>x</i>-axis for the
+bottom points and the top points, then you interpolate those intermediate
+results on the <i>y</i>-axis.  Assuming points <i>P00</i>, <i>P01</i>, <i>P10</i>, and <i>P11</i>, the final equation would be something like:
+
+
+<ul>
+  <li><i>t0</i> = (1-<i>x</i>)*<i>P00</i> + <i>x</i>*<i>P10</i>.</li>
+  <li><i>t1</i> = (1-<i>x</i>)*<i>P01</i> + <i>x</i>*<i>P11</i>.</li>
+  <li><i>result</i> = (1-<i>y</i>)*<i>t0</i> + <i>y</i>*<i>t1</i>.</li>
+</ul>
+</li>
+
+<li>If you're feeling really gonzo (not required for this assignment), you
+could investigate <i>trilinear mipmapping</i>.  The above case takes
+care of zooming in to an image, but could generate <i>aliasing artifacts</i>
+when you zoom out (e.g., moire patterns).  Modern texture mapping hardware
+does this and it looks great, but the software speeds would be even slower.</li>
+
+<li>There are many other <a href="http://www.couleur.org/index.php?page=transformations">color spaces</a> out there. If you're going for cool points, you might want to look at other matrix multiplication operators on the RGB 3-vectors, including more restricted examples that do things like just rotate a few degrees in the color-space.</li>
+
+<li><b>Animations:</b>
+You can implement <i>genetic cross dissolves</i> as described in section 4.5 of the Sims paper.  The idea is that the user selects two images that are (hopefully) genetically similar to each other and the asks for them to be cross-dissolved.  To interpolate to a genotype between the two source genotypes, recursively walk down from the top.  While the source genotypes are the same, continue recursively.  Where they differ, evaluate both sides and linearly interpolate between the values they return. When implemented correctly on genetically similar functions, the result is pretty cool. You just need to write out a directory full of static image files and then use an external MPEG compression tool to make an animation suitable for upload to YouTube or whatever.
+</li>
+
+<li>A time parameter (<i>t</i>) that varies from zero to one (or any
+other range) turns any expression into an animation.  If it goes zero
+to one and back to zero, then it makes for a loop that can repeat
+infinitely.
+These may not be quite as cool as the genetic
+cross-dissolves, but they're easy to implement.</li>
+
+<li>Different statistical biases on the random selection of different
+intrinsic gene functions can help you tune what kinds of images you'll
+get.  For example, once you load a picture of your
+face, you can make it more likely to appear.  Similarly, you might
+include certain "macros" of intrinsic functions that you think are
+valuable building blocks.</li>
+
+
+<li>When you crossbreed, particularly with only a handful of parents,
+you may get many children with identical genotypes.  You only need to
+send one of them on to the next generation, and otherwise you might as
+well try to generate another child.</li>
+
+<li>One interesting option is <i>bookmarks</i>.  Whenever you find an
+ image that you like, you could bookmark it and assign it some
+ probability of occurring in future generations just like any other
+ intrinsic function.</li>
+
+<li>Once you've found a clever way to warp one image, you're going to
+want to be able to apply it to lots of other images.  You could take
+a particular genotype, turn the embedded image name into an external variable,
+and make a command-line utility (or Photoshop plug-in!) suitable for
+general use.</li>
+
+<li>Once you've bookmarked a lot of favorites, you may
+ be able to automatically identify <i>common subexpressions</i> that
+ are popular among your bookmarks.  Those would be even better candidates
+ for keeping around for future generations.  Common subexpressions may
+ also lead to all sorts of performance optimization opportunities.  (<i>Hint: if you had the right
+ hash function, you could detect common subexpressions by looking for
+ hash collisions.</i>)
+</li>
+
+<li>While most interesting image functions will have dependencies on
+ both <i>x</i> and <i>y</i>, many of their subexpressions will be
+ invariant with respect to those variables.  You may be able to
+ optimize away a non-trivial amount of computation through <i>partial
+ evaluation</i> of the expressions.</li>
+
+<li>You can make your code run much faster with some simple tweaks.
+ Rather than simply evaluating your function tree once per output pixel,
+    You could instead work on an entire scanline at once, passing the
+    whole array of inputs and outputs up and down the tree.  You'll
+    be surprised how much faster it goes, mainly because you're amortizing
+    the cost per pixel of interpreting your tree.</li>
+
+<li>Another performance problem is that trees can get quite deep.  When
+    you crossbreed, you may consider methods that prune up the tree to
+    some maximum depth.</li>
+</ul>
+
+<hr/>
+
+
+</div>
+</body>
+
+</html>
+
