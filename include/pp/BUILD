@@ -9,5 +9,6 @@ cc_library(
         "fun/IFunctionGenerator.h",
         "fun/NegateFunction.h",
         "fun/RoundFunction.h",
+        "fun/TrigFunction.h",
     ],
 )

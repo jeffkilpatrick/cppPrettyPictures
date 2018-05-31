@@ -14,5 +14,6 @@ cc_library(
         "fun/IFunctionGenerator.cc",
         "fun/NegateFunction.cc",
         "fun/RoundFunction.cc",
+        "fun/TrigFunction.cc",
     ],
 )

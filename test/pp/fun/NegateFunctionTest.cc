@@ -8,13 +8,7 @@ using pp::XFunction;
 using pp::XFunctionGenerator;
 
 TEST(NegateFunctionTest, Basics) {
-    NegateFunction f(XFunctionGenerator{}.Make());
-    EXPECT_EQ(-0.1f, f.Eval(0.1f, 0));
-}
-
-TEST(NegateFunctionTest, Make) {
-    NegateFunctionGenerator fg;
-    auto f = fg.Make(XFunctionGenerator{}.Make());
+    auto f = NegateFunctionGenerator{}.Make(XFunctionGenerator{}.Make());
     ASSERT_NE(nullptr, f);
 
     EXPECT_EQ(-0.1f, f->Eval(0.1f, 0));
