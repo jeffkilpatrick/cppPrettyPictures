@@ -7,5 +7,6 @@ cc_library(
         "fun/CoordinateFunction.h",
         "fun/IFunction.h",
         "fun/IFunctionGenerator.h",
+        "fun/NegateFunction.h",
     ],
 )

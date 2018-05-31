@@ -12,5 +12,6 @@ cc_library(
         "fun/CoordinateFunction.cc",
         "fun/IFunction.cc",
         "fun/IFunctionGenerator.cc",
+        "fun/NegateFunction.cc",
     ],
 )
