@@ -4,6 +4,7 @@ cc_library(
     hdrs = [
         "fun/Arity.h",
         "fun/ConstantFunction.h",
+        "fun/CoordinateFunction.h",
         "fun/IFunction.h",
         "fun/IFunctionGenerator.h",
     ],

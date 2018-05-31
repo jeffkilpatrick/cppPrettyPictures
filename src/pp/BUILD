@@ -9,6 +9,7 @@ cc_library(
     ],
     srcs = [
         "fun/ConstantFunction.cc",
+        "fun/CoordinateFunction.cc",
         "fun/IFunction.cc",
         "fun/IFunctionGenerator.cc",
     ],
