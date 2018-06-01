@@ -1,5 +1,7 @@
 #include "pp/fun/ArithmeticFunction.h"
 
+#include <cmath>
+
 using pp::AddFunction;
 using pp::AddFunctionGenerator;
 using pp::DivideFunction;
@@ -78,7 +80,12 @@ DivideFunction::DivideFunction(IFunctionPtr arg0, IFunctionPtr arg1)
 
 float DivideFunction::EvalSingle(float x, float y, float a0, float a1) const
 {
-    return a1 == 0.f ? 0.f : a0 / a1;
+    if (std::abs(a1) < 1e-3f)
+    {
+        a1 = std::copysign(1e-3f, a1);
+    }
+
+    return a0 / a1;
 }
 
 std::string DivideFunction::ToString() const
