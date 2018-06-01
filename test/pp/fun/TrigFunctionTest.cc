@@ -4,6 +4,7 @@
 
 using pp::AtanFunction;
 using pp::AtanFunctionGenerator;
+using pp::Color;
 using pp::CosFunction;
 using pp::CosFunctionGenerator;
 using pp::SinFunction;
@@ -14,17 +15,17 @@ using pp::XFunctionGenerator;
 TEST(TrigFunctionTest, Atan) {
     auto f = AtanFunctionGenerator{}.Make(XFunctionGenerator{}.Make());
     ASSERT_NE(nullptr, f);
-    EXPECT_EQ(0.0f, f->Eval(0.0f, 0));
+    EXPECT_EQ(Color{0.0f}, f->Eval(0.0f, 0));
 }
 
 TEST(TrigFunctionTest, Cos) {
     auto f = CosFunctionGenerator{}.Make(XFunctionGenerator{}.Make());
     ASSERT_NE(nullptr, f);
-    EXPECT_EQ(1.0f, f->Eval(0.0f, 0));
+    EXPECT_EQ(Color{1.0f}, f->Eval(0.0f, 0));
 }
 
 TEST(TrigFunctionTest, Sin) {
     auto f = SinFunctionGenerator{}.Make(XFunctionGenerator{}.Make());
     ASSERT_NE(nullptr, f);
-    EXPECT_EQ(0.0f, f->Eval(0.0f, 0));
+    EXPECT_EQ(Color{0.0f}, f->Eval(0.0f, 0));
 }

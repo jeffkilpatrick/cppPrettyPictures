@@ -6,7 +6,7 @@ using pp::YFunction;
 using pp::XFunctionGenerator;
 using pp::YFunctionGenerator;
 
-float XFunction::Eval(float x, float y) const
+float XFunction::EvalSingle(float x, float y) const
 {
     return x;
 }
@@ -28,7 +28,7 @@ pp::IFunctionPtr XFunctionGenerator::Make()
 
 // --------------------------------------------------------------------
 
-float YFunction::Eval(float x, float y) const
+float YFunction::EvalSingle(float x, float y) const
 {
     return y;
 }

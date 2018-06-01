@@ -9,7 +9,7 @@ namespace pp {
 
     class PP_EXPORT XFunction final : public INonaryFunction {
     public:
-        float Eval(float x, float y) const override;
+        float EvalSingle(float x, float y) const override;
         std::string ToString() const override;
     };
 
@@ -23,7 +23,7 @@ namespace pp {
 
     class PP_EXPORT YFunction final : public INonaryFunction {
     public:
-        float Eval(float x, float y) const override;
+        float EvalSingle(float x, float y) const override;
         std::string ToString() const override;
     };
 

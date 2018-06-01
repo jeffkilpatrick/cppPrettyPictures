@@ -10,9 +10,9 @@ ExpFunction::ExpFunction(IFunctionPtr arg)
     : IUnaryFunction(std::move(arg))
 { }
 
-float ExpFunction::Eval(float x, float y) const
+float ExpFunction::EvalSingle(float x, float y, float a) const
 {
-    return std::exp(EvalArg(x, y));
+    return std::exp(a);
 }
 
 std::string ExpFunction::ToString() const
@@ -36,10 +36,10 @@ LogFunction::LogFunction(IFunctionPtr arg)
     : IUnaryFunction(std::move(arg))
 { }
 
-float LogFunction::Eval(float x, float y) const
+float LogFunction::EvalSingle(float x, float y, float a) const
 {
     // TODO-jrk: deal with negative args
-    return std::log(EvalArg(x, y));
+    return std::log(a);
 }
 
 std::string LogFunction::ToString() const

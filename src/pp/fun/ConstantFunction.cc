@@ -12,7 +12,7 @@ ConstantFunction::ConstantFunction(float constant)
     // TODO-jrk: validate range of constant
 }
 
-float ConstantFunction::Eval(float x, float y) const
+float ConstantFunction::EvalSingle(float x, float y) const
 {
     return m_constant;
 }

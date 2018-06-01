@@ -16,9 +16,9 @@ AbsFunction::AbsFunction(IFunctionPtr arg)
     : IUnaryFunction(std::move(arg))
 { }
 
-float AbsFunction::Eval(float x, float y) const
+float AbsFunction::EvalSingle(float x, float y, float a) const
 {
-    return std::abs(EvalArg(x, y));
+    return std::abs(a);
 }
 
 std::string AbsFunction::ToString() const
@@ -42,12 +42,11 @@ ClipFunction::ClipFunction(IFunctionPtr arg)
     : IUnaryFunction(std::move(arg))
 { }
 
-float ClipFunction::Eval(float x, float y) const
+float ClipFunction::EvalSingle(float x, float y, float a) const
 {
-    auto arg = EvalArg(x, y);
-    arg = std::min(arg, 1.0f);
-    arg = std::max(arg, -1.0f);
-    return arg;
+    a = std::min(a, 1.0f);
+    a = std::max(a, -1.0f);
+    return a;
 }
 
 std::string ClipFunction::ToString() const
@@ -71,9 +70,9 @@ RoundDownFunction::RoundDownFunction(IFunctionPtr arg)
     : IUnaryFunction(std::move(arg))
 { }
 
-float RoundDownFunction::Eval(float x, float y) const
+float RoundDownFunction::EvalSingle(float x, float y, float a) const
 {
-    return std::floor(EvalArg(x, y));
+    return std::floor(a);
 }
 
 std::string RoundDownFunction::ToString() const
@@ -97,9 +96,9 @@ RoundUpFunction::RoundUpFunction(IFunctionPtr arg)
     : IUnaryFunction(std::move(arg))
 { }
 
-float RoundUpFunction::Eval(float x, float y) const
+float RoundUpFunction::EvalSingle(float x, float y, float a) const
 {
-    return std::ceil(EvalArg(x, y));
+    return std::ceil(a);
 }
 
 std::string RoundUpFunction::ToString() const
@@ -123,11 +122,10 @@ WrapFunction::WrapFunction(IFunctionPtr arg)
     : IUnaryFunction(std::move(arg))
 { }
 
-float WrapFunction::Eval(float x, float y) const
+float WrapFunction::EvalSingle(float x, float y, float a) const
 {
-    auto arg = EvalArg(x, y);
-    auto n = std::round(arg / 2.f);
-    return arg - (2.f * n);
+    auto n = std::round(a / 2.f);
+    return a - (2.f * n);
 }
 
 std::string WrapFunction::ToString() const

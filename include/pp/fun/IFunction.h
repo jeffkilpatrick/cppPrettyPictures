@@ -1,5 +1,6 @@
 #pragma once
 
+#include "pp/Color.h"
 #include "pp/utility/Exports.h"
 #include <ios>
 #include <memory>
@@ -14,13 +15,20 @@ namespace pp {
     public:
         virtual ~IFunction();
 
-        virtual float Eval(float x, float y) const = 0;
+        virtual Color Eval(float x, float y) const = 0;
         virtual std::string ToString() const = 0;
     };
 
     /** A function taking no arguments **/
     class PP_EXPORT INonaryFunction : public IFunction
-    { };
+    {
+    public:
+        /** Evaluate the function for a single color channel **/
+        virtual float EvalSingle(float x, float y) const = 0;
+
+        /** Evaluate the function for all color channels **/
+        Color Eval(float x, float y) const final;
+    };
 
     /** A function taking one argument **/
     class PP_EXPORT IUnaryFunction : public IFunction
@@ -28,8 +36,13 @@ namespace pp {
     public:
         IUnaryFunction(IFunctionPtr fun);
 
+        /** Evaluate the function for a single color channel **/
+        virtual float EvalSingle(float x, float y, float a) const = 0;
+
+        /** Evaluate the function for all color channels **/
+        Color Eval(float x, float y) const final;
+
     protected:
-        float EvalArg(float x, float y) const;
         std::string ArgString() const;
 
     private:
@@ -42,9 +55,11 @@ namespace pp {
     public:
         IBinaryFunction(IFunctionPtr fun0, IFunctionPtr fun1);
 
-    protected:
-        float EvalArg0(float x, float y) const;
-        float EvalArg1(float x, float y) const;
+        /** Evaluate the function for a single color channel **/
+        virtual float EvalSingle(float x, float y, float a0, float a1) const = 0;
+
+        /** Evaluate the function for all color channels **/
+        Color Eval(float x, float y) const final;
 
     private:
         IFunctionPtr m_fun0;
@@ -57,10 +72,11 @@ namespace pp {
     public:
         ITrinaryFunction(IFunctionPtr fun0, IFunctionPtr fun1, IFunctionPtr fun2);
 
-    protected:
-        float EvalArg0(float x, float y) const;
-        float EvalArg1(float x, float y) const;
-        float EvalArg2(float x, float y) const;
+        /** Evaluate the function for a single color channel **/
+        virtual float EvalSingle(float x, float y, float a0, float a1, float a2) const = 0;
+
+        /** Evaluate the function for all color channels **/
+        Color Eval(float x, float y) const final;
 
     private:
         IFunctionPtr m_fun0;

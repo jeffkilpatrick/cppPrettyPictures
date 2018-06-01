@@ -11,7 +11,7 @@ namespace pp {
     public:
         AbsFunction(IFunctionPtr arg);
 
-        float Eval(float x, float y) const override;
+        float EvalSingle(float x, float y, float a) const override;
         std::string ToString() const override;
     };
 
@@ -27,7 +27,7 @@ namespace pp {
     public:
         ClipFunction(IFunctionPtr arg);
 
-        float Eval(float x, float y) const override;
+        float EvalSingle(float x, float y, float a) const override;
         std::string ToString() const override;
     };
 
@@ -43,7 +43,7 @@ namespace pp {
     public:
         RoundDownFunction(IFunctionPtr arg);
 
-        float Eval(float x, float y) const override;
+        float EvalSingle(float x, float y, float a) const override;
         std::string ToString() const override;
     };
 
@@ -59,7 +59,7 @@ namespace pp {
     public:
         RoundUpFunction(IFunctionPtr arg);
 
-        float Eval(float x, float y) const override;
+        float EvalSingle(float x, float y, float a) const override;
         std::string ToString() const override;
     };
 
@@ -75,7 +75,7 @@ namespace pp {
     public:
         WrapFunction(IFunctionPtr arg);
 
-        float Eval(float x, float y) const override;
+        float EvalSingle(float x, float y, float a) const override;
         std::string ToString() const override;
     };
 

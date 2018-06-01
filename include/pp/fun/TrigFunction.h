@@ -11,7 +11,7 @@ namespace pp {
     public:
         AtanFunction(IFunctionPtr arg);
 
-        float Eval(float x, float y) const override;
+        float EvalSingle(float x, float y, float a) const override;
         std::string ToString() const override;
     };
 
@@ -27,7 +27,7 @@ namespace pp {
     public:
         CosFunction(IFunctionPtr arg);
 
-        float Eval(float x, float y) const override;
+        float EvalSingle(float x, float y, float a) const override;
         std::string ToString() const override;
     };
 
@@ -43,7 +43,7 @@ namespace pp {
     public:
         SinFunction(IFunctionPtr arg);
 
-        float Eval(float x, float y) const override;
+        float EvalSingle(float x, float y, float a) const override;
         std::string ToString() const override;
     };
 

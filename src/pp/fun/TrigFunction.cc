@@ -12,9 +12,9 @@ AtanFunction::AtanFunction(IFunctionPtr arg)
     : IUnaryFunction(std::move(arg))
 { }
 
-float AtanFunction::Eval(float x, float y) const
+float AtanFunction::EvalSingle(float x, float y, float a) const
 {
-    return std::atan(EvalArg(x, y));
+    return std::atan(a);
 }
 
 std::string AtanFunction::ToString() const
@@ -38,9 +38,9 @@ CosFunction::CosFunction(IFunctionPtr arg)
     : IUnaryFunction(std::move(arg))
 { }
 
-float CosFunction::Eval(float x, float y) const
+float CosFunction::EvalSingle(float x, float y, float a) const
 {
-    return std::cos(EvalArg(x, y));
+    return std::cos(a);
 }
 
 std::string CosFunction::ToString() const
@@ -64,9 +64,9 @@ SinFunction::SinFunction(IFunctionPtr arg)
     : IUnaryFunction(std::move(arg))
 { }
 
-float SinFunction::Eval(float x, float y) const
+float SinFunction::EvalSingle(float x, float y, float a) const
 {
-    return std::sin(EvalArg(x, y));
+    return std::sin(a);
 }
 
 std::string SinFunction::ToString() const

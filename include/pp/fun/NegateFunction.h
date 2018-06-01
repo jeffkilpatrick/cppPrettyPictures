@@ -10,7 +10,7 @@ namespace pp {
     public:
         NegateFunction(IFunctionPtr arg);
 
-        float Eval(float x, float y) const override;
+        float EvalSingle(float x, float y, float a) const override;
         std::string ToString() const override;
     };
 
