@@ -11,6 +11,11 @@ ExpFunction::ExpFunction(IFunctionPtr arg)
 
 float ExpFunction::EvalSingle(float x, float y, float a) const
 {
+    if (a > 5.f)
+    {
+        return std::exp(5.f);
+    }
+
     return std::exp(a);
 }
 
