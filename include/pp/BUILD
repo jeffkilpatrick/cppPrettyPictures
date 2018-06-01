@@ -11,6 +11,7 @@ cc_library(
         "fun/CoordinateFunction.h",
         "fun/IFunction.h",
         "fun/IFunctionGenerator.h",
+        "fun/InnerProductFunction.h",
         "fun/LogFunction.h",
         "fun/NegateFunction.h",
         "fun/RoundFunction.h",

@@ -7,6 +7,7 @@ cc_test(
         "fun/ArithmeticFunctionTest.cc",
         "fun/CoordinateFunctionTest.cc",
         "fun/ConstantFunctionTest.cc",
+        "fun/InnerProductFunctionTest.cc",
         "fun/LogFunctionTest.cc",
         "fun/NegateFunctionTest.cc",
         "fun/RoundFunctionTest.cc",

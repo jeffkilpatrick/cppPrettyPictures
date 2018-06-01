@@ -4,6 +4,7 @@
 #include "pp/fun/ConstantFunction.h"
 #include "pp/fun/CoordinateFunction.h"
 #include "pp/fun/LogFunction.h"
+#include "pp/fun/InnerProductFunction.h"
 #include "pp/fun/NegateFunction.h"
 #include "pp/fun/RoundFunction.h"
 #include "pp/fun/TrigFunction.h"
@@ -37,6 +38,9 @@ Registry::Registry()
         [](){ return std::make_unique<SubtractFunctionGenerator>(); },
         [](){ return std::make_unique<MultiplyFunctionGenerator>(); },
         [](){ return std::make_unique<DivideFunctionGenerator>(); },
+
+        // Other
+        [](){ return std::make_unique<InnerProductFunctionGenerator>(); },
 
     }}
 { }
