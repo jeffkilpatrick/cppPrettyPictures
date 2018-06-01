@@ -6,13 +6,13 @@
 using pp::ConstantFunction;
 using pp::ConstantFunctionGenerator;
 
-ConstantFunction::ConstantFunction(float constant)
+ConstantFunction::ConstantFunction(Color constant)
     : m_constant(constant)
 {
     // TODO-jrk: validate range of constant
 }
 
-float ConstantFunction::EvalSingle(float x, float y) const
+pp::Color ConstantFunction::Eval(float x, float y) const
 {
     return m_constant;
 }
@@ -35,5 +35,9 @@ pp::IFunctionPtr ConstantFunctionGenerator::Make()
     // Deviation from spec: this is [-1, 1) instead of [-1, 1].
     std::uniform_real_distribution<float> dist(-1.f, 1.f);
 
-    return std::make_unique<ConstantFunction>(dist(m_gen));
+    auto c1 = dist(m_gen);
+    auto c2 = dist(m_gen);
+    auto c3 = dist(m_gen);
+
+    return std::make_unique<ConstantFunction>(Color{c1, c2, c3});
 }

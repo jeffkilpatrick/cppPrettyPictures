@@ -6,15 +6,16 @@
 #include <random>
 
 namespace pp {
-    class PP_EXPORT ConstantFunction final : public INonaryFunction {
+    class PP_EXPORT ConstantFunction final : public IFunction {
     public:
-        ConstantFunction(float constant);
+        ConstantFunction(Color constant);
 
-        float EvalSingle(float x, float y) const override;
+        Color Eval(float x, float y) const override;
+
         std::string ToString() const override;
 
     private:
-        float m_constant;
+        Color m_constant;
     };
 
     class PP_EXPORT ConstantFunctionGenerator final : public INonaryFunctionGenerator {

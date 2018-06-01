@@ -6,7 +6,7 @@ using pp::ConstantFunction;
 using pp::ConstantFunctionGenerator;
 
 TEST(ConstantFunctionTest, Basics) {
-    ConstantFunction cf(0.1f);
+    ConstantFunction cf(Color{0.1f});
     EXPECT_EQ(Color{0.1f}, cf.Eval(0, 0));
 }
 
