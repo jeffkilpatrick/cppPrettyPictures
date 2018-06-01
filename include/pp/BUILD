@@ -16,6 +16,7 @@ cc_library(
         "fun/InnerProductFunction.h",
         "fun/LogFunction.h",
         "fun/NegateFunction.h",
+        "fun/NoiseFunction.h",
         "fun/RoundFunction.h",
         "fun/TrigFunction.h",
         "utility/Exports.h",

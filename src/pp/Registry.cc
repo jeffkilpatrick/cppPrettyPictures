@@ -8,6 +8,7 @@
 #include "pp/fun/LogFunction.h"
 #include "pp/fun/InnerProductFunction.h"
 #include "pp/fun/NegateFunction.h"
+#include "pp/fun/NoiseFunction.h"
 #include "pp/fun/RoundFunction.h"
 #include "pp/fun/TrigFunction.h"
 
@@ -40,6 +41,9 @@ Registry::Registry()
         [](){ return std::make_unique<SubtractFunctionGenerator>(); },
         [](){ return std::make_unique<MultiplyFunctionGenerator>(); },
         [](){ return std::make_unique<DivideFunctionGenerator>(); },
+
+        [](){ return std::make_unique<ColorNoiseFunctionGenerator>(); },
+        [](){ return std::make_unique<GrayscaleNoiseFunctionGenerator>(); },
 
         // Trinary
         [](){ return std::make_unique<DissolveFunctionGenerator>(); },

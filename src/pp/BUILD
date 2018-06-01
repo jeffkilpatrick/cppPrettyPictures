@@ -21,6 +21,7 @@ cc_library(
         "fun/InnerProductFunction.cc",
         "fun/LogFunction.cc",
         "fun/NegateFunction.cc",
+        "fun/NoiseFunction.cc",
         "fun/RoundFunction.cc",
         "fun/TrigFunction.cc",
     ],
