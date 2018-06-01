@@ -32,7 +32,13 @@ LogFunction::LogFunction(IFunctionPtr arg)
 
 float LogFunction::EvalSingle(float x, float y, float a) const
 {
-    // TODO-jrk: deal with negative args
+    if (a < 0.f)
+    {
+        a *= -1.f;
+    }
+
+    a = std::max(1e-3f, a);
+
     return std::log(a);
 }
 
