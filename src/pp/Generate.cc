@@ -6,9 +6,11 @@
 
 using pp::Arity;
 
-pp::IFunctionPtr pp::RandomExpression(Registry& r)
+static pp::IFunctionPtr RandomExpressionImpl(pp::Registry& r, size_t maxDepth, size_t currentDepth)
 {
-    auto fg = r.GetRandom();
+    using namespace pp;
+
+    auto fg = currentDepth >= maxDepth ? r.GetRandomNonary() : r.GetRandom();
 
     switch (fg->GetArity())
     {
@@ -17,16 +19,27 @@ pp::IFunctionPtr pp::RandomExpression(Registry& r)
 
         case Arity::Unary:
             return dynamic_cast<IUnaryFunctionGenerator&>(*fg)
-                .Make(RandomExpression(r));
+                .Make(
+                    RandomExpressionImpl(r, maxDepth, currentDepth + 1));
 
         case Arity::Binary:
             return dynamic_cast<IBinaryFunctionGenerator&>(*fg)
-                .Make(RandomExpression(r), RandomExpression(r));
+                .Make(
+                    RandomExpressionImpl(r, maxDepth, currentDepth + 1),
+                    RandomExpressionImpl(r, maxDepth, currentDepth + 1));
 
         case Arity::Trinary:
             return dynamic_cast<ITrinaryFunctionGenerator&>(*fg)
-                .Make(RandomExpression(r), RandomExpression(r), RandomExpression(r));
+                .Make(
+                    RandomExpressionImpl(r, maxDepth, currentDepth + 1),
+                    RandomExpressionImpl(r, maxDepth, currentDepth + 1),
+                    RandomExpressionImpl(r, maxDepth, currentDepth + 1));
     }
 
     return nullptr;
+}
+
+pp::IFunctionPtr pp::RandomExpression(Registry& r, size_t maxDepth)
+{
+    return RandomExpressionImpl(r, maxDepth, /*maxDepth*/ 0);
 }

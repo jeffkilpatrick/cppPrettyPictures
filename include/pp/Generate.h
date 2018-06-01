@@ -9,5 +9,5 @@ namespace pp {
     class Registry;
     using IFunctionPtr = std::unique_ptr<class IFunction>;
 
-    PP_EXPORT IFunctionPtr RandomExpression(Registry& r);
+    PP_EXPORT IFunctionPtr RandomExpression(Registry& r, size_t maxDepth = 20);
 }
