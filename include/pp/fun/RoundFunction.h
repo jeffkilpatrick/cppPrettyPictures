@@ -6,6 +6,39 @@
 #include <random>
 
 namespace pp {
+
+    class PP_EXPORT AbsFunction final : public IUnaryFunction {
+    public:
+        AbsFunction(IFunctionPtr arg);
+
+        float Eval(float x, float y) const override;
+        std::string ToString() const override;
+    };
+
+    class PP_EXPORT AbsFunctionGenerator final : public IUnaryFunctionGenerator {
+    public:
+        Arity GetArity() const override;
+        IFunctionPtr Make(IFunctionPtr arg) override;
+    };
+
+    // ---------------------------------------------------------------------
+
+    class PP_EXPORT ClipFunction final : public IUnaryFunction {
+    public:
+        ClipFunction(IFunctionPtr arg);
+
+        float Eval(float x, float y) const override;
+        std::string ToString() const override;
+    };
+
+    class PP_EXPORT ClipFunctionGenerator final : public IUnaryFunctionGenerator {
+    public:
+        Arity GetArity() const override;
+        IFunctionPtr Make(IFunctionPtr arg) override;
+    };
+
+    // ---------------------------------------------------------------------
+
     class PP_EXPORT RoundDownFunction final : public IUnaryFunction {
     public:
         RoundDownFunction(IFunctionPtr arg);
@@ -35,4 +68,19 @@ namespace pp {
         Arity GetArity() const override;
         IFunctionPtr Make(IFunctionPtr arg) override;
     };
-}
+
+    // ---------------------------------------------------------------------
+
+    class PP_EXPORT WrapFunction final : public IUnaryFunction {
+    public:
+        WrapFunction(IFunctionPtr arg);
+
+        float Eval(float x, float y) const override;
+        std::string ToString() const override;
+    };
+
+    class PP_EXPORT WrapFunctionGenerator final : public IUnaryFunctionGenerator {
+    public:
+        Arity GetArity() const override;
+        IFunctionPtr Make(IFunctionPtr arg) override;
+    };}

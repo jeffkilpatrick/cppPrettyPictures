@@ -6,7 +6,7 @@
 #include <random>
 
 namespace pp {
-    class NegateFunction final : public IUnaryFunction {
+    class PP_EXPORT NegateFunction final : public IUnaryFunction {
     public:
         NegateFunction(IFunctionPtr arg);
 
@@ -14,7 +14,7 @@ namespace pp {
         std::string ToString() const override;
     };
 
-    class NegateFunctionGenerator final : public IUnaryFunctionGenerator {
+    class PP_EXPORT NegateFunctionGenerator final : public IUnaryFunctionGenerator {
     public:
         Arity GetArity() const override;
         IFunctionPtr Make(IFunctionPtr arg) override;
