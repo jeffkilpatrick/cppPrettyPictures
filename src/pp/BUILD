@@ -11,6 +11,7 @@ cc_library(
         "Color.cc",
         "Generate.cc",
         "Registry.cc",
+        "fun/ArithmeticFunction.cc",
         "fun/ConstantFunction.cc",
         "fun/CoordinateFunction.cc",
         "fun/IFunction.cc",

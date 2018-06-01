@@ -6,6 +6,7 @@ cc_library(
         "Generate.h",
         "Registry.h",
         "fun/Arity.h",
+        "fun/ArithmeticFunction.h",
         "fun/ConstantFunction.h",
         "fun/CoordinateFunction.h",
         "fun/IFunction.h",

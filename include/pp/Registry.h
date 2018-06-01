@@ -19,6 +19,7 @@ namespace pp {
         Registry& operator=(Registry&&) = delete;
 
         IFunctionGeneratorPtr GetRandom();
+        IFunctionGeneratorPtr GetRandomNonary();
 
     private:
         std::mt19937 m_gen;

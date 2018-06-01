@@ -17,7 +17,6 @@ namespace pp {
 
     class PP_EXPORT AtanFunctionGenerator final : public IUnaryFunctionGenerator {
     public:
-        Arity GetArity() const override;
         IFunctionPtr Make(IFunctionPtr arg) override;
     };
 
@@ -33,7 +32,6 @@ namespace pp {
 
     class PP_EXPORT CosFunctionGenerator final : public IUnaryFunctionGenerator {
     public:
-        Arity GetArity() const override;
         IFunctionPtr Make(IFunctionPtr arg) override;
     };
 
@@ -49,7 +47,6 @@ namespace pp {
 
     class PP_EXPORT SinFunctionGenerator final : public IUnaryFunctionGenerator {
     public:
-        Arity GetArity() const override;
         IFunctionPtr Make(IFunctionPtr arg) override;
     };
 }

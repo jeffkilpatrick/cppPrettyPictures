@@ -16,7 +16,6 @@ namespace pp {
 
     class PP_EXPORT ExpFunctionGenerator final : public IUnaryFunctionGenerator {
     public:
-        Arity GetArity() const override;
         IFunctionPtr Make(IFunctionPtr arg) override;
     };
 
@@ -32,7 +31,6 @@ namespace pp {
 
     class PP_EXPORT LogFunctionGenerator final : public IUnaryFunctionGenerator {
     public:
-        Arity GetArity() const override;
         IFunctionPtr Make(IFunctionPtr arg) override;
     };
 

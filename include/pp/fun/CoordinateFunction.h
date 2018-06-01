@@ -15,7 +15,6 @@ namespace pp {
 
     class XFunctionGenerator final : public INonaryFunctionGenerator {
     public:
-        Arity GetArity() const override;
         IFunctionPtr Make() override;
     };
 
@@ -29,7 +28,6 @@ namespace pp {
 
     class YFunctionGenerator final : public INonaryFunctionGenerator {
     public:
-        Arity GetArity() const override;
         IFunctionPtr Make() override;
     };
 }

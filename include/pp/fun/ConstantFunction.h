@@ -20,7 +20,6 @@ namespace pp {
     class PP_EXPORT ConstantFunctionGenerator final : public INonaryFunctionGenerator {
     public:
         ConstantFunctionGenerator();
-        Arity GetArity() const override;
         IFunctionPtr Make() override;
  
     private:

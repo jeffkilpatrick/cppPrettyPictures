@@ -1,4 +1,3 @@
-#include "pp/fun/Arity.h"
 #include "pp/fun/RoundFunction.h"
 
 using pp::AbsFunction;
@@ -26,11 +25,6 @@ std::string AbsFunction::ToString() const
     return "(abs " + ArgString() + ")";
 }
 
-pp::Arity AbsFunctionGenerator::GetArity() const
-{
-    return Arity::Unary;
-}
-
 pp::IFunctionPtr AbsFunctionGenerator::Make(IFunctionPtr arg)
 {
     return std::make_unique<AbsFunction>(std::move(arg));
@@ -54,11 +48,6 @@ std::string ClipFunction::ToString() const
     return "(clip " + ArgString() + ")";
 }
 
-pp::Arity ClipFunctionGenerator::GetArity() const
-{
-    return Arity::Unary;
-}
-
 pp::IFunctionPtr ClipFunctionGenerator::Make(IFunctionPtr arg)
 {
     return std::make_unique<ClipFunction>(std::move(arg));
@@ -78,11 +67,6 @@ float RoundDownFunction::EvalSingle(float x, float y, float a) const
 std::string RoundDownFunction::ToString() const
 {
     return "(floor " + ArgString() + ")";
-}
-
-pp::Arity RoundDownFunctionGenerator::GetArity() const
-{
-    return Arity::Unary;
 }
 
 pp::IFunctionPtr RoundDownFunctionGenerator::Make(IFunctionPtr arg)
@@ -106,11 +90,6 @@ std::string RoundUpFunction::ToString() const
     return "(ceil " + ArgString() + ")";
 }
 
-pp::Arity RoundUpFunctionGenerator::GetArity() const
-{
-    return Arity::Unary;
-}
-
 pp::IFunctionPtr RoundUpFunctionGenerator::Make(IFunctionPtr arg)
 {
     return std::make_unique<RoundUpFunction>(std::move(arg));
@@ -131,11 +110,6 @@ float WrapFunction::EvalSingle(float x, float y, float a) const
 std::string WrapFunction::ToString() const
 {
     return "(wrap " + ArgString() + ")";
-}
-
-pp::Arity WrapFunctionGenerator::GetArity() const
-{
-    return Arity::Unary;
 }
 
 pp::IFunctionPtr WrapFunctionGenerator::Make(IFunctionPtr arg)

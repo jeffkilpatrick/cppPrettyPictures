@@ -1,5 +1,6 @@
 #include "pp/Registry.h"
 
+#include "pp/fun/ArithmeticFunction.h"
 #include "pp/fun/ConstantFunction.h"
 #include "pp/fun/CoordinateFunction.h"
 #include "pp/fun/LogFunction.h"
@@ -30,11 +31,24 @@ Registry::Registry()
         [](){ return std::make_unique<SinFunctionGenerator>(); },
         [](){ return std::make_unique<ExpFunctionGenerator>(); },
         [](){ return std::make_unique<LogFunctionGenerator>(); },
+
+        // Binary
+        [](){ return std::make_unique<AddFunctionGenerator>(); },
+        [](){ return std::make_unique<SubtractFunctionGenerator>(); },
+        [](){ return std::make_unique<MultiplyFunctionGenerator>(); },
+        [](){ return std::make_unique<DivideFunctionGenerator>(); },
+
     }}
 { }
 
 pp::IFunctionGeneratorPtr Registry::GetRandom()
 {
     auto r = m_gen() % m_registry.size();
+    return m_registry.at(r)();
+}
+
+pp::IFunctionGeneratorPtr Registry::GetRandomNonary()
+{
+    auto r = m_gen() % 3;
     return m_registry.at(r)();
 }

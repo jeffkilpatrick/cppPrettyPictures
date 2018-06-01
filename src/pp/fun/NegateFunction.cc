@@ -1,4 +1,3 @@
-#include "pp/fun/Arity.h"
 #include "pp/fun/NegateFunction.h"
 
 using pp::NegateFunction;
@@ -19,11 +18,6 @@ std::string NegateFunction::ToString() const
 }
 
 // --------------------------------------------------------------------
-
-pp::Arity NegateFunctionGenerator::GetArity() const
-{
-    return Arity::Unary;
-}
 
 pp::IFunctionPtr NegateFunctionGenerator::Make(IFunctionPtr arg)
 {

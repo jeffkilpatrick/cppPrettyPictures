@@ -4,6 +4,7 @@ cc_test(
     srcs = [
         "GenerateTest.cc",
         "RegistryTest.cc",
+        "fun/ArithmeticFunctionTest.cc",
         "fun/CoordinateFunctionTest.cc",
         "fun/ConstantFunctionTest.cc",
         "fun/LogFunctionTest.cc",

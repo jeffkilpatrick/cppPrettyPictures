@@ -61,6 +61,10 @@ namespace pp {
         /** Evaluate the function for all color channels **/
         Color Eval(float x, float y) const final;
 
+    protected:
+        std::string Arg0String() const;
+        std::string Arg1String() const;
+
     private:
         IFunctionPtr m_fun0;
         IFunctionPtr m_fun1;

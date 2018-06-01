@@ -1,4 +1,3 @@
-#include "pp/fun/Arity.h"
 #include "pp/fun/LogFunction.h"
 
 using pp::ExpFunction;
@@ -18,11 +17,6 @@ float ExpFunction::EvalSingle(float x, float y, float a) const
 std::string ExpFunction::ToString() const
 {
     return "(exp " + ArgString() + ")";
-}
-
-pp::Arity ExpFunctionGenerator::GetArity() const
-{
-    return Arity::Unary;
 }
 
 pp::IFunctionPtr ExpFunctionGenerator::Make(IFunctionPtr arg)
@@ -45,11 +39,6 @@ float LogFunction::EvalSingle(float x, float y, float a) const
 std::string LogFunction::ToString() const
 {
     return "(ln " + ArgString() + ")";
-}
-
-pp::Arity LogFunctionGenerator::GetArity() const
-{
-    return Arity::Unary;
 }
 
 pp::IFunctionPtr LogFunctionGenerator::Make(IFunctionPtr arg)

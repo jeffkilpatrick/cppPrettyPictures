@@ -16,11 +16,6 @@ std::string XFunction::ToString() const
     return "x";
 }
 
-pp::Arity XFunctionGenerator::GetArity() const
-{
-    return Arity::Nonary;
-}
-
 pp::IFunctionPtr XFunctionGenerator::Make()
 {
     return std::make_unique<XFunction>();
@@ -36,11 +31,6 @@ float YFunction::EvalSingle(float x, float y) const
 std::string YFunction::ToString() const
 {
     return "y";
-}
-
-pp::Arity YFunctionGenerator::GetArity() const
-{
-    return Arity::Nonary;
 }
 
 pp::IFunctionPtr YFunctionGenerator::Make()

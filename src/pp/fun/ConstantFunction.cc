@@ -30,11 +30,6 @@ ConstantFunctionGenerator::ConstantFunctionGenerator()
     : m_gen{std::random_device{}()}
 { }
 
-pp::Arity ConstantFunctionGenerator::GetArity() const
-{
-    return Arity::Nonary;
-}
-
 pp::IFunctionPtr ConstantFunctionGenerator::Make()
 {
     // Deviation from spec: this is [-1, 1) instead of [-1, 1].

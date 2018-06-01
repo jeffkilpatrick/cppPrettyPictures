@@ -2,6 +2,8 @@
 
 #include "pp/utility/Exports.h"
 
+#include <ios>
+
 namespace pp {
 
     struct PP_EXPORT Color {
@@ -14,4 +16,5 @@ namespace pp {
     };
 
     PP_EXPORT bool operator==(const Color& a, const Color& b);
+    PP_EXPORT std::ostream& operator<<(std::ostream& s, const Color& c);
 }

@@ -23,6 +23,7 @@ namespace pp {
     {
     public:
         virtual IFunctionPtr Make() = 0;
+        Arity GetArity() const final;
     };
 
     /** A generator of functions taking one argument. **/
@@ -30,6 +31,7 @@ namespace pp {
     {
     public:
         virtual IFunctionPtr Make(IFunctionPtr arg) = 0;
+        Arity GetArity() const final;
     };
 
     /** A generator of functions taking two arguments. **/
@@ -37,6 +39,7 @@ namespace pp {
     {
     public:
         virtual IFunctionPtr Make(IFunctionPtr arg0, IFunctionPtr arg1) = 0;
+        Arity GetArity() const final;
     };
 
     /** A generator of functions taking three arguments. **/
@@ -44,5 +47,6 @@ namespace pp {
     {
     public:
         virtual IFunctionPtr Make(IFunctionPtr arg0, IFunctionPtr arg1, IFunctionPtr arg2) = 0;
+        Arity GetArity() const final;
     };
 }
