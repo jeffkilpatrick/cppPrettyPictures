@@ -4,6 +4,7 @@
 #include "pp/fun/ColorSpaceFunction.h"
 #include "pp/fun/ConstantFunction.h"
 #include "pp/fun/CoordinateFunction.h"
+#include "pp/fun/DissolveFunction.h"
 #include "pp/fun/LogFunction.h"
 #include "pp/fun/InnerProductFunction.h"
 #include "pp/fun/NegateFunction.h"
@@ -39,6 +40,9 @@ Registry::Registry()
         [](){ return std::make_unique<SubtractFunctionGenerator>(); },
         [](){ return std::make_unique<MultiplyFunctionGenerator>(); },
         [](){ return std::make_unique<DivideFunctionGenerator>(); },
+
+        // Trinary
+        [](){ return std::make_unique<DissolveFunctionGenerator>(); },
 
         // Other
         [](){ return std::make_unique<InnerProductFunctionGenerator>(); },

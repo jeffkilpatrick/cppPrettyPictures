@@ -10,6 +10,7 @@ cc_library(
         "fun/ColorSpaceFunction.h",
         "fun/ConstantFunction.h",
         "fun/CoordinateFunction.h",
+        "fun/DissolveFunction.h",
         "fun/IFunction.h",
         "fun/IFunctionGenerator.h",
         "fun/InnerProductFunction.h",

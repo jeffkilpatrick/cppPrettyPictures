@@ -24,7 +24,7 @@ int main(int argc, char* argv[])
             unsigned char g = (c.C2 + 1.f) * 128.f;
             unsigned char b = (c.C3 + 1.f) * 128.f;
 
-            std::cout << c << " --> rgb(" << int(r) << ',' << int(g) << ',' << int(b) << ")\n";
+            //std::cout << c << " --> rgb(" << int(r) << ',' << int(g) << ',' << int(b) << ")\n";
 
             img.set_pixel(x, y, r, g, b);
         }

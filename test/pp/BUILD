@@ -8,6 +8,7 @@ cc_test(
         "fun/ColorSpaceFunctionTest.cc",
         "fun/CoordinateFunctionTest.cc",
         "fun/ConstantFunctionTest.cc",
+        "fun/DissolveFunctionTest.cc",
         "fun/InnerProductFunctionTest.cc",
         "fun/LogFunctionTest.cc",
         "fun/NegateFunctionTest.cc",
