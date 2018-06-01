@@ -7,6 +7,7 @@ cc_library(
         "Registry.h",
         "fun/Arity.h",
         "fun/ArithmeticFunction.h",
+        "fun/ColorSpaceFunction.h",
         "fun/ConstantFunction.h",
         "fun/CoordinateFunction.h",
         "fun/IFunction.h",

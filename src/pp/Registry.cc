@@ -1,6 +1,7 @@
 #include "pp/Registry.h"
 
 #include "pp/fun/ArithmeticFunction.h"
+#include "pp/fun/ColorSpaceFunction.h"
 #include "pp/fun/ConstantFunction.h"
 #include "pp/fun/CoordinateFunction.h"
 #include "pp/fun/LogFunction.h"
@@ -41,6 +42,8 @@ Registry::Registry()
 
         // Other
         [](){ return std::make_unique<InnerProductFunctionGenerator>(); },
+        [](){ return std::make_unique<RgbToYCbCrFunctionGenerator>(); },
+        [](){ return std::make_unique<YCbCrToRgbFunctionGenerator>(); },
 
     }}
 { }
