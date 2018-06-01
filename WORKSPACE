@@ -5,3 +5,11 @@ new_http_archive(
     build_file = "gtest.BUILD",
     strip_prefix = "googletest-release-1.7.0",
 )
+
+new_http_archive(
+    name = "libbmp",
+    url = "https://github.com/marc-q/libbmp/archive/66bec6d7daf254e6dc07d55c9383fd68276a6a39.zip",
+    sha256 = "b581a402ea9288d5e07a228eb0ef6f6035961aaad96805050a27e8b79b4e57ba",
+    build_file = "libbmp.BUILD",
+    strip_prefix = "libbmp-66bec6d7daf254e6dc07d55c9383fd68276a6a39",
+)
