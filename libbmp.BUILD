@@ -6,6 +6,6 @@ cc_library(
     hdrs = [
         "CPP/libbmp.h"
     ],
-    copts = ["-Iexternal/libbmp/CPP"],
+    includes = ["CPP"],    
     visibility = ["//visibility:public"],
 )

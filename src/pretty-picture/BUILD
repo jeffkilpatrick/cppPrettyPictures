@@ -4,11 +4,9 @@ cc_binary(
         "main.cc",
     ],
     copts = [
-        "-Iinclude", # TODO-jrk: this should be handled by //include/pp:headers
-        "-Iexternal/libbmp/CPP"
     ],
     deps = [
-        "//include/pp:headers",
+        "//include",
         "//src/pp",
         "@libbmp//:main",
         "@lodepng//:main",

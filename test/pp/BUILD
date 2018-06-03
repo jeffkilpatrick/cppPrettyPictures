@@ -16,11 +16,9 @@ cc_test(
         "fun/TrigFunctionTest.cc",
     ],
     copts = [
-        "-Iinclude", # TODO-jrk: this should be handled by //include/pp:headers
-        "-Iexternal/gtest/include", # TODO-jrk: make @gtest handle this?
     ],
     deps = [
-        "//include/pp:headers",
+        "//include",
         "//src/pp",
         "@gtest//:main",
     ],

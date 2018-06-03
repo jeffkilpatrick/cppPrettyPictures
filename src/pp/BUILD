@@ -2,10 +2,7 @@ cc_library(
     name = "pp",
     visibility  = ["//visibility:public"],
     deps = [
-        "//include/pp:headers",
-    ],
-    copts = [
-        "-Iinclude", # TODO-jrk: this should be handled by //include/pp:headers
+        "//include",
     ],
     srcs = [
         "Color.cc",
