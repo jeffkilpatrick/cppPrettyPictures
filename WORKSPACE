@@ -13,3 +13,11 @@ new_http_archive(
     build_file = "libbmp.BUILD",
     strip_prefix = "libbmp-66bec6d7daf254e6dc07d55c9383fd68276a6a39",
 )
+
+new_http_archive(
+    name = "lodepng",
+    url = "https://github.com/lvandeve/lodepng/archive/81cf5de55f7eb3b5bf9116400a8adc050bde6633.zip",
+    sha256 = "10202d27037b2b70cdfb72fcc7c9e850b48ba1b865ff599aba6bcac5277c3965",
+    build_file = "lodepng.BUILD",
+    strip_prefix = "lodepng-81cf5de55f7eb3b5bf9116400a8adc050bde6633",
+)

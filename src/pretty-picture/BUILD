@@ -11,5 +11,6 @@ cc_binary(
         "//include/pp:headers",
         "//src/pp",
         "@libbmp//:main",
+        "@lodepng//:main",
     ]
 )
