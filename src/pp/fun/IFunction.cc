@@ -1,5 +1,7 @@
 #include "pp/fun/IFunction.h"
 
+#include <ostream>
+
 using pp::IFunction;
 using pp::INonaryFunction;
 using pp::IUnaryFunction;

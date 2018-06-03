@@ -10,7 +10,6 @@ cc_binary(
     deps = [
         "//include/pp:headers",
         "//src/pp",
-        "@gtest//:main", # TODO-jrk: WTF? Why is this required to avoid basic_ostream link errors?
         "@libbmp//:main",
     ]
 )
