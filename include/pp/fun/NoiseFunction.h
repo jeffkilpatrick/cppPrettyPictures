@@ -10,7 +10,7 @@ namespace pp {
     public:
         ColorNoiseFunction(IFunctionPtr arg);
         Color Eval(float x, float y) const override;
-        std::string ToString() const override;
+        const std::string& GetName() const override;
     };
 
     class ColorNoiseFunctionGenerator final : public IUnaryFunctionGenerator
@@ -19,12 +19,14 @@ namespace pp {
         IFunctionPtr Make(IFunctionPtr arg) override;
     };
 
+    // -------------------------------------------------------------
+    
     class GrayscaleNoiseFunction final : public IUnaryFunction
     {
     public:
         GrayscaleNoiseFunction(IFunctionPtr arg);
         float EvalSingle(float x, float y, float a) const override;
-        std::string ToString() const override;
+        const std::string& GetName() const override;
     };
 
     class GrayscaleNoiseFunctionGenerator final : public IUnaryFunctionGenerator

@@ -11,7 +11,7 @@ namespace pp {
         RgbToYCbCrFunction(IFunctionPtr fun);
 
         Color Eval(float x, float y) const override;
-        std::string ToString() const override;
+        const std::string& GetName() const override;
     };
 
     class PP_EXPORT RgbToYCbCrFunctionGenerator final : public IUnaryFunctionGenerator
@@ -28,7 +28,7 @@ namespace pp {
         YCbCrToRgbFunction(IFunctionPtr fun);
 
         Color Eval(float x, float y) const override;
-        std::string ToString() const override;
+        const std::string& GetName() const override;
     };
 
     class PP_EXPORT YCbCrToRgbFunctionGenerator final : public IUnaryFunctionGenerator

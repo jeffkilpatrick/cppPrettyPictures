@@ -10,7 +10,7 @@ namespace pp {
         AddFunction(IFunctionPtr arg0, IFunctionPtr arg1);
 
         float EvalSingle(float x, float y, float a0, float a1) const override;
-        std::string ToString() const override;
+        const std::string& GetName() const override;
     };
 
     class PP_EXPORT AddFunctionGenerator final : public IBinaryFunctionGenerator {
@@ -25,7 +25,7 @@ namespace pp {
         SubtractFunction(IFunctionPtr arg0, IFunctionPtr arg1);
 
         float EvalSingle(float x, float y, float a0, float a1) const override;
-        std::string ToString() const override;
+        const std::string& GetName() const override;
     };
 
     class PP_EXPORT SubtractFunctionGenerator final : public IBinaryFunctionGenerator {
@@ -40,7 +40,7 @@ namespace pp {
         MultiplyFunction(IFunctionPtr arg0, IFunctionPtr arg1);
 
         float EvalSingle(float x, float y, float a0, float a1) const override;
-        std::string ToString() const override;
+        const std::string& GetName() const override;
     };
 
     class PP_EXPORT MultiplyFunctionGenerator final : public IBinaryFunctionGenerator {
@@ -55,7 +55,7 @@ namespace pp {
         DivideFunction(IFunctionPtr arg0, IFunctionPtr arg1);
 
         float EvalSingle(float x, float y, float a0, float a1) const override;
-        std::string ToString() const override;
+        const std::string& GetName() const override;
     };
 
     class PP_EXPORT DivideFunctionGenerator final : public IBinaryFunctionGenerator {

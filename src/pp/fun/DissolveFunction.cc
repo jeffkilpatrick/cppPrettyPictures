@@ -15,12 +15,10 @@ float DissolveFunction::EvalSingle(float x, float y, float a0, float a1, float a
     return a0 * a2 + a1 * (1.0 - a2);
 }
 
-std::string DissolveFunction::ToString() const
+const std::string& DissolveFunction::GetName() const
 {
-    return "(dissolve "
-        + GetArgs().at(0)->ToString() + ' '
-        + GetArgs().at(1)->ToString() + ' '
-        + GetArgs().at(2)->ToString() + ')';
+    static std::string name = "dissolve";
+    return name;
 }
 
 pp::IFunctionPtr pp::DissolveFunctionGenerator::Make(IFunctionPtr fun0, IFunctionPtr fun1, IFunctionPtr fun2)

@@ -9,7 +9,7 @@ namespace pp {
         NegateFunction(IFunctionPtr arg);
 
         float EvalSingle(float x, float y, float a) const override;
-        std::string ToString() const override;
+        const std::string& GetName() const override;
     };
 
     class PP_EXPORT NegateFunctionGenerator final : public IUnaryFunctionGenerator {

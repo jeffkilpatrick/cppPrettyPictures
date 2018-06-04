@@ -12,9 +12,10 @@ float NegateFunction::EvalSingle(float x, float y, float a) const
     return -1.f * a;
 }
 
-std::string NegateFunction::ToString() const
+const std::string& NegateFunction::GetName() const
 {
-    return "(neg " + GetArgs().at(0)->ToString() + ")";
+    static std::string name = "neg";
+    return name;
 }
 
 // --------------------------------------------------------------------

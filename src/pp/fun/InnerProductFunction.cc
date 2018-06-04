@@ -19,9 +19,10 @@ pp::Color InnerProductFunction::Eval(float x, float y) const
     return Color{ ip };
 }
 
-std::string InnerProductFunction::ToString() const
+const std::string& InnerProductFunction::GetName() const
 {
-    return "(inner-product " + GetArgs().at(0)->ToString() + " " + GetArgs().at(1) ->ToString() + ")";
+    static std::string name = "inner-product";
+    return name;
 }
 
 pp::IFunctionPtr InnerProductFunctionGenerator::Make(IFunctionPtr fun0, IFunctionPtr fun1)

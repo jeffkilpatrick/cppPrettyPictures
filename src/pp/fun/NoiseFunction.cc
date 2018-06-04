@@ -88,9 +88,10 @@ pp::Color ColorNoiseFunction::Eval(float x, float y) const
     return c;
 }
 
-std::string ColorNoiseFunction::ToString() const
+const std::string& ColorNoiseFunction::GetName() const
 {
-    return "(color-noise " + GetArgs().at(0)->ToString() + ')';
+    static std::string name = "color-noise";
+    return name;
 }
 
 pp::IFunctionPtr pp::ColorNoiseFunctionGenerator::Make(IFunctionPtr arg)
@@ -108,9 +109,10 @@ float GrayscaleNoiseFunction::EvalSingle(float x, float y, float a) const
     return noise(x, y, a);
 }
 
-std::string GrayscaleNoiseFunction::ToString() const
+const std::string& GrayscaleNoiseFunction::GetName() const
 {
-    return "(grayscale-noise " + GetArgs().at(0)->ToString()+ ')';
+    static std::string name = "greyscale-noise";
+    return name;
 }
 
 pp::IFunctionPtr pp::GrayscaleNoiseFunctionGenerator::Make(IFunctionPtr arg)

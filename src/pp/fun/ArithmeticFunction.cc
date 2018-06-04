@@ -20,9 +20,10 @@ float AddFunction::EvalSingle(float x, float y, float a0, float a1) const
     return a0 + a1;
 }
 
-std::string AddFunction::ToString() const
+const std::string& AddFunction::GetName() const
 {
-    return "(add " + GetArgs().at(0)->ToString() + " " + GetArgs().at(1)->ToString() + ")";
+    static std::string name = "add";
+    return name;
 }
 
 pp::IFunctionPtr AddFunctionGenerator::Make(IFunctionPtr arg0, IFunctionPtr arg1)
@@ -41,9 +42,10 @@ float SubtractFunction::EvalSingle(float x, float y, float a0, float a1) const
     return a0 - a1;
 }
 
-std::string SubtractFunction::ToString() const
+const std::string& SubtractFunction::GetName() const
 {
-    return "(sub " + GetArgs().at(0)->ToString() + " " + GetArgs().at(1)->ToString() + ")";
+    static std::string name = "sub";
+    return name;
 }
 
 pp::IFunctionPtr SubtractFunctionGenerator::Make(IFunctionPtr arg0, IFunctionPtr arg1)
@@ -62,9 +64,10 @@ float MultiplyFunction::EvalSingle(float x, float y, float a0, float a1) const
     return a0 * a1;
 }
 
-std::string MultiplyFunction::ToString() const
+const std::string& MultiplyFunction::GetName() const
 {
-    return "(mul " + GetArgs().at(0)->ToString() + " " + GetArgs().at(1)->ToString() + ")";
+    static std::string name = "mul";
+    return name;
 }
 
 pp::IFunctionPtr MultiplyFunctionGenerator::Make(IFunctionPtr arg0, IFunctionPtr arg1)
@@ -88,9 +91,10 @@ float DivideFunction::EvalSingle(float x, float y, float a0, float a1) const
     return a0 / a1;
 }
 
-std::string DivideFunction::ToString() const
+const std::string& DivideFunction::GetName() const
 {
-    return "(div " + GetArgs().at(0)->ToString() + " " + GetArgs().at(1)->ToString() + ")";
+    static std::string name = "div";
+    return name;
 }
 
 pp::IFunctionPtr DivideFunctionGenerator::Make(IFunctionPtr arg0, IFunctionPtr arg1)

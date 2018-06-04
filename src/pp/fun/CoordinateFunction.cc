@@ -11,9 +11,10 @@ float XFunction::EvalSingle(float x, float y) const
     return x;
 }
 
-std::string XFunction::ToString() const
+const std::string& XFunction::GetName() const
 {
-    return "x";
+    static std::string name = "x";
+    return name;
 }
 
 pp::IFunctionPtr XFunctionGenerator::Make()
@@ -28,9 +29,10 @@ float YFunction::EvalSingle(float x, float y) const
     return y;
 }
 
-std::string YFunction::ToString() const
+const std::string& YFunction::GetName() const
 {
-    return "y";
+    static std::string name = "y";
+    return name;
 }
 
 pp::IFunctionPtr YFunctionGenerator::Make()

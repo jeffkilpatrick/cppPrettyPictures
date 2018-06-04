@@ -20,9 +20,10 @@ float AbsFunction::EvalSingle(float x, float y, float a) const
     return std::abs(a);
 }
 
-std::string AbsFunction::ToString() const
+const std::string& AbsFunction::GetName() const
 {
-    return "(abs " + GetArgs().at(0)->ToString() + ")";
+    static std::string name = "abs";
+    return name;
 }
 
 pp::IFunctionPtr AbsFunctionGenerator::Make(IFunctionPtr arg)
@@ -43,9 +44,10 @@ float ClipFunction::EvalSingle(float x, float y, float a) const
     return a;
 }
 
-std::string ClipFunction::ToString() const
+const std::string& ClipFunction::GetName() const
 {
-    return "(clip " + GetArgs().at(0)->ToString() + ")";
+    static std::string name = "clip";
+    return name;
 }
 
 pp::IFunctionPtr ClipFunctionGenerator::Make(IFunctionPtr arg)
@@ -64,9 +66,10 @@ float RoundDownFunction::EvalSingle(float x, float y, float a) const
     return std::floor(a);
 }
 
-std::string RoundDownFunction::ToString() const
+const std::string& RoundDownFunction::GetName() const
 {
-    return "(floor " + GetArgs().at(0)->ToString() + ")";
+    static std::string name = "floor";
+    return name;
 }
 
 pp::IFunctionPtr RoundDownFunctionGenerator::Make(IFunctionPtr arg)
@@ -85,9 +88,10 @@ float RoundUpFunction::EvalSingle(float x, float y, float a) const
     return std::ceil(a);
 }
 
-std::string RoundUpFunction::ToString() const
+const std::string& RoundUpFunction::GetName() const
 {
-    return "(ceil " + GetArgs().at(0)->ToString() + ")";
+    static std::string name = "ceil";
+    return name;
 }
 
 pp::IFunctionPtr RoundUpFunctionGenerator::Make(IFunctionPtr arg)
@@ -107,9 +111,10 @@ float WrapFunction::EvalSingle(float x, float y, float a) const
     return a - (2.f * n);
 }
 
-std::string WrapFunction::ToString() const
+const std::string& WrapFunction::GetName() const
 {
-    return "(wrap " + GetArgs().at(0)->ToString() + ")";
+    static std::string name = "wrap";
+    return name;
 }
 
 pp::IFunctionPtr WrapFunctionGenerator::Make(IFunctionPtr arg)

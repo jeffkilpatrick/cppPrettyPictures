@@ -18,7 +18,8 @@ namespace pp {
     public:
         virtual ~IFunction();
         virtual Color Eval(float x, float y) const = 0;
-        virtual std::string ToString() const = 0;
+        virtual const std::string& GetName() const = 0;
+        std::string ToString() const;
 
         const IFunctionPtrVec& GetArgs() const;
 

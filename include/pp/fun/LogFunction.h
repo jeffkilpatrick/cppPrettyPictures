@@ -11,7 +11,7 @@ namespace pp {
         ExpFunction(IFunctionPtr arg);
 
         float EvalSingle(float x, float y, float a) const override;
-        std::string ToString() const override;
+        const std::string& GetName() const override;
     };
 
     class PP_EXPORT ExpFunctionGenerator final : public IUnaryFunctionGenerator {
@@ -26,7 +26,7 @@ namespace pp {
         LogFunction(IFunctionPtr arg);
 
         float EvalSingle(float x, float y, float a) const override;
-        std::string ToString() const override;
+        const std::string& GetName() const override;
     };
 
     class PP_EXPORT LogFunctionGenerator final : public IUnaryFunctionGenerator {

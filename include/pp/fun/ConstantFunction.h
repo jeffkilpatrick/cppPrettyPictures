@@ -12,10 +12,11 @@ namespace pp {
 
         Color Eval(float x, float y) const override;
 
-        std::string ToString() const override;
+        const std::string& GetName() const override;
 
     private:
         Color m_constant;
+        std::string m_constantStr;
     };
 
     class PP_EXPORT ConstantFunctionGenerator final : public INonaryFunctionGenerator {

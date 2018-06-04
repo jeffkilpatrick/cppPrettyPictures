@@ -6,9 +6,17 @@
 using pp::ConstantFunction;
 using pp::ConstantFunctionGenerator;
 
+static std::string ConstantString(const pp::Color& constant)
+{
+    std::ostringstream str;
+    str << constant;
+    return str.str();
+}
+
 ConstantFunction::ConstantFunction(Color constant)
     : IFunction()
     , m_constant(constant)
+    , m_constantStr(ConstantString(constant))
 {
     // TODO-jrk: validate range of constant
 }
@@ -18,11 +26,9 @@ pp::Color ConstantFunction::Eval(float x, float y) const
     return m_constant;
 }
 
-std::string ConstantFunction::ToString() const
+const std::string& ConstantFunction::GetName() const
 {
-    std::ostringstream str;
-    str << m_constant;
-    return str.str();
+    return m_constantStr;
 }
 
 // --------------------------------------------------------------------

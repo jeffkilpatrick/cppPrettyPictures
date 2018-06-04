@@ -12,7 +12,7 @@ namespace pp {
         AtanFunction(IFunctionPtr arg);
 
         float EvalSingle(float x, float y, float a) const override;
-        std::string ToString() const override;
+        const std::string& GetName() const override;
     };
 
     class PP_EXPORT AtanFunctionGenerator final : public IUnaryFunctionGenerator {
@@ -27,7 +27,7 @@ namespace pp {
         CosFunction(IFunctionPtr arg);
 
         float EvalSingle(float x, float y, float a) const override;
-        std::string ToString() const override;
+        const std::string& GetName() const override;
     };
 
     class PP_EXPORT CosFunctionGenerator final : public IUnaryFunctionGenerator {
@@ -42,7 +42,7 @@ namespace pp {
         SinFunction(IFunctionPtr arg);
 
         float EvalSingle(float x, float y, float a) const override;
-        std::string ToString() const override;
+        const std::string& GetName() const override;
     };
 
     class PP_EXPORT SinFunctionGenerator final : public IUnaryFunctionGenerator {

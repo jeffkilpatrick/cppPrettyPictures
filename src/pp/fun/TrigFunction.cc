@@ -16,9 +16,10 @@ float AtanFunction::EvalSingle(float x, float y, float a) const
     return std::atan(a);
 }
 
-std::string AtanFunction::ToString() const
+const std::string& AtanFunction::GetName() const
 {
-    return "(atan " + GetArgs().at(0)->ToString() + ")";
+    static std::string name = "atan";
+    return name;
 }
 
 pp::IFunctionPtr AtanFunctionGenerator::Make(IFunctionPtr arg)
@@ -37,9 +38,10 @@ float CosFunction::EvalSingle(float x, float y, float a) const
     return std::cos(a);
 }
 
-std::string CosFunction::ToString() const
+const std::string& CosFunction::GetName() const
 {
-    return "(cos " + GetArgs().at(0)->ToString() + ")";
+    static std::string name = "cos";
+    return name;
 }
 
 pp::IFunctionPtr CosFunctionGenerator::Make(IFunctionPtr arg)
@@ -58,9 +60,10 @@ float SinFunction::EvalSingle(float x, float y, float a) const
     return std::sin(a);
 }
 
-std::string SinFunction::ToString() const
+const std::string& SinFunction::GetName() const
 {
-    return "(sin " + GetArgs().at(0)->ToString() + ")";
+    static std::string name = "sin";
+    return name;
 }
 
 pp::IFunctionPtr SinFunctionGenerator::Make(IFunctionPtr arg)

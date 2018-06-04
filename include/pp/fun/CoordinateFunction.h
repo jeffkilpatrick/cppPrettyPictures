@@ -10,7 +10,7 @@ namespace pp {
     class PP_EXPORT XFunction final : public INonaryFunction {
     public:
         float EvalSingle(float x, float y) const override;
-        std::string ToString() const override;
+        const std::string& GetName() const override;
     };
 
     class XFunctionGenerator final : public INonaryFunctionGenerator {
@@ -23,7 +23,7 @@ namespace pp {
     class PP_EXPORT YFunction final : public INonaryFunction {
     public:
         float EvalSingle(float x, float y) const override;
-        std::string ToString() const override;
+        const std::string& GetName() const override;
     };
 
     class YFunctionGenerator final : public INonaryFunctionGenerator {

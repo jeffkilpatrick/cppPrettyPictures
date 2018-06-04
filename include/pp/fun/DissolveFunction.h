@@ -11,7 +11,7 @@ namespace pp {
         DissolveFunction(IFunctionPtr fun0, IFunctionPtr fun1, IFunctionPtr fun2);
 
         float EvalSingle(float x, float y, float a0, float a1, float a2) const override;
-        std::string ToString() const override;
+        const std::string& GetName() const override;
 
     private:
         WrapFunction m_truncate;

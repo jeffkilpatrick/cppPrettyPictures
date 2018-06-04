@@ -12,7 +12,7 @@ namespace pp {
         AbsFunction(IFunctionPtr arg);
 
         float EvalSingle(float x, float y, float a) const override;
-        std::string ToString() const override;
+        const std::string& GetName() const override;
     };
 
     class PP_EXPORT AbsFunctionGenerator final : public IUnaryFunctionGenerator {
@@ -27,7 +27,7 @@ namespace pp {
         ClipFunction(IFunctionPtr arg);
 
         float EvalSingle(float x, float y, float a) const override;
-        std::string ToString() const override;
+        const std::string& GetName() const override;
     };
 
     class PP_EXPORT ClipFunctionGenerator final : public IUnaryFunctionGenerator {
@@ -42,7 +42,7 @@ namespace pp {
         RoundDownFunction(IFunctionPtr arg);
 
         float EvalSingle(float x, float y, float a) const override;
-        std::string ToString() const override;
+        const std::string& GetName() const override;
     };
 
     class PP_EXPORT RoundDownFunctionGenerator final : public IUnaryFunctionGenerator {
@@ -57,7 +57,7 @@ namespace pp {
         RoundUpFunction(IFunctionPtr arg);
 
         float EvalSingle(float x, float y, float a) const override;
-        std::string ToString() const override;
+        const std::string& GetName() const override;
     };
 
     class PP_EXPORT RoundUpFunctionGenerator final : public IUnaryFunctionGenerator {
@@ -72,7 +72,7 @@ namespace pp {
         WrapFunction(IFunctionPtr arg);
 
         float EvalSingle(float x, float y, float a) const override;
-        std::string ToString() const override;
+        const std::string& GetName() const override;
     };
 
     class PP_EXPORT WrapFunctionGenerator final : public IUnaryFunctionGenerator {

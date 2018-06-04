@@ -30,6 +30,20 @@ IFunction::IFunction(IFunctionPtr arg0, IFunctionPtr arg1, IFunctionPtr arg2)
     m_args.emplace_back(std::move(arg2));
 }
 
+std::string IFunction::ToString() const
+{
+    auto s = '(' + GetName();
+
+    for (const auto& arg : m_args)
+    {
+        s += ' ' + arg->ToString();
+    }
+
+    s += ')';
+
+    return s;
+}
+
 const pp::IFunctionPtrVec& IFunction::GetArgs() const
 {
     return m_args;

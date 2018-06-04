@@ -17,9 +17,10 @@ pp::Color RgbToYCbCrFunction::Eval(float x, float y) const
     };
 }
 
-std::string RgbToYCbCrFunction::ToString() const
+const std::string& RgbToYCbCrFunction::GetName() const
 {
-    return "(rgb-to-ycbcr " + GetArgs().at(0)->ToString() + ')';
+    static std::string name = "rgb-to-ycpcr";
+    return name;
 }
 
 pp::IFunctionPtr pp::RgbToYCbCrFunctionGenerator::Make(IFunctionPtr fun)
@@ -43,9 +44,10 @@ pp::Color YCbCrToRgbFunction::Eval(float x, float y) const
     };
 }
 
-std::string YCbCrToRgbFunction::ToString() const
+const std::string& YCbCrToRgbFunction::GetName() const
 {
-    return "(ycbcr-to-rgb " + GetArgs().at(0)->ToString() + ')';
+    static std::string name = "ycbcr-to-rgb";
+    return name;
 }
 
 pp::IFunctionPtr pp::YCbCrToRgbFunctionGenerator::Make(IFunctionPtr fun)
