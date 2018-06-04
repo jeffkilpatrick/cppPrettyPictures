@@ -1,6 +1,7 @@
 #include "pp/Generate.h"
 #include "pp/Registry.h"
 #include "pp/fun/IFunction.h"
+#include "pp/serialize/FunctionSerializer.h"
 
 #include "libbmp.h"
 #include "lodepng.h"

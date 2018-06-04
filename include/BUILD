@@ -20,6 +20,7 @@ cc_library(
         "pp/fun/NoiseFunction.h",
         "pp/fun/RoundFunction.h",
         "pp/fun/TrigFunction.h",
+        "pp/serialize/FunctionSerializer.h",
         "pp/utility/Exports.h",
     ],
 )

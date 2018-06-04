@@ -24,3 +24,19 @@ cc_test(
         "@gtest//:main",
     ],
 )
+
+
+cc_test(
+    name = "serialize-test",
+    size = "small",
+    srcs = [
+        "serialize/FunctionSerializerTest.cc",
+    ],
+    copts = [
+    ],
+    deps = [
+        "//include",
+        "//src/pp",
+        "@gtest//:main",
+    ],
+)

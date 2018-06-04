@@ -21,5 +21,6 @@ cc_library(
         "fun/NoiseFunction.cc",
         "fun/RoundFunction.cc",
         "fun/TrigFunction.cc",
+        "serialize/FunctionSerializer.cc",
     ],
 )

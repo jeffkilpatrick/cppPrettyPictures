@@ -3,7 +3,6 @@
 #include "pp/Color.h"
 #include "pp/utility/Exports.h"
 
-#include <ios>
 #include <memory>
 #include <string>
 #include <vector>
@@ -19,7 +18,6 @@ namespace pp {
         virtual ~IFunction();
         virtual Color Eval(float x, float y) const = 0;
         virtual const std::string& GetName() const = 0;
-        std::string ToString() const;
 
         const IFunctionPtrVec& GetArgs() const;
 
@@ -84,6 +82,4 @@ namespace pp {
         /** Evaluate the function for all color channels **/
         Color Eval(float x, float y) const final;
     };
-
-    PP_EXPORT std::ostream& operator<<(std::ostream& s, const IFunction& fun);
 }
