@@ -74,18 +74,12 @@ static double noise(double x, double y, double z) {
 }
 
 ColorNoiseFunction::ColorNoiseFunction(IFunctionPtr arg)
-    : IFunction(std::move(arg))
+    : IUnaryFunction(std::move(arg))
 { }
 
-pp::Color ColorNoiseFunction::Eval(float x, float y) const
+float ColorNoiseFunction::EvalSingle(float x, float y, float a) const
 {
-    auto c = GetArgs().at(0)->Eval(x, y);
-
-    c.C1 = noise(x, y, c.C1);
-    c.C2 = noise(x, y, c.C2);
-    c.C3 = noise(x, y, c.C3);
-
-    return c;
+    return noise(x, y, a);
 }
 
 const std::string& ColorNoiseFunction::GetName() const
@@ -101,17 +95,19 @@ pp::IFunctionPtr pp::ColorNoiseFunctionGenerator::Make(IFunctionPtr arg)
 // ------------------------------------------------------
 
 GrayscaleNoiseFunction::GrayscaleNoiseFunction(IFunctionPtr arg)
-    : IUnaryFunction(std::move(arg))
+    : IFunction(std::move(arg))
 { }
 
-float GrayscaleNoiseFunction::EvalSingle(float x, float y, float a) const
+pp::Color GrayscaleNoiseFunction::Eval(float x, float y) const
 {
-    return noise(x, y, a);
+    auto c = GetArgs().at(0)->Eval(x, y);
+    auto gray = (c.C1 + c.C2 + c.C3) / 3.f;
+    return Color{ static_cast<float>(noise(x, y, gray)) };
 }
 
 const std::string& GrayscaleNoiseFunction::GetName() const
 {
-    static std::string name = "greyscale-noise";
+    static std::string name = "grayscale-noise";
     return name;
 }
 

@@ -5,11 +5,11 @@
 
 namespace pp {
 
-    class ColorNoiseFunction final : public IFunction
+    class ColorNoiseFunction final : public IUnaryFunction
     {
     public:
         ColorNoiseFunction(IFunctionPtr arg);
-        Color Eval(float x, float y) const override;
+        float EvalSingle(float x, float y, float a) const override;
         const std::string& GetName() const override;
     };
 
@@ -21,11 +21,11 @@ namespace pp {
 
     // -------------------------------------------------------------
     
-    class GrayscaleNoiseFunction final : public IUnaryFunction
+    class GrayscaleNoiseFunction final : public IFunction
     {
     public:
         GrayscaleNoiseFunction(IFunctionPtr arg);
-        float EvalSingle(float x, float y, float a) const override;
+        Color Eval(float x, float y) const override;
         const std::string& GetName() const override;
     };
 

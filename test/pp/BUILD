@@ -12,6 +12,7 @@ cc_test(
         "fun/InnerProductFunctionTest.cc",
         "fun/LogFunctionTest.cc",
         "fun/NegateFunctionTest.cc",
+        "fun/NoiseFunctionTest.cc",
         "fun/RoundFunctionTest.cc",
         "fun/TrigFunctionTest.cc",
     ],
