@@ -14,7 +14,7 @@ float NegateFunction::EvalSingle(float x, float y, float a) const
 
 std::string NegateFunction::ToString() const
 {
-    return "(neg " + ArgString() + ")";
+    return "(neg " + GetArgs().at(0)->ToString() + ")";
 }
 
 // --------------------------------------------------------------------

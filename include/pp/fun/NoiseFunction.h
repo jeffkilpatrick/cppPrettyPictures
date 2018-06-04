@@ -11,9 +11,6 @@ namespace pp {
         ColorNoiseFunction(IFunctionPtr arg);
         Color Eval(float x, float y) const override;
         std::string ToString() const override;
-
-    private:
-        IFunctionPtr m_arg;
     };
 
     class ColorNoiseFunctionGenerator final : public IUnaryFunctionGenerator

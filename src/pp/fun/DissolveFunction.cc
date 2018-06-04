@@ -17,7 +17,10 @@ float DissolveFunction::EvalSingle(float x, float y, float a0, float a1, float a
 
 std::string DissolveFunction::ToString() const
 {
-    return "(dissolve " + Arg0String() + ' ' + Arg1String() + ' ' + Arg2String() + ')';
+    return "(dissolve "
+        + GetArgs().at(0)->ToString() + ' '
+        + GetArgs().at(1)->ToString() + ' '
+        + GetArgs().at(2)->ToString() + ')';
 }
 
 pp::IFunctionPtr pp::DissolveFunctionGenerator::Make(IFunctionPtr fun0, IFunctionPtr fun1, IFunctionPtr fun2)

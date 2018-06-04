@@ -74,12 +74,12 @@ static double noise(double x, double y, double z) {
 }
 
 ColorNoiseFunction::ColorNoiseFunction(IFunctionPtr arg)
-    : m_arg(std::move(arg))
+    : IFunction(std::move(arg))
 { }
 
 pp::Color ColorNoiseFunction::Eval(float x, float y) const
 {
-    auto c = m_arg->Eval(x, y);
+    auto c = GetArgs().at(0)->Eval(x, y);
 
     c.C1 = noise(x, y, c.C1);
     c.C2 = noise(x, y, c.C2);
@@ -90,7 +90,7 @@ pp::Color ColorNoiseFunction::Eval(float x, float y) const
 
 std::string ColorNoiseFunction::ToString() const
 {
-    return "(color-noise " + m_arg->ToString() + ')';
+    return "(color-noise " + GetArgs().at(0)->ToString() + ')';
 }
 
 pp::IFunctionPtr pp::ColorNoiseFunctionGenerator::Make(IFunctionPtr arg)
@@ -110,7 +110,7 @@ float GrayscaleNoiseFunction::EvalSingle(float x, float y, float a) const
 
 std::string GrayscaleNoiseFunction::ToString() const
 {
-    return "(grayscale-noise " + ArgString() + ')';
+    return "(grayscale-noise " + GetArgs().at(0)->ToString()+ ')';
 }
 
 pp::IFunctionPtr pp::GrayscaleNoiseFunctionGenerator::Make(IFunctionPtr arg)

@@ -74,11 +74,6 @@ pp::Color IUnaryFunction::Eval(float x, float y) const
     return c;
 }
 
-std::string IUnaryFunction::ArgString() const
-{
-    return GetArgs().at(0)->ToString();
-}
-
 // ----------------------------------------------------------
 
 IBinaryFunction::IBinaryFunction(IFunctionPtr fun0, IFunctionPtr fun1)
@@ -108,16 +103,6 @@ pp::Color IBinaryFunction::Eval(float x, float y) const
     c0.C3 = EvalSingle(x, y, c0.C3, c1.C3);
 
     return c0;
-}
-
-std::string IBinaryFunction::Arg0String() const
-{
-    return GetArgs().at(0)->ToString();
-}
-
-std::string IBinaryFunction::Arg1String() const
-{
-    return GetArgs().at(1)->ToString();
 }
 
 // ----------------------------------------------------------
@@ -156,21 +141,6 @@ pp::Color ITrinaryFunction::Eval(float x, float y) const
     c0.C3 = EvalSingle(x, y, c0.C3, c1.C3, c2.C3);
 
     return c0;
-}
-
-std::string ITrinaryFunction::Arg0String() const
-{
-    return GetArgs().at(0)->ToString();
-}
-
-std::string ITrinaryFunction::Arg1String() const
-{
-    return GetArgs().at(1)->ToString();
-}
-
-std::string ITrinaryFunction::Arg2String() const
-{
-    return GetArgs().at(2)->ToString();
 }
 
 // ----------------------------------------------------------

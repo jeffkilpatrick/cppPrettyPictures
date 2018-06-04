@@ -22,7 +22,7 @@ float AddFunction::EvalSingle(float x, float y, float a0, float a1) const
 
 std::string AddFunction::ToString() const
 {
-    return "(add " + Arg0String() + " " + Arg1String() + ")";
+    return "(add " + GetArgs().at(0)->ToString() + " " + GetArgs().at(1)->ToString() + ")";
 }
 
 pp::IFunctionPtr AddFunctionGenerator::Make(IFunctionPtr arg0, IFunctionPtr arg1)
@@ -43,7 +43,7 @@ float SubtractFunction::EvalSingle(float x, float y, float a0, float a1) const
 
 std::string SubtractFunction::ToString() const
 {
-    return "(sub " + Arg0String() + " " + Arg1String() + ")";
+    return "(sub " + GetArgs().at(0)->ToString() + " " + GetArgs().at(1)->ToString() + ")";
 }
 
 pp::IFunctionPtr SubtractFunctionGenerator::Make(IFunctionPtr arg0, IFunctionPtr arg1)
@@ -64,7 +64,7 @@ float MultiplyFunction::EvalSingle(float x, float y, float a0, float a1) const
 
 std::string MultiplyFunction::ToString() const
 {
-    return "(mul " + Arg0String() + " " + Arg1String() + ")";
+    return "(mul " + GetArgs().at(0)->ToString() + " " + GetArgs().at(1)->ToString() + ")";
 }
 
 pp::IFunctionPtr MultiplyFunctionGenerator::Make(IFunctionPtr arg0, IFunctionPtr arg1)
@@ -90,7 +90,7 @@ float DivideFunction::EvalSingle(float x, float y, float a0, float a1) const
 
 std::string DivideFunction::ToString() const
 {
-    return "(div " + Arg0String() + " " + Arg1String() + ")";
+    return "(div " + GetArgs().at(0)->ToString() + " " + GetArgs().at(1)->ToString() + ")";
 }
 
 pp::IFunctionPtr DivideFunctionGenerator::Make(IFunctionPtr arg0, IFunctionPtr arg1)

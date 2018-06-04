@@ -18,7 +18,7 @@ float AtanFunction::EvalSingle(float x, float y, float a) const
 
 std::string AtanFunction::ToString() const
 {
-    return "(atan " + ArgString() + ")";
+    return "(atan " + GetArgs().at(0)->ToString() + ")";
 }
 
 pp::IFunctionPtr AtanFunctionGenerator::Make(IFunctionPtr arg)
@@ -39,7 +39,7 @@ float CosFunction::EvalSingle(float x, float y, float a) const
 
 std::string CosFunction::ToString() const
 {
-    return "(cos " + ArgString() + ")";
+    return "(cos " + GetArgs().at(0)->ToString() + ")";
 }
 
 pp::IFunctionPtr CosFunctionGenerator::Make(IFunctionPtr arg)
@@ -60,7 +60,7 @@ float SinFunction::EvalSingle(float x, float y, float a) const
 
 std::string SinFunction::ToString() const
 {
-    return "(sin " + ArgString() + ")";
+    return "(sin " + GetArgs().at(0)->ToString() + ")";
 }
 
 pp::IFunctionPtr SinFunctionGenerator::Make(IFunctionPtr arg)

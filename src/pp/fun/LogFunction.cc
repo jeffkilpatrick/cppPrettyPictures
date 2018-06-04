@@ -21,7 +21,7 @@ float ExpFunction::EvalSingle(float x, float y, float a) const
 
 std::string ExpFunction::ToString() const
 {
-    return "(exp " + ArgString() + ")";
+    return "(exp " + GetArgs().at(0)->ToString() + ")";
 }
 
 pp::IFunctionPtr ExpFunctionGenerator::Make(IFunctionPtr arg)
@@ -49,7 +49,7 @@ float LogFunction::EvalSingle(float x, float y, float a) const
 
 std::string LogFunction::ToString() const
 {
-    return "(ln " + ArgString() + ")";
+    return "(ln " + GetArgs().at(0)->ToString() + ")";
 }
 
 pp::IFunctionPtr LogFunctionGenerator::Make(IFunctionPtr arg)

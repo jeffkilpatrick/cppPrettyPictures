@@ -22,7 +22,7 @@ float AbsFunction::EvalSingle(float x, float y, float a) const
 
 std::string AbsFunction::ToString() const
 {
-    return "(abs " + ArgString() + ")";
+    return "(abs " + GetArgs().at(0)->ToString() + ")";
 }
 
 pp::IFunctionPtr AbsFunctionGenerator::Make(IFunctionPtr arg)
@@ -45,7 +45,7 @@ float ClipFunction::EvalSingle(float x, float y, float a) const
 
 std::string ClipFunction::ToString() const
 {
-    return "(clip " + ArgString() + ")";
+    return "(clip " + GetArgs().at(0)->ToString() + ")";
 }
 
 pp::IFunctionPtr ClipFunctionGenerator::Make(IFunctionPtr arg)
@@ -66,7 +66,7 @@ float RoundDownFunction::EvalSingle(float x, float y, float a) const
 
 std::string RoundDownFunction::ToString() const
 {
-    return "(floor " + ArgString() + ")";
+    return "(floor " + GetArgs().at(0)->ToString() + ")";
 }
 
 pp::IFunctionPtr RoundDownFunctionGenerator::Make(IFunctionPtr arg)
@@ -87,7 +87,7 @@ float RoundUpFunction::EvalSingle(float x, float y, float a) const
 
 std::string RoundUpFunction::ToString() const
 {
-    return "(ceil " + ArgString() + ")";
+    return "(ceil " + GetArgs().at(0)->ToString() + ")";
 }
 
 pp::IFunctionPtr RoundUpFunctionGenerator::Make(IFunctionPtr arg)
@@ -109,7 +109,7 @@ float WrapFunction::EvalSingle(float x, float y, float a) const
 
 std::string WrapFunction::ToString() const
 {
-    return "(wrap " + ArgString() + ")";
+    return "(wrap " + GetArgs().at(0)->ToString() + ")";
 }
 
 pp::IFunctionPtr WrapFunctionGenerator::Make(IFunctionPtr arg)

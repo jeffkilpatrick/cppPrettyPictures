@@ -56,9 +56,6 @@ namespace pp {
 
         /** Evaluate the function for all color channels **/
         Color Eval(float x, float y) const final;
-
-    protected:
-        std::string ArgString() const;
     };
 
     /** A function taking two arguments **/
@@ -72,10 +69,6 @@ namespace pp {
 
         /** Evaluate the function for all color channels **/
         Color Eval(float x, float y) const final;
-
-    protected:
-        std::string Arg0String() const;
-        std::string Arg1String() const;
     };
 
     /** A function taking three arguments **/
@@ -89,11 +82,6 @@ namespace pp {
 
         /** Evaluate the function for all color channels **/
         Color Eval(float x, float y) const final;
-
-    protected:
-        std::string Arg0String() const;
-        std::string Arg1String() const;
-        std::string Arg2String() const;
     };
 
     PP_EXPORT std::ostream& operator<<(std::ostream& s, const IFunction& fun);
