@@ -18,23 +18,22 @@ std::vector<uint8_t> Eval(const pp::IFunction& f, size_t width, size_t height)
 {
     std::vector<uint8_t> rgba(width * height * 4, 0xFF);
 
-    // TODO-jrk: compute by row rather than column
-    for (int x = 0; x < width; ++x)
+    for (int y = 0; y < height; ++y)
     {
-        int half_width = width / 2;
-        auto x_pos = (x - half_width) / static_cast<float>(half_width);
-        for (int y = 0; y < height; ++y)
-        {
-            int half_height = height / 2;
-            auto y_pos = (y - half_height) / static_cast<float>(half_height);
-            auto c = f.Eval(x_pos, y_pos);
+        int half_height = height / 2;
+        auto y_pos = (y - half_height) / static_cast<float>(half_height);
 
+        for (int x = 0; x < width; ++x)
+        {
+            int half_width = width / 2;
+            auto x_pos = (x - half_width) / static_cast<float>(half_width);
+
+            auto c = f.Eval(x_pos, y_pos);
             uint8_t r = (c.C1 + 1.f) * 128.f;
             uint8_t g = (c.C2 + 1.f) * 128.f;
             uint8_t b = (c.C3 + 1.f) * 128.f;
 
             auto idx = RawIndex(x, y, width);
-
             rgba[idx + 0] = r;
             rgba[idx + 1] = g;
             rgba[idx + 2] = b;
@@ -57,8 +56,6 @@ void WriteBmp(const std::string& path, const std::vector<uint8_t>& rgba, size_t 
             auto r = rgba[idx + 0];
             auto g = rgba[idx + 1];
             auto b = rgba[idx + 2];
-
-            //std::cout << '(' << x << ", " << y << "): rgb(" << int(r) << ',' << int(g) << ',' << int(b) << ")\n";
 
             bmp.set_pixel(x, y, r, g, b);
         }
