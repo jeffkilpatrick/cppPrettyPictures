@@ -4,6 +4,8 @@
 
 #include "libbmp.h"
 #include "lodepng.h"
+
+#include <getopt.h>
 #include <iostream>
 #include <vector>
 
@@ -75,15 +77,83 @@ void WritePng(const std::string& path, const std::vector<uint8_t>& rgba, size_t 
     }
 }
 
+struct Options {
+    size_t Width{640};
+    size_t Height{480};
+    bool Render{false};
+    std::string Png;
+    std::string Bmp;
+    size_t MaxDepth{5};
+};
+
+size_t ScanSize(const std::string& str)
+{
+    auto s = std::strtoul(str.c_str(), nullptr, 10);
+    if (errno == ERANGE)
+    {
+        throw std::range_error("size out of range");
+    }
+
+    return s;
+}
+
+Options GetOptions(int argc, char* argv[])
+{
+    Options opts;
+    int c;
+    while ((c = getopt(argc, argv, "b:p:w:h:d:")) != -1)
+    {
+        switch (c)
+        {
+        case 'b':
+            opts.Render = true;
+            opts.Bmp = optarg;
+            break;
+
+        case 'p':
+            opts.Render = true;
+            opts.Png = optarg;
+            break;
+
+        case 'w':
+            opts.Width = ScanSize(optarg);
+            break;
+
+        case 'h':
+            opts.Height = ScanSize(optarg);
+            break;
+
+        case 'd':
+            opts.MaxDepth = ScanSize(optarg);
+            break;
+        }
+    }
+
+    return opts;
+}
+
 int main(int argc, char* argv[])
 {
+    auto opts = GetOptions(argc, argv);
+
     pp::Registry r;
-    auto e = RandomExpression(r);
+    auto e = RandomExpression(r, opts.MaxDepth);
     std::cout << *e << "\n";
 
-    size_t w = 640, h = 480;
-    auto rgba = Eval(*e, w, h);
-    WritePng("pretty_picture.png", rgba, w, h);
+    if (opts.Render)
+    {
+        auto rgba = Eval(*e, opts.Width, opts.Height);
+
+        if (!opts.Bmp.empty())
+        {
+            WriteBmp(opts.Bmp, rgba, opts.Width, opts.Height);
+        }
+
+        if (!opts.Png.empty())
+        {
+            WritePng(opts.Png, rgba, opts.Width, opts.Height);
+        }
+    }
 
 	return 0;
 }
