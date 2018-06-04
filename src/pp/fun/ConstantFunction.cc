@@ -7,7 +7,8 @@ using pp::ConstantFunction;
 using pp::ConstantFunctionGenerator;
 
 ConstantFunction::ConstantFunction(Color constant)
-    : m_constant(constant)
+    : IFunction()
+    , m_constant(constant)
 {
     // TODO-jrk: validate range of constant
 }

@@ -4,12 +4,12 @@ using pp::RgbToYCbCrFunction;
 using pp::YCbCrToRgbFunction;
 
 RgbToYCbCrFunction::RgbToYCbCrFunction(IFunctionPtr fun)
-    : m_fun(std::move(fun))
+    : IFunction({ std::move(fun) })
 { }
 
 pp::Color RgbToYCbCrFunction::Eval(float x, float y) const
 {
-    auto rgb = m_fun->Eval(x, y);
+    auto rgb = GetArgs().at(0)->Eval(x, y);
     return {
          0.2989f * rgb.C1 + 0.5866f * rgb.C2 + 0.1145f * rgb.C3,
         -0.1687f * rgb.C1 - 0.3312f * rgb.C2 + 0.5000f * rgb.C3,
@@ -19,7 +19,7 @@ pp::Color RgbToYCbCrFunction::Eval(float x, float y) const
 
 std::string RgbToYCbCrFunction::ToString() const
 {
-    return "(rgb-to-ycbcr " + m_fun->ToString() + ')';
+    return "(rgb-to-ycbcr " + GetArgs().at(0)->ToString() + ')';
 }
 
 pp::IFunctionPtr pp::RgbToYCbCrFunctionGenerator::Make(IFunctionPtr fun)
@@ -30,12 +30,12 @@ pp::IFunctionPtr pp::RgbToYCbCrFunctionGenerator::Make(IFunctionPtr fun)
 // ---------------------------------------------------------------------
 
 YCbCrToRgbFunction::YCbCrToRgbFunction(IFunctionPtr fun)
-    : m_fun(std::move(fun))
+    : IFunction({ std::move(fun) })
 { }
 
 pp::Color YCbCrToRgbFunction::Eval(float x, float y) const
 {
-    auto yCbCr = m_fun->Eval(x, y);
+    auto yCbCr = GetArgs().at(0)->Eval(x, y);
     return {
         yCbCr.C1 +                    + 1.4022f * yCbCr.C3,
         yCbCr.C1 - 0.3456f * yCbCr.C2 - 0.7145f * yCbCr.C3,
@@ -45,7 +45,7 @@ pp::Color YCbCrToRgbFunction::Eval(float x, float y) const
 
 std::string YCbCrToRgbFunction::ToString() const
 {
-    return "(ycbcr-to-rgb " + m_fun->ToString() + ')';
+    return "(ycbcr-to-rgb " + GetArgs().at(0)->ToString() + ')';
 }
 
 pp::IFunctionPtr pp::YCbCrToRgbFunctionGenerator::Make(IFunctionPtr fun)

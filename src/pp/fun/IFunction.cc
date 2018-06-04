@@ -10,7 +10,34 @@ using pp::ITrinaryFunction;
 
 IFunction::~IFunction() = default;
 
+IFunction::IFunction() = default;
+
+IFunction::IFunction(IFunctionPtr arg0)
+{
+    m_args.emplace_back(std::move(arg0));
+}
+
+IFunction::IFunction(IFunctionPtr arg0, IFunctionPtr arg1)
+{
+    m_args.emplace_back(std::move(arg0));
+    m_args.emplace_back(std::move(arg1));
+}
+
+IFunction::IFunction(IFunctionPtr arg0, IFunctionPtr arg1, IFunctionPtr arg2)
+{
+    m_args.emplace_back(std::move(arg0));
+    m_args.emplace_back(std::move(arg1));
+    m_args.emplace_back(std::move(arg2));
+}
+
+const pp::IFunctionPtrVec& IFunction::GetArgs() const
+{
+    return m_args;
+}
+
 // ----------------------------------------------------------
+INonaryFunction::INonaryFunction() = default;
+
 #include <cmath> // TODO-jrk: remove
 pp::Color INonaryFunction::Eval(float x, float y) const
 {
@@ -26,13 +53,13 @@ pp::Color INonaryFunction::Eval(float x, float y) const
 
 // ----------------------------------------------------------
 
-IUnaryFunction::IUnaryFunction(IFunctionPtr fun)
-    : m_fun(std::move(fun))
+IUnaryFunction::IUnaryFunction(IFunctionPtr arg)
+    : IFunction(std::move(arg))
 { }
 
 pp::Color IUnaryFunction::Eval(float x, float y) const
 {
-    auto c = m_fun->Eval(x, y);
+    auto c = GetArgs().at(0)->Eval(x, y);
     c.C1 = EvalSingle(x, y, c.C1);
     c.C2 = EvalSingle(x, y, c.C2);
     c.C3 = EvalSingle(x, y, c.C3);
@@ -40,7 +67,7 @@ pp::Color IUnaryFunction::Eval(float x, float y) const
     // TODO-jrk: remove
     if (std::isnan(c.C1) || std::isnan(c.C2) || std::isnan(c.C3))
     {
-        fprintf(stderr, "nan with %s\n", m_fun->ToString().c_str());
+        fprintf(stderr, "nan with %s\n", GetArgs().at(0)->ToString().c_str());
         std::exit(1);
     }
 
@@ -49,31 +76,30 @@ pp::Color IUnaryFunction::Eval(float x, float y) const
 
 std::string IUnaryFunction::ArgString() const
 {
-    return m_fun->ToString();
+    return GetArgs().at(0)->ToString();
 }
 
 // ----------------------------------------------------------
 
 IBinaryFunction::IBinaryFunction(IFunctionPtr fun0, IFunctionPtr fun1)
-    : m_fun0(std::move(fun0))
-    , m_fun1(std::move(fun1))
+    : IFunction(std::move(fun0), std::move(fun1))
 { }
 
 pp::Color IBinaryFunction::Eval(float x, float y) const
 {
-    auto c0 = m_fun0->Eval(x, y);
-    auto c1 = m_fun1->Eval(x, y);
+    auto c0 = GetArgs().at(0)->Eval(x, y);
+    auto c1 = GetArgs().at(1)->Eval(x, y);
 
     // TODO-jrk: remove
     if (std::isnan(c0.C1) || std::isnan(c0.C2) || std::isnan(c0.C3))
     {
-        fprintf(stderr, "nan with %s\n", m_fun0->ToString().c_str());
+        fprintf(stderr, "nan with %s\n", GetArgs().at(0)->ToString().c_str());
         std::exit(1);
     }
 
     if (std::isnan(c1.C1) || std::isnan(c1.C2) || std::isnan(c1.C3))
     {
-        fprintf(stderr, "nan with %s\n", m_fun1->ToString().c_str());
+        fprintf(stderr, "nan with %s\n", GetArgs().at(1)->ToString().c_str());
         std::exit(1);
     }
 
@@ -86,44 +112,42 @@ pp::Color IBinaryFunction::Eval(float x, float y) const
 
 std::string IBinaryFunction::Arg0String() const
 {
-    return m_fun0->ToString();
+    return GetArgs().at(0)->ToString();
 }
 
 std::string IBinaryFunction::Arg1String() const
 {
-    return m_fun1->ToString();
+    return GetArgs().at(1)->ToString();
 }
 
 // ----------------------------------------------------------
 
 ITrinaryFunction::ITrinaryFunction(IFunctionPtr fun0, IFunctionPtr fun1, IFunctionPtr fun2)
-    : m_fun0(std::move(fun0))
-    , m_fun1(std::move(fun1))
-    , m_fun2(std::move(fun2))
+    : IFunction(std::move(fun0), std::move(fun1), std::move(fun2))
 { }
 
 pp::Color ITrinaryFunction::Eval(float x, float y) const
 {
-    auto c0 = m_fun0->Eval(x, y);
-    auto c1 = m_fun1->Eval(x, y);
-    auto c2 = m_fun2->Eval(x, y);
+    auto c0 = GetArgs().at(0)->Eval(x, y);
+    auto c1 = GetArgs().at(1)->Eval(x, y);
+    auto c2 = GetArgs().at(2)->Eval(x, y);
 
     // TODO-jrk: remove
     if (std::isnan(c0.C1) || std::isnan(c0.C2) || std::isnan(c0.C3))
     {
-        fprintf(stderr, "nan with %s\n", m_fun0->ToString().c_str());
+        fprintf(stderr, "nan with %s\n", GetArgs().at(0)->ToString().c_str());
         std::exit(1);
     }
 
     if (std::isnan(c1.C1) || std::isnan(c1.C2) || std::isnan(c1.C3))
     {
-        fprintf(stderr, "nan with %s\n", m_fun1->ToString().c_str());
+        fprintf(stderr, "nan with %s\n", GetArgs().at(1)->ToString().c_str());
         std::exit(1);
     }
 
     if (std::isnan(c2.C1) || std::isnan(c2.C2) || std::isnan(c2.C3))
     {
-        fprintf(stderr, "nan with %s\n", m_fun2->ToString().c_str());
+        fprintf(stderr, "nan with %s\n", GetArgs().at(2)->ToString().c_str());
         std::exit(1);
     }
 
@@ -136,17 +160,17 @@ pp::Color ITrinaryFunction::Eval(float x, float y) const
 
 std::string ITrinaryFunction::Arg0String() const
 {
-    return m_fun0->ToString();
+    return GetArgs().at(0)->ToString();
 }
 
 std::string ITrinaryFunction::Arg1String() const
 {
-    return m_fun1->ToString();
+    return GetArgs().at(1)->ToString();
 }
 
 std::string ITrinaryFunction::Arg2String() const
 {
-    return m_fun2->ToString();
+    return GetArgs().at(2)->ToString();
 }
 
 // ----------------------------------------------------------

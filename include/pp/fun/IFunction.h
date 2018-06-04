@@ -2,27 +2,42 @@
 
 #include "pp/Color.h"
 #include "pp/utility/Exports.h"
+
 #include <ios>
 #include <memory>
 #include <string>
+#include <vector>
 
 namespace pp {
 
     using IFunctionPtr = std::unique_ptr<class IFunction>;
+    using IFunctionPtrVec = std::vector<IFunctionPtr>;
 
     class PP_EXPORT IFunction
     {
     public:
         virtual ~IFunction();
-
         virtual Color Eval(float x, float y) const = 0;
         virtual std::string ToString() const = 0;
+
+        const IFunctionPtrVec& GetArgs() const;
+
+    protected:
+        IFunction();
+        IFunction(IFunctionPtr arg0);
+        IFunction(IFunctionPtr arg0, IFunctionPtr arg1);
+        IFunction(IFunctionPtr arg0, IFunctionPtr arg1, IFunctionPtr arg2);
+
+    private:
+        IFunctionPtrVec m_args;
     };
 
     /** A function taking no arguments **/
     class PP_EXPORT INonaryFunction : public IFunction
     {
     public:
+        INonaryFunction();
+
         /** Evaluate the function for a single color channel **/
         virtual float EvalSingle(float x, float y) const = 0;
 
@@ -34,7 +49,7 @@ namespace pp {
     class PP_EXPORT IUnaryFunction : public IFunction
     {
     public:
-        IUnaryFunction(IFunctionPtr fun);
+        IUnaryFunction(IFunctionPtr arg);
 
         /** Evaluate the function for a single color channel **/
         virtual float EvalSingle(float x, float y, float a) const = 0;
@@ -44,16 +59,13 @@ namespace pp {
 
     protected:
         std::string ArgString() const;
-
-    private:
-        IFunctionPtr m_fun;
     };
 
     /** A function taking two arguments **/
     class PP_EXPORT IBinaryFunction : public IFunction
     {
     public:
-        IBinaryFunction(IFunctionPtr fun0, IFunctionPtr fun1);
+        IBinaryFunction(IFunctionPtr arg0, IFunctionPtr arg1);
 
         /** Evaluate the function for a single color channel **/
         virtual float EvalSingle(float x, float y, float a0, float a1) const = 0;
@@ -64,17 +76,13 @@ namespace pp {
     protected:
         std::string Arg0String() const;
         std::string Arg1String() const;
-
-    private:
-        IFunctionPtr m_fun0;
-        IFunctionPtr m_fun1;
     };
 
     /** A function taking three arguments **/
     class PP_EXPORT ITrinaryFunction : public IFunction
     {
     public:
-        ITrinaryFunction(IFunctionPtr fun0, IFunctionPtr fun1, IFunctionPtr fun2);
+        ITrinaryFunction(IFunctionPtr arg0, IFunctionPtr arg1, IFunctionPtr arg2);
 
         /** Evaluate the function for a single color channel **/
         virtual float EvalSingle(float x, float y, float a0, float a1, float a2) const = 0;
@@ -86,11 +94,6 @@ namespace pp {
         std::string Arg0String() const;
         std::string Arg1String() const;
         std::string Arg2String() const;
-
-    private:
-        IFunctionPtr m_fun0;
-        IFunctionPtr m_fun1;
-        IFunctionPtr m_fun2;
     };
 
     PP_EXPORT std::ostream& operator<<(std::ostream& s, const IFunction& fun);
