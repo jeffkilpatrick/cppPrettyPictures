@@ -8,6 +8,7 @@ cc_binary(
     deps = [
         "//include",
         "//src/pp",
+        "@boost//:optional",
         "@libbmp//:main",
         "@lodepng//:main",
     ]

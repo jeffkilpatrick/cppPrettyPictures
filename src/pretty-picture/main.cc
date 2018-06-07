@@ -1,11 +1,13 @@
 #include "pp/Generate.h"
 #include "pp/Registry.h"
 #include "pp/fun/IFunction.h"
+#include "pp/serialize/FunctionParser.h"
 #include "pp/serialize/FunctionSerializer.h"
 
 #include "libbmp.h"
 #include "lodepng.h"
 
+#include <boost/optional.hpp>
 #include <getopt.h>
 #include <iostream>
 #include <vector>
@@ -78,6 +80,7 @@ void WritePng(const std::string& path, const std::vector<uint8_t>& rgba, size_t 
 struct Options {
     size_t Width{640};
     size_t Height{480};
+    boost::optional<std::string> Expr;
     bool Render{false};
     std::string Png;
     std::string Bmp;
@@ -99,7 +102,7 @@ Options GetOptions(int argc, char* argv[])
 {
     Options opts;
     int c;
-    while ((c = getopt(argc, argv, "b:p:w:h:d:")) != -1)
+    while ((c = getopt(argc, argv, "b:p:w:h:d:e:")) != -1)
     {
         switch (c)
         {
@@ -124,6 +127,10 @@ Options GetOptions(int argc, char* argv[])
         case 'd':
             opts.MaxDepth = ScanSize(optarg);
             break;
+
+        case 'e':
+            opts.Expr = optarg;
+            break;
         }
     }
 
@@ -134,8 +141,11 @@ int main(int argc, char* argv[])
 {
     auto opts = GetOptions(argc, argv);
 
-    pp::Registry r;
-    auto e = RandomExpression(r, opts.MaxDepth);
+    pp::Registry registry;
+
+    auto e = opts.Expr
+        ? pp::Parse(std::string(opts.Expr.get()), registry)
+        : RandomExpression(registry, opts.MaxDepth);
     std::cout << *e << "\n";
 
     if (opts.Render)
