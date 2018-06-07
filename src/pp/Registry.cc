@@ -54,7 +54,19 @@ Registry::Registry()
         [](){ return std::make_unique<YCbCrToRgbFunctionGenerator>(); },
 
     }}
-{ }
+{
+    for (size_t i = 0; i < m_registry.size(); ++i)
+    {
+        const auto& name = m_registry[i]()->GetName();
+        m_index[name] = i;
+    }
+}
+
+pp::IFunctionGeneratorPtr Registry::Get(const std::string& name) const
+{
+    auto index = m_index.at(name);
+    return m_registry.at(index)();
+}
 
 pp::IFunctionGeneratorPtr Registry::GetRandom()
 {

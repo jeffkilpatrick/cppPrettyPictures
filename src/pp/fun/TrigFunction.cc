@@ -18,13 +18,18 @@ float AtanFunction::EvalSingle(float x, float y, float a) const
 
 const std::string& AtanFunction::GetName() const
 {
-    static std::string name = "atan";
-    return name;
+    return AtanFunctionGenerator{}.GetName();
 }
 
 pp::IFunctionPtr AtanFunctionGenerator::Make(IFunctionPtr arg)
 {
     return std::make_unique<AtanFunction>(std::move(arg));
+}
+
+const std::string& AtanFunctionGenerator::GetName() const
+{
+    static std::string name = "atan";
+    return name;
 }
 
 // --------------------------------------------------------------------
@@ -40,13 +45,18 @@ float CosFunction::EvalSingle(float x, float y, float a) const
 
 const std::string& CosFunction::GetName() const
 {
-    static std::string name = "cos";
-    return name;
+    return CosFunctionGenerator{}.GetName();
 }
 
 pp::IFunctionPtr CosFunctionGenerator::Make(IFunctionPtr arg)
 {
     return std::make_unique<CosFunction>(std::move(arg));
+}
+
+const std::string& CosFunctionGenerator::GetName() const
+{
+    static std::string name = "cos";
+    return name;
 }
 
 // --------------------------------------------------------------------
@@ -62,11 +72,16 @@ float SinFunction::EvalSingle(float x, float y, float a) const
 
 const std::string& SinFunction::GetName() const
 {
-    static std::string name = "sin";
-    return name;
+    return SinFunctionGenerator{}.GetName();
 }
 
 pp::IFunctionPtr SinFunctionGenerator::Make(IFunctionPtr arg)
 {
     return std::make_unique<SinFunction>(std::move(arg));
+}
+
+const std::string& SinFunctionGenerator::GetName() const
+{
+    static std::string name = "sin";
+    return name;
 }

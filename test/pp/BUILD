@@ -30,6 +30,7 @@ cc_test(
     name = "serialize-test",
     size = "small",
     srcs = [
+        "serialize/FunctionParserTest.cc",
         "serialize/FunctionSerializerTest.cc",
         "serialize/ScannerTest.cc",
     ],

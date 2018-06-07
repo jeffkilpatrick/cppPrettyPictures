@@ -10,7 +10,7 @@ using pp::Serialize;
 
 TEST(FunctionSerializerTest, Basics) {
     EXPECT_EQ("(x)", Serialize(pp::XFunction{}));
-    EXPECT_EQ("(Color{0.1, 0.2, 0.3})", Serialize(pp::ConstantFunction{pp::Color{0.1f, 0.2f, 0.3f}}));
+    EXPECT_EQ("(const 0.1 0.2 0.3)", Serialize(pp::ConstantFunction{pp::Color{0.1f, 0.2f, 0.3f}}));
 }
 
 TEST(FunctionSerializerTest, Nested) {
@@ -25,7 +25,7 @@ TEST(FunctionSerializerTest, Nested) {
             std::make_unique<pp::YFunction>())));
 
     EXPECT_EQ(
-        "(dissolve (x) (y) (Color{0.1, 0.2, 0.3}))",
+        "(dissolve (x) (y) (const 0.1 0.2 0.3))",
         Serialize(pp::DissolveFunction(
             std::make_unique<pp::XFunction>(),
             std::make_unique<pp::YFunction>(),

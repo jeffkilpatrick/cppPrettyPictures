@@ -17,6 +17,7 @@ namespace pp {
     class PP_EXPORT ExpFunctionGenerator final : public IUnaryFunctionGenerator {
     public:
         IFunctionPtr Make(IFunctionPtr arg) override;
+        const std::string& GetName() const override;
     };
 
     // ---------------------------------------------------------------------
@@ -32,6 +33,7 @@ namespace pp {
     class PP_EXPORT LogFunctionGenerator final : public IUnaryFunctionGenerator {
     public:
         IFunctionPtr Make(IFunctionPtr arg) override;
+        const std::string& GetName() const override;
     };
 
 }

@@ -13,13 +13,18 @@ float XFunction::EvalSingle(float x, float y) const
 
 const std::string& XFunction::GetName() const
 {
-    static std::string name = "x";
-    return name;
+    return XFunctionGenerator{}.GetName();
 }
 
 pp::IFunctionPtr XFunctionGenerator::Make()
 {
     return std::make_unique<XFunction>();
+}
+
+const std::string& XFunctionGenerator::GetName() const
+{
+    static std::string name = "x";
+    return name;
 }
 
 // --------------------------------------------------------------------
@@ -31,11 +36,16 @@ float YFunction::EvalSingle(float x, float y) const
 
 const std::string& YFunction::GetName() const
 {
-    static std::string name = "y";
-    return name;
+    return YFunctionGenerator{}.GetName();
 }
 
 pp::IFunctionPtr YFunctionGenerator::Make()
 {
     return std::make_unique<YFunction>();
+}
+
+const std::string& YFunctionGenerator::GetName() const
+{
+    static std::string name = "y";
+    return name;
 }

@@ -9,6 +9,7 @@ using pp::Token;
     { return Token(TokenType::Whitespace, std::move(val)); }
 /*static*/ const Token Token::OpenParen(TokenType::OpenParen, "(");
 /*static*/ const Token Token::CloseParen(TokenType::CloseParen, ")");
+/*static*/ const Token Token::Const(TokenType::Const, "const");
 /*static*/ Token Token::Identifier(std::string&& val)
     { return Token(TokenType::Identifier, std::move(val)); }
 /*static*/ Token Token::Real(float val) { return Token(TokenType::Real, val); }

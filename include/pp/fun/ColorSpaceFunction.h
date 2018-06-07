@@ -18,6 +18,7 @@ namespace pp {
     {
     public:
         IFunctionPtr Make(IFunctionPtr fun) override;
+        const std::string& GetName() const override;
     };
 
     // --------------------------------------------------------------------
@@ -35,5 +36,6 @@ namespace pp {
     {
     public:
         IFunctionPtr Make(IFunctionPtr fun) override;
+        const std::string& GetName() const override;
     };
 }

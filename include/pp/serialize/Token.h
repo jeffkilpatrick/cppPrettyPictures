@@ -14,6 +14,7 @@ namespace pp {
         static Token Whitespace(std::string&& val);
         static const Token OpenParen;
         static const Token CloseParen;
+        static const Token Const;
         static Token Identifier(std::string&& val);
         static Token Real(float val);
 

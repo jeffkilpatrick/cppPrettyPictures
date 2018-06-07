@@ -17,11 +17,16 @@ float DissolveFunction::EvalSingle(float x, float y, float a0, float a1, float a
 
 const std::string& DissolveFunction::GetName() const
 {
-    static std::string name = "dissolve";
-    return name;
+    return DissolveFunctionGenerator{}.GetName();
 }
 
 pp::IFunctionPtr pp::DissolveFunctionGenerator::Make(IFunctionPtr fun0, IFunctionPtr fun1, IFunctionPtr fun2)
 {
     return std::make_unique<pp::DissolveFunction>(std::move(fun0), std::move(fun1), std::move(fun2));
+}
+
+const std::string& pp::DissolveFunctionGenerator::GetName() const
+{
+    static std::string name = "dissolve";
+    return name;
 }

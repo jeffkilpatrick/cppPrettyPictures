@@ -9,6 +9,7 @@ namespace pp {
         Scanner(std::string&& str);
 
         Token Next();
+        Token Next(TokenType expected);
 
     private:
 

@@ -21,11 +21,16 @@ pp::Color InnerProductFunction::Eval(float x, float y) const
 
 const std::string& InnerProductFunction::GetName() const
 {
-    static std::string name = "inner-product";
-    return name;
+    return InnerProductFunctionGenerator{}.GetName();
 }
 
 pp::IFunctionPtr InnerProductFunctionGenerator::Make(IFunctionPtr fun0, IFunctionPtr fun1)
 {
     return std::make_unique<InnerProductFunction>(std::move(fun0), std::move(fun1));
+}
+
+const std::string& InnerProductFunctionGenerator::GetName() const
+{
+    static std::string name = "inner-product";
+    return name;
 }

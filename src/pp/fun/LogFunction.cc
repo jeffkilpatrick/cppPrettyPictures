@@ -21,13 +21,18 @@ float ExpFunction::EvalSingle(float x, float y, float a) const
 
 const std::string& ExpFunction::GetName() const
 {
-    static std::string name = "exp";
-    return name;
+    return ExpFunctionGenerator{}.GetName();
 }
 
 pp::IFunctionPtr ExpFunctionGenerator::Make(IFunctionPtr arg)
 {
     return std::make_unique<ExpFunction>(std::move(arg));
+}
+
+const std::string& ExpFunctionGenerator::GetName() const
+{
+    static std::string name = "exp";
+    return name;
 }
 
 // --------------------------------------------------------------------
@@ -50,11 +55,16 @@ float LogFunction::EvalSingle(float x, float y, float a) const
 
 const std::string& LogFunction::GetName() const
 {
-    static std::string name = "ln";
-    return name;
+    return LogFunctionGenerator{}.GetName();
 }
 
 pp::IFunctionPtr LogFunctionGenerator::Make(IFunctionPtr arg)
 {
     return std::make_unique<LogFunction>(std::move(arg));
+}
+
+const std::string& LogFunctionGenerator::GetName() const
+{
+    static std::string name = "ln";
+    return name;
 }

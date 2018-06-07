@@ -17,5 +17,6 @@ namespace pp {
     class PP_EXPORT InnerProductFunctionGenerator final : public IBinaryFunctionGenerator {
     public:
         IFunctionPtr Make(IFunctionPtr arg0, IFunctionPtr arg1) override;
+        const std::string& GetName() const override;
     };
 }

@@ -1,6 +1,7 @@
 cc_library(
     name = "pp",
     visibility  = ["//visibility:public"],
+    copts = [ "-Werror", "-Wall" ],
     deps = [
         "//include",
         "@boost//:variant",
@@ -22,6 +23,7 @@ cc_library(
         "fun/NoiseFunction.cc",
         "fun/RoundFunction.cc",
         "fun/TrigFunction.cc",
+        "serialize/FunctionParser.cc",
         "serialize/FunctionSerializer.cc",
         "serialize/Scanner.cc",
         "serialize/Token.cc",

@@ -22,13 +22,18 @@ float AddFunction::EvalSingle(float x, float y, float a0, float a1) const
 
 const std::string& AddFunction::GetName() const
 {
-    static std::string name = "add";
-    return name;
+    return AddFunctionGenerator{}.GetName();
 }
 
 pp::IFunctionPtr AddFunctionGenerator::Make(IFunctionPtr arg0, IFunctionPtr arg1)
 {
     return std::make_unique<AddFunction>(std::move(arg0), std::move(arg1));
+}
+
+const std::string& AddFunctionGenerator::GetName() const
+{
+    static std::string name = "add";
+    return name;    
 }
 
 // --------------------------------------------------------------------
@@ -44,13 +49,18 @@ float SubtractFunction::EvalSingle(float x, float y, float a0, float a1) const
 
 const std::string& SubtractFunction::GetName() const
 {
-    static std::string name = "sub";
-    return name;
+    return SubtractFunctionGenerator{}.GetName();
 }
 
 pp::IFunctionPtr SubtractFunctionGenerator::Make(IFunctionPtr arg0, IFunctionPtr arg1)
 {
     return std::make_unique<SubtractFunction>(std::move(arg0), std::move(arg1));
+}
+
+const std::string& SubtractFunctionGenerator::GetName() const
+{
+    static std::string name = "sub";
+    return name;
 }
 
 // --------------------------------------------------------------------
@@ -66,13 +76,18 @@ float MultiplyFunction::EvalSingle(float x, float y, float a0, float a1) const
 
 const std::string& MultiplyFunction::GetName() const
 {
-    static std::string name = "mul";
-    return name;
+    return MultiplyFunctionGenerator{}.GetName();
 }
 
 pp::IFunctionPtr MultiplyFunctionGenerator::Make(IFunctionPtr arg0, IFunctionPtr arg1)
 {
     return std::make_unique<MultiplyFunction>(std::move(arg0), std::move(arg1));
+}
+
+const std::string& MultiplyFunctionGenerator::GetName() const
+{
+    static std::string name = "mul";
+    return name;
 }
 
 // --------------------------------------------------------------------
@@ -93,11 +108,16 @@ float DivideFunction::EvalSingle(float x, float y, float a0, float a1) const
 
 const std::string& DivideFunction::GetName() const
 {
-    static std::string name = "div";
-    return name;
+    return DivideFunctionGenerator{}.GetName();
 }
 
 pp::IFunctionPtr DivideFunctionGenerator::Make(IFunctionPtr arg0, IFunctionPtr arg1)
 {
     return std::make_unique<DivideFunction>(std::move(arg0), std::move(arg1));
+}
+
+const std::string& DivideFunctionGenerator::GetName() const
+{
+    static std::string name = "div";
+    return name;
 }

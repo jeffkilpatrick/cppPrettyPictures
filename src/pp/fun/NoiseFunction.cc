@@ -84,14 +84,20 @@ float ColorNoiseFunction::EvalSingle(float x, float y, float a) const
 
 const std::string& ColorNoiseFunction::GetName() const
 {
-    static std::string name = "color-noise";
-    return name;
+    return ColorNoiseFunctionGenerator{}.GetName();
 }
 
 pp::IFunctionPtr pp::ColorNoiseFunctionGenerator::Make(IFunctionPtr arg)
 {
     return std::make_unique<ColorNoiseFunction>(std::move(arg));
 }
+
+const std::string& pp::ColorNoiseFunctionGenerator::GetName() const
+{
+    static std::string name = "color-noise";
+    return name;
+}
+
 // ------------------------------------------------------
 
 GrayscaleNoiseFunction::GrayscaleNoiseFunction(IFunctionPtr arg)
@@ -107,11 +113,16 @@ pp::Color GrayscaleNoiseFunction::Eval(float x, float y) const
 
 const std::string& GrayscaleNoiseFunction::GetName() const
 {
-    static std::string name = "grayscale-noise";
-    return name;
+    return GrayscaleNoiseFunctionGenerator{}.GetName();
 }
 
 pp::IFunctionPtr pp::GrayscaleNoiseFunctionGenerator::Make(IFunctionPtr arg)
 {
     return std::make_unique<GrayscaleNoiseFunction>(std::move(arg));
+}
+
+const std::string& pp::GrayscaleNoiseFunctionGenerator::GetName() const
+{
+    static std::string name = "grayscale-noise";
+    return name;
 }

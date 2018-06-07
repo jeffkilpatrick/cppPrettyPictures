@@ -8,6 +8,8 @@ namespace pp {
         OpenParen,
         CloseParen,
 
+        Const,
+
         Identifier,
         Real
     };

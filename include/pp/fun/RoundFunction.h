@@ -18,6 +18,7 @@ namespace pp {
     class PP_EXPORT AbsFunctionGenerator final : public IUnaryFunctionGenerator {
     public:
         IFunctionPtr Make(IFunctionPtr arg) override;
+        const std::string& GetName() const override;
     };
 
     // ---------------------------------------------------------------------
@@ -33,6 +34,7 @@ namespace pp {
     class PP_EXPORT ClipFunctionGenerator final : public IUnaryFunctionGenerator {
     public:
         IFunctionPtr Make(IFunctionPtr arg) override;
+        const std::string& GetName() const override;
     };
 
     // ---------------------------------------------------------------------
@@ -48,6 +50,7 @@ namespace pp {
     class PP_EXPORT RoundDownFunctionGenerator final : public IUnaryFunctionGenerator {
     public:
         IFunctionPtr Make(IFunctionPtr arg) override;
+        const std::string& GetName() const override;
     };
 
     // ---------------------------------------------------------------------
@@ -63,6 +66,7 @@ namespace pp {
     class PP_EXPORT RoundUpFunctionGenerator final : public IUnaryFunctionGenerator {
     public:
         IFunctionPtr Make(IFunctionPtr arg) override;
+        const std::string& GetName() const override;
     };
 
     // ---------------------------------------------------------------------
@@ -78,4 +82,5 @@ namespace pp {
     class PP_EXPORT WrapFunctionGenerator final : public IUnaryFunctionGenerator {
     public:
         IFunctionPtr Make(IFunctionPtr arg) override;
+        const std::string& GetName() const override;
     };}

@@ -22,13 +22,18 @@ float AbsFunction::EvalSingle(float x, float y, float a) const
 
 const std::string& AbsFunction::GetName() const
 {
-    static std::string name = "abs";
-    return name;
+    return AbsFunctionGenerator{}.GetName();
 }
 
 pp::IFunctionPtr AbsFunctionGenerator::Make(IFunctionPtr arg)
 {
     return std::make_unique<AbsFunction>(std::move(arg));
+}
+
+const std::string& AbsFunctionGenerator::GetName() const
+{
+    static std::string name = "abs";
+    return name;
 }
 
 // --------------------------------------------------------------------
@@ -46,13 +51,18 @@ float ClipFunction::EvalSingle(float x, float y, float a) const
 
 const std::string& ClipFunction::GetName() const
 {
-    static std::string name = "clip";
-    return name;
+    return ClipFunctionGenerator{}.GetName();
 }
 
 pp::IFunctionPtr ClipFunctionGenerator::Make(IFunctionPtr arg)
 {
     return std::make_unique<ClipFunction>(std::move(arg));
+}
+
+const std::string& ClipFunctionGenerator::GetName() const
+{
+    static std::string name = "clip";
+    return name;
 }
 
 // --------------------------------------------------------------------
@@ -68,13 +78,18 @@ float RoundDownFunction::EvalSingle(float x, float y, float a) const
 
 const std::string& RoundDownFunction::GetName() const
 {
-    static std::string name = "floor";
-    return name;
+    return RoundDownFunctionGenerator{}.GetName();
 }
 
 pp::IFunctionPtr RoundDownFunctionGenerator::Make(IFunctionPtr arg)
 {
     return std::make_unique<RoundDownFunction>(std::move(arg));
+}
+
+const std::string& RoundDownFunctionGenerator::GetName() const
+{
+    static std::string name = "floor";
+    return name;
 }
 
 // --------------------------------------------------------------------
@@ -90,13 +105,18 @@ float RoundUpFunction::EvalSingle(float x, float y, float a) const
 
 const std::string& RoundUpFunction::GetName() const
 {
-    static std::string name = "ceil";
-    return name;
+    return RoundUpFunctionGenerator{}.GetName();
 }
 
 pp::IFunctionPtr RoundUpFunctionGenerator::Make(IFunctionPtr arg)
 {
     return std::make_unique<RoundUpFunction>(std::move(arg));
+}
+
+const std::string& RoundUpFunctionGenerator::GetName() const
+{
+    static std::string name = "ceil";
+    return name;
 }
 
 // --------------------------------------------------------------------
@@ -113,8 +133,7 @@ float WrapFunction::EvalSingle(float x, float y, float a) const
 
 const std::string& WrapFunction::GetName() const
 {
-    static std::string name = "wrap";
-    return name;
+    return WrapFunctionGenerator{}.GetName();
 }
 
 pp::IFunctionPtr WrapFunctionGenerator::Make(IFunctionPtr arg)
@@ -122,3 +141,8 @@ pp::IFunctionPtr WrapFunctionGenerator::Make(IFunctionPtr arg)
     return std::make_unique<WrapFunction>(std::move(arg));
 }
 
+const std::string& WrapFunctionGenerator::GetName() const
+{
+    static std::string name = "wrap";
+    return name;
+}

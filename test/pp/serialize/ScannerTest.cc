@@ -14,6 +14,7 @@ static void TestSingle(const Token& expected, std::string&& input)
 TEST(ScannerTest, SingleToken) {
     TestSingle(Token::OpenParen, "(");
     TestSingle(Token::CloseParen, ")");
+    TestSingle(Token::Const, "const");
     TestSingle(Token::Identifier("pants"), "pants");
     TestSingle(Token::Identifier("hyphen-ated"), "hyphen-ated");
 

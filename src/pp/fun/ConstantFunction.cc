@@ -48,3 +48,10 @@ pp::IFunctionPtr ConstantFunctionGenerator::Make()
 
     return std::make_unique<ConstantFunction>(Color{c1, c2, c3});
 }
+
+const std::string& ConstantFunctionGenerator::GetName() const
+{
+    static std::string name = "const";
+    return name;
+}
+

@@ -41,6 +41,18 @@ Token Scanner::Next()
     return next;
 }
 
+Token Scanner::Next(TokenType expected)
+{
+    auto next = Next();
+
+    if (next.GetType() != expected)
+    {
+        throw std::range_error("Unexpected token");
+    }
+
+    return next;
+}
+
 Token Scanner::NextImpl()
 {
     if (m_cursor == m_limit)
@@ -62,6 +74,7 @@ Token Scanner::NextImpl()
         [ \t\r\n]+                     { return LexWhitespace(start, m_cursor); }
         "("                            { return Token::OpenParen; }
         ")"                            { return Token::CloseParen; }
+        "const"                        { return Token::Const; }
         "-"? [1-9][0-9]*               { return LexReal(start, m_cursor); }
         "-"? [0-9]+ "."                { return LexReal(start, m_cursor); }
         "-"? [0-9]? "." [0-9]+         { return LexReal(start, m_cursor); }

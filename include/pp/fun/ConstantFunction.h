@@ -23,6 +23,7 @@ namespace pp {
     public:
         ConstantFunctionGenerator();
         IFunctionPtr Make() override;
+        const std::string& GetName() const override;
  
     private:
         std::mt19937 m_gen;

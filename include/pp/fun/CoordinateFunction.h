@@ -16,6 +16,7 @@ namespace pp {
     class XFunctionGenerator final : public INonaryFunctionGenerator {
     public:
         IFunctionPtr Make() override;
+        const std::string& GetName() const override;
     };
 
     // ---------------------------------------------------------------------
@@ -29,5 +30,6 @@ namespace pp {
     class YFunctionGenerator final : public INonaryFunctionGenerator {
     public:
         IFunctionPtr Make() override;
+        const std::string& GetName() const override;
     };
 }

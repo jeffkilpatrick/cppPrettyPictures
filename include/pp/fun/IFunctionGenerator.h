@@ -14,6 +14,7 @@ namespace pp {
         using IFunctionPtr = std::unique_ptr<IFunction>;
 
         virtual ~IFunctionGenerator();
+        virtual const std::string& GetName() const = 0;
 
         virtual Arity GetArity() const = 0;
     };

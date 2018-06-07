@@ -16,6 +16,7 @@ namespace pp {
     class PP_EXPORT AddFunctionGenerator final : public IBinaryFunctionGenerator {
     public:
         IFunctionPtr Make(IFunctionPtr arg0, IFunctionPtr arg1) override;
+        const std::string& GetName() const override;
     };
 
     // ---------------------------------------------------------------------------
@@ -31,6 +32,7 @@ namespace pp {
     class PP_EXPORT SubtractFunctionGenerator final : public IBinaryFunctionGenerator {
     public:
         IFunctionPtr Make(IFunctionPtr arg0, IFunctionPtr arg1) override;
+        const std::string& GetName() const override;
     };
 
     // ---------------------------------------------------------------------------
@@ -46,6 +48,7 @@ namespace pp {
     class PP_EXPORT MultiplyFunctionGenerator final : public IBinaryFunctionGenerator {
     public:
         IFunctionPtr Make(IFunctionPtr arg0, IFunctionPtr arg1) override;
+        const std::string& GetName() const override;
     };
 
     // ---------------------------------------------------------------------------
@@ -61,5 +64,6 @@ namespace pp {
     class PP_EXPORT DivideFunctionGenerator final : public IBinaryFunctionGenerator {
     public:
         IFunctionPtr Make(IFunctionPtr arg0, IFunctionPtr arg1) override;
+        const std::string& GetName() const override;
     };
 }

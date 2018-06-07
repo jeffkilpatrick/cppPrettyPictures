@@ -20,5 +20,6 @@ namespace pp {
     class PP_EXPORT DissolveFunctionGenerator final : public ITrinaryFunctionGenerator {
     public:
         IFunctionPtr Make(IFunctionPtr arg0, IFunctionPtr arg1, IFunctionPtr arg2) override;
+        const std::string& GetName() const override;
     };
 }

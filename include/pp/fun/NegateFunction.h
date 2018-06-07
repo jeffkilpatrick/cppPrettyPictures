@@ -15,5 +15,6 @@ namespace pp {
     class PP_EXPORT NegateFunctionGenerator final : public IUnaryFunctionGenerator {
     public:
         IFunctionPtr Make(IFunctionPtr arg) override;
+        const std::string& GetName() const override;
     };
 }
