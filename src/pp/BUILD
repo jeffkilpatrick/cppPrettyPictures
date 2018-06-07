@@ -3,6 +3,7 @@ cc_library(
     visibility  = ["//visibility:public"],
     deps = [
         "//include",
+        "@boost//:variant",
     ],
     srcs = [
         "Color.cc",
@@ -22,5 +23,14 @@ cc_library(
         "fun/RoundFunction.cc",
         "fun/TrigFunction.cc",
         "serialize/FunctionSerializer.cc",
+        "serialize/Scanner.cc",
+        "serialize/Token.cc",
     ],
+)
+
+genrule(
+    name = "Scanner.cc",
+    srcs = [ "serialize/Scanner.re" ],
+    outs = [ "serialize/Scanner.cc" ],
+    cmd = "re2c $< --output $@"
 )

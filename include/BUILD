@@ -21,6 +21,9 @@ cc_library(
         "pp/fun/RoundFunction.h",
         "pp/fun/TrigFunction.h",
         "pp/serialize/FunctionSerializer.h",
+        "pp/serialize/Scanner.h",
+        "pp/serialize/Token.h",
+        "pp/serialize/TokenType.h",
         "pp/utility/Exports.h",
     ],
 )

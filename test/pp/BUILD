@@ -31,6 +31,7 @@ cc_test(
     size = "small",
     srcs = [
         "serialize/FunctionSerializerTest.cc",
+        "serialize/ScannerTest.cc",
     ],
     copts = [
     ],
