@@ -17,6 +17,7 @@ namespace pp {
     public:
         virtual ~IFunction();
         virtual Color Eval(float x, float y) const = 0;
+        virtual void EvalRow(const std::vector<float>& xs, float y, Color* out) const;
         virtual const std::string& GetName() const = 0;
 
         const IFunctionPtrVec& GetArgs() const;
@@ -26,6 +27,8 @@ namespace pp {
         IFunction(IFunctionPtr arg0);
         IFunction(IFunctionPtr arg0, IFunctionPtr arg1);
         IFunction(IFunctionPtr arg0, IFunctionPtr arg1, IFunctionPtr arg2);
+
+        mutable std::vector<std::vector<Color>> m_buffers;
 
     private:
         IFunctionPtrVec m_args;
@@ -55,6 +58,9 @@ namespace pp {
 
         /** Evaluate the function for all color channels **/
         Color Eval(float x, float y) const final;
+
+        /** Evaluate the function for multiple xs on all color channels. **/
+        void EvalRow(const std::vector<float>& xs, float y, Color* out) const override;
     };
 
     /** A function taking two arguments **/
@@ -68,6 +74,9 @@ namespace pp {
 
         /** Evaluate the function for all color channels **/
         Color Eval(float x, float y) const final;
+
+        /** Evaluate the function for multiple xs on all color channels. **/
+        void EvalRow(const std::vector<float>& xs, float y, Color* out) const override;
     };
 
     /** A function taking three arguments **/
@@ -81,5 +90,8 @@ namespace pp {
 
         /** Evaluate the function for all color channels **/
         Color Eval(float x, float y) const final;
+
+        /** Evaluate the function for multiple xs on all color channels. **/
+        void EvalRow(const std::vector<float>& xs, float y, Color* out) const override;
     };
 }
