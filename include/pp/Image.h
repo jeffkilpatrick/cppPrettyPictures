@@ -16,6 +16,9 @@ namespace pp {
         const Color& GetPixel(size_t x, size_t y) const;
         Color& GetPixel(size_t x, size_t y);
 
+        const Color* GetRow(size_t y) const;
+        Color* GetRow(size_t y);
+
         const Color& operator()(size_t x, size_t y) const;
         Color& operator()(size_t x, size_t y);
 

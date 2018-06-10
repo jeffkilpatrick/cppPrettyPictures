@@ -33,6 +33,16 @@ pp::Color& Image::GetPixel(size_t x, size_t y)
     return m_pixels.at(RawIndex(x, y, m_width));
 }
 
+const pp::Color* Image::GetRow(size_t y) const
+{
+    return &m_pixels.at(RawIndex(0, y, m_width));
+}
+
+pp::Color* Image::GetRow(size_t y)
+{
+    return &m_pixels.at(RawIndex(0, y, m_width));
+}
+
 const pp::Color& Image::operator()(size_t x, size_t y) const
 {
     return GetPixel(x, y);
