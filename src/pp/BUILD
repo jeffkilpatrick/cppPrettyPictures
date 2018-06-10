@@ -8,6 +8,7 @@ cc_library(
     ],
     srcs = [
         "Color.cc",
+        "Eval.cc",
         "Generate.cc",
         "Image.cc",
         "Registry.cc",

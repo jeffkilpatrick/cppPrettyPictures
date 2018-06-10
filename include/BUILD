@@ -4,6 +4,7 @@ cc_library(
     includes = [ "" ],
     hdrs = [
         "pp/Color.h",
+        "pp/Eval.h",
         "pp/Generate.h",
         "pp/Image.h",
         "pp/Registry.h",
