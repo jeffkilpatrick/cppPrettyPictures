@@ -1,4 +1,5 @@
 #include "pp/Generate.h"
+#include "pp/Image.h"
 #include "pp/Registry.h"
 #include "pp/fun/IFunction.h"
 #include "pp/serialize/FunctionParser.h"
@@ -12,14 +13,10 @@
 #include <iostream>
 #include <vector>
 
-size_t RawIndex(size_t x, size_t y, size_t width)
-{
-    return (x + (y * width)) * 4;
-}
 
-std::vector<uint8_t> Eval(const pp::IFunction& f, size_t width, size_t height)
+pp::Image Eval(const pp::IFunction& f, size_t width, size_t height)
 {
-    std::vector<uint8_t> rgba(width * height * 4, 0xFF);
+    pp::Image img(width, height);
 
     for (int y = 0; y < height; ++y)
     {
@@ -31,34 +28,24 @@ std::vector<uint8_t> Eval(const pp::IFunction& f, size_t width, size_t height)
             int half_width = width / 2;
             auto x_pos = (x - half_width) / static_cast<float>(half_width);
 
-            auto c = f.Eval(x_pos, y_pos);
-            uint8_t r = (c.C1 + 1.f) * 128.f;
-            uint8_t g = (c.C2 + 1.f) * 128.f;
-            uint8_t b = (c.C3 + 1.f) * 128.f;
-
-            auto idx = RawIndex(x, y, width);
-            rgba[idx + 0] = r;
-            rgba[idx + 1] = g;
-            rgba[idx + 2] = b;
-            // rgba[idx + 3] = a;
+            img(x, y) = f.Eval(x_pos, y_pos);
         }
     }
 
-    return rgba;
+    return img;
 }
 
-void WriteBmp(const std::string& path, const std::vector<uint8_t>& rgba, size_t width, size_t height)
+void WriteBmp(const std::string& path, const pp::Image& img)
 {
-    BmpImg bmp(width, height);
+    BmpImg bmp(img.GetWidth(), img.GetHeight());
 
-    for (int x = 0; x < width; x++)
+    for (size_t x = 0; x < img.GetWidth(); x++)
     {
-        for (int y = 0; y < height; y++)
+        for (size_t y = 0; y < img.GetHeight(); y++)
         {
-            auto idx = RawIndex(x, y, width);
-            auto r = rgba[idx + 0];
-            auto g = rgba[idx + 1];
-            auto b = rgba[idx + 2];
+            auto r = img.GetR(x, y);
+            auto g = img.GetG(x, y);
+            auto b = img.GetB(x, y);
 
             bmp.set_pixel(x, y, r, g, b);
         }
@@ -67,9 +54,9 @@ void WriteBmp(const std::string& path, const std::vector<uint8_t>& rgba, size_t 
     bmp.write(path);
 }
 
-void WritePng(const std::string& path, const std::vector<uint8_t>& rgba, size_t width, size_t height)
+void WritePng(const std::string& path, const pp::Image& img)
 {
-    auto error = lodepng::encode(path, rgba, width, height);
+    auto error = lodepng::encode(path, img.ToRGBA(), img.GetWidth(), img.GetHeight());
     if (error)
     {
         std::string msg = std::string("Failed to encode: ") + lodepng_error_text(error);
@@ -150,16 +137,16 @@ int main(int argc, char* argv[])
 
     if (opts.Render)
     {
-        auto rgba = Eval(*e, opts.Width, opts.Height);
+        auto image = Eval(*e, opts.Width, opts.Height);
 
         if (!opts.Bmp.empty())
         {
-            WriteBmp(opts.Bmp, rgba, opts.Width, opts.Height);
+            WriteBmp(opts.Bmp, image);
         }
 
         if (!opts.Png.empty())
         {
-            WritePng(opts.Png, rgba, opts.Width, opts.Height);
+            WritePng(opts.Png, image);
         }
     }
 

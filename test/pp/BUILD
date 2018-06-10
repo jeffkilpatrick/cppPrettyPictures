@@ -3,6 +3,7 @@ cc_test(
     size = "small",
     srcs = [
         "GenerateTest.cc",
+        "ImageTest.cc",
         "RegistryTest.cc",
         "fun/ArithmeticFunctionTest.cc",
         "fun/ColorSpaceFunctionTest.cc",

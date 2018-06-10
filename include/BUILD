@@ -5,6 +5,7 @@ cc_library(
     hdrs = [
         "pp/Color.h",
         "pp/Generate.h",
+        "pp/Image.h",
         "pp/Registry.h",
         "pp/fun/Arity.h",
         "pp/fun/ArithmeticFunction.h",

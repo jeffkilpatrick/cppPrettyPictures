@@ -9,6 +9,7 @@ cc_library(
     srcs = [
         "Color.cc",
         "Generate.cc",
+        "Image.cc",
         "Registry.cc",
         "fun/ArithmeticFunction.cc",
         "fun/ConstantFunction.cc",
