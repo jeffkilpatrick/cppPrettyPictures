@@ -26,6 +26,11 @@ pp::Color ConstantFunction::Eval(float x, float y) const
     return m_constant;
 }
 
+void ConstantFunction::EvalRow(const std::vector<float>& xs, float y, Color* out) const
+{
+    std::fill(out, out + xs.size(), m_constant);
+}
+
 const std::string& ConstantFunction::GetName() const
 {
     return m_constantStr;
