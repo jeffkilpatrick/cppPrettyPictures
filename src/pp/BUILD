@@ -5,10 +5,13 @@ cc_library(
     deps = [
         "//include",
         "@boost//:variant",
+        "@libbmp//:main",
+        "@lodepng//:main",
     ],
     srcs = [
         "Color.cc",
         "Eval.cc",
+        "Export.cc",
         "Generate.cc",
         "Image.cc",
         "Registry.cc",
