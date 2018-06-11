@@ -23,7 +23,6 @@ cc_library(
         "fun/NegateFunction.cc",
         "fun/NoiseFunction.cc",
         "fun/RoundFunction.cc",
-        "fun/TrigFunction.cc",
         "serialize/FunctionParser.cc",
         "serialize/FunctionSerializer.cc",
         "serialize/Scanner.cc",

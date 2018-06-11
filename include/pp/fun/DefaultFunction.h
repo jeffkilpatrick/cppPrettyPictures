@@ -6,6 +6,44 @@
 namespace pp {
 
     template<typename TraitsT>
+    class DefaultUnaryFunction : public IUnaryFunction {
+    public:
+        using Traits = TraitsT;
+
+        DefaultUnaryFunction(IFunctionPtr arg)
+            : IUnaryFunction(std::move(arg))
+        { }
+
+        const std::string& GetName() const override
+        {
+            static std::string name = TraitsT::GetName();
+            return name;
+        }
+
+        float EvalSingle(float x, float y, float a) const override
+        {
+            return TraitsT::Eval(a);
+        }
+    };
+
+    template<typename GeneratedT>
+    class DefaultUnaryFunctionGenerator : public IUnaryFunctionGenerator {
+    public:
+        const std::string& GetName() const override
+        {
+            static std::string name = GeneratedT::Traits::GetName();
+            return name;
+        }
+
+        IFunctionPtr Make(IFunctionPtr arg0) override
+        {
+            return std::make_unique<GeneratedT>(std::move(arg0));
+        }
+    };
+
+    // -----------------------------------------------------------------------
+
+    template<typename TraitsT>
     class DefaultBinaryFunction : public IBinaryFunction {
     public:
         using Traits = TraitsT;

@@ -1,55 +1,36 @@
 #pragma once
 
-#include "pp/fun/IFunction.h"
-#include "pp/fun/IFunctionGenerator.h"
+#include "pp/fun/DefaultFunction.h"
 
-#include <random>
+#include <cmath>
 
 namespace pp {
 
-    class PP_EXPORT AtanFunction final : public IUnaryFunction {
-    public:
-        AtanFunction(IFunctionPtr arg);
-
-        float EvalSingle(float x, float y, float a) const override;
-        const std::string& GetName() const override;
+    struct AtanTraits {
+        static float Eval(float a) { return std::atan(a); }
+        static const char* GetName() { return "atan"; }
     };
 
-    class PP_EXPORT AtanFunctionGenerator final : public IUnaryFunctionGenerator {
-    public:
-        IFunctionPtr Make(IFunctionPtr arg) override;
-        const std::string& GetName() const override;
-    };
+    using AtanFunction = DefaultUnaryFunction<AtanTraits>;
+    using AtanFunctionGenerator = DefaultUnaryFunctionGenerator<AtanFunction>;
 
     // ---------------------------------------------------------------------
 
-    class PP_EXPORT CosFunction final : public IUnaryFunction {
-    public:
-        CosFunction(IFunctionPtr arg);
-
-        float EvalSingle(float x, float y, float a) const override;
-        const std::string& GetName() const override;
+    struct CosTraits {
+        static float Eval(float a) { return std::cos(a); }
+        static const char* GetName() { return "cos"; }
     };
 
-    class PP_EXPORT CosFunctionGenerator final : public IUnaryFunctionGenerator {
-    public:
-        IFunctionPtr Make(IFunctionPtr arg) override;
-        const std::string& GetName() const override;
-    };
+    using CosFunction = DefaultUnaryFunction<CosTraits>;
+    using CosFunctionGenerator = DefaultUnaryFunctionGenerator<CosFunction>;
 
     // ---------------------------------------------------------------------
 
-    class PP_EXPORT SinFunction final : public IUnaryFunction {
-    public:
-        SinFunction(IFunctionPtr arg);
-
-        float EvalSingle(float x, float y, float a) const override;
-        const std::string& GetName() const override;
+    struct SinTraits {
+        static float Eval(float a) { return std::sin(a); }
+        static const char* GetName() { return "sin"; }
     };
 
-    class PP_EXPORT SinFunctionGenerator final : public IUnaryFunctionGenerator {
-    public:
-        IFunctionPtr Make(IFunctionPtr arg) override;
-        const std::string& GetName() const override;
-    };
+    using SinFunction = DefaultUnaryFunction<SinTraits>;
+    using SinFunctionGenerator = DefaultUnaryFunctionGenerator<SinFunction>;
 }
