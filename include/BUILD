@@ -13,6 +13,7 @@ cc_library(
         "pp/fun/ColorSpaceFunction.h",
         "pp/fun/ConstantFunction.h",
         "pp/fun/CoordinateFunction.h",
+        "pp/fun/DefaultFunction.h",
         "pp/fun/DissolveFunction.h",
         "pp/fun/IFunction.h",
         "pp/fun/IFunctionGenerator.h",

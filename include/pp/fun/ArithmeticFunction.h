@@ -1,28 +1,10 @@
 #pragma once
 
-#include "pp/fun/IFunction.h"
-#include "pp/fun/IFunctionGenerator.h"
+#include "pp/fun/DefaultFunction.h"
 
 #include <cmath>
 
 namespace pp {
-
-    template<typename TraitsT>
-    class PP_EXPORT ArithmeticFunction : public IBinaryFunction {
-    public:
-        using Traits = TraitsT;
-        ArithmeticFunction(IFunctionPtr arg0, IFunctionPtr arg1);
-        float EvalSingle(float x, float y, float a0, float a1) const final;
-        void EvalRow(const std::vector<float>& xs, float y, Color* out) const final;
-        const std::string& GetName() const override;
-    };
-
-    template<typename GeneratedT>
-    class PP_EXPORT ArithmeticFunctionGenerator : public IBinaryFunctionGenerator {
-    public:
-        const std::string& GetName() const override;
-        IFunctionPtr Make(IFunctionPtr arg0, IFunctionPtr arg1) override;
-    };
 
     // ---------------------------------------------------------------------------
 
@@ -31,8 +13,8 @@ namespace pp {
         static const char* GetName() { return "add"; }
     };
 
-    using AddFunction = ArithmeticFunction<AddTraits>;
-    using AddFunctionGenerator = ArithmeticFunctionGenerator<AddFunction>;
+    using AddFunction = DefaultBinaryFunction<AddTraits>;
+    using AddFunctionGenerator = DefaultBinaryFunctionGenerator<AddFunction>;
 
     // ---------------------------------------------------------------------------
 
@@ -41,8 +23,8 @@ namespace pp {
         static const char* GetName() { return "sub"; }
     };
 
-    using SubtractFunction = ArithmeticFunction<SubtractTraits>;
-    using SubtractFunctionGenerator = ArithmeticFunctionGenerator<SubtractFunction>;
+    using SubtractFunction = DefaultBinaryFunction<SubtractTraits>;
+    using SubtractFunctionGenerator = DefaultBinaryFunctionGenerator<SubtractFunction>;
 
     // ---------------------------------------------------------------------------
 
@@ -51,8 +33,8 @@ namespace pp {
         static const char* GetName() { return "mul"; }
     };
 
-    using MultiplyFunction = ArithmeticFunction<MultiplyTraits>;
-    using MultiplyFunctionGenerator = ArithmeticFunctionGenerator<MultiplyFunction>;
+    using MultiplyFunction = DefaultBinaryFunction<MultiplyTraits>;
+    using MultiplyFunctionGenerator = DefaultBinaryFunctionGenerator<MultiplyFunction>;
 
     // ---------------------------------------------------------------------------
 
@@ -69,6 +51,6 @@ namespace pp {
         static const char* GetName() { return "div"; }
     };
 
-    using DivideFunction = ArithmeticFunction<DivideTraits>;
-    using DivideFunctionGenerator = ArithmeticFunctionGenerator<DivideFunction>;
+    using DivideFunction = DefaultBinaryFunction<DivideTraits>;
+    using DivideFunctionGenerator = DefaultBinaryFunctionGenerator<DivideFunction>;
 }
