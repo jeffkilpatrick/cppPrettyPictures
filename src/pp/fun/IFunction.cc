@@ -36,15 +36,6 @@ const pp::IFunctionPtrVec& IFunction::GetArgs() const
     return m_args;
 }
 
-void IFunction::EvalRow(const std::vector<float>& xs, float y, Color* out) const
-{
-    for (auto x : xs)
-    {
-        *out = Eval(x, y);
-        ++out;
-    }
-}
-
 // ----------------------------------------------------------
 INonaryFunction::INonaryFunction() = default;
 

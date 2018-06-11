@@ -37,7 +37,7 @@ const std::array<int, 512>& permutations()
     static std::array<int, 512> s_p = MakePermutations();
 
     return s_p;
-} 
+}
 
 static double fade(double t) { return t * t * t * (t * (t * 6 - 15) + 10); }
 
@@ -109,6 +109,21 @@ pp::Color GrayscaleNoiseFunction::Eval(float x, float y) const
     auto c = GetArgs().at(0)->Eval(x, y);
     auto gray = (c.C1 + c.C2 + c.C3) / 3.f;
     return Color{ static_cast<float>(noise(x, y, gray)) };
+}
+
+void GrayscaleNoiseFunction::EvalRow(const std::vector<float>& xs, float y, pp::Color* out) const
+{
+    auto& buf = m_buffers.at(0);
+    buf.resize(xs.size(), Color{0.f});
+
+    GetArgs().at(0)->EvalRow(xs, y, buf.data());
+
+    for (size_t i = 0; i < xs.size(); ++i)
+    {
+        auto z = (buf[i].C1 + buf[i].C2 + buf[i].C3) / 3.f;
+        *out = Color{ static_cast<float>(noise(xs[i], y, z)) };
+        ++out;
+    }
 }
 
 const std::string& GrayscaleNoiseFunction::GetName() const

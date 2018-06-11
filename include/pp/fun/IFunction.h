@@ -17,7 +17,7 @@ namespace pp {
     public:
         virtual ~IFunction();
         virtual Color Eval(float x, float y) const = 0;
-        virtual void EvalRow(const std::vector<float>& xs, float y, Color* out) const;
+        virtual void EvalRow(const std::vector<float>& xs, float y, Color* out) const = 0;
         virtual const std::string& GetName() const = 0;
 
         const IFunctionPtrVec& GetArgs() const;
