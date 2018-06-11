@@ -1,86 +1,67 @@
 #pragma once
 
-#include "pp/fun/IFunction.h"
-#include "pp/fun/IFunctionGenerator.h"
+#include "pp/fun/DefaultFunction.h"
 
-#include <random>
+#include <cmath>
 
 namespace pp {
 
-    class PP_EXPORT AbsFunction final : public IUnaryFunction {
-    public:
-        AbsFunction(IFunctionPtr arg);
-
-        float EvalSingle(float x, float y, float a) const override;
-        const std::string& GetName() const override;
+    struct AbsTraits {
+        static float Eval(float a) { return std::abs(a); }
+        static const char* GetName() { return "abs"; }
     };
 
-    class PP_EXPORT AbsFunctionGenerator final : public IUnaryFunctionGenerator {
-    public:
-        IFunctionPtr Make(IFunctionPtr arg) override;
-        const std::string& GetName() const override;
-    };
+    using AbsFunction = DefaultUnaryFunction<AbsTraits>;
+    using AbsFunctionGenerator = DefaultUnaryFunctionGenerator<AbsFunction>;
 
     // ---------------------------------------------------------------------
 
-    class PP_EXPORT ClipFunction final : public IUnaryFunction {
-    public:
-        ClipFunction(IFunctionPtr arg);
+    struct ClipTraits {
+        static float Eval(float a)
+        {
+            a = std::min(a, 1.0f);
+            a = std::max(a, -1.0f);
+            return a;
+        }
 
-        float EvalSingle(float x, float y, float a) const override;
-        const std::string& GetName() const override;
+        static const char* GetName() { return "clip"; }
     };
 
-    class PP_EXPORT ClipFunctionGenerator final : public IUnaryFunctionGenerator {
-    public:
-        IFunctionPtr Make(IFunctionPtr arg) override;
-        const std::string& GetName() const override;
-    };
+    using ClipFunction = DefaultUnaryFunction<ClipTraits>;
+    using ClipFunctionGenerator = DefaultUnaryFunctionGenerator<ClipFunction>;
 
     // ---------------------------------------------------------------------
 
-    class PP_EXPORT RoundDownFunction final : public IUnaryFunction {
-    public:
-        RoundDownFunction(IFunctionPtr arg);
-
-        float EvalSingle(float x, float y, float a) const override;
-        const std::string& GetName() const override;
+    struct RoundDownTraits {
+        static float Eval(float a) { return std::floor(a); }
+        static const char* GetName() { return "floor"; }
     };
 
-    class PP_EXPORT RoundDownFunctionGenerator final : public IUnaryFunctionGenerator {
-    public:
-        IFunctionPtr Make(IFunctionPtr arg) override;
-        const std::string& GetName() const override;
-    };
+    using RoundDownFunction = DefaultUnaryFunction<RoundDownTraits>;
+    using RoundDownFunctionGenerator = DefaultUnaryFunctionGenerator<RoundDownFunction>;
 
     // ---------------------------------------------------------------------
 
-    class PP_EXPORT RoundUpFunction final : public IUnaryFunction {
-    public:
-        RoundUpFunction(IFunctionPtr arg);
-
-        float EvalSingle(float x, float y, float a) const override;
-        const std::string& GetName() const override;
+    struct RoundUpTraits {
+        static float Eval(float a) { return std::ceil(a); }
+        static const char* GetName() { return "ceil"; }
     };
 
-    class PP_EXPORT RoundUpFunctionGenerator final : public IUnaryFunctionGenerator {
-    public:
-        IFunctionPtr Make(IFunctionPtr arg) override;
-        const std::string& GetName() const override;
-    };
+    using RoundUpFunction = DefaultUnaryFunction<RoundUpTraits>;
+    using RoundUpFunctionGenerator = DefaultUnaryFunctionGenerator<RoundUpFunction>;
 
     // ---------------------------------------------------------------------
 
-    class PP_EXPORT WrapFunction final : public IUnaryFunction {
-    public:
-        WrapFunction(IFunctionPtr arg);
+    struct WrapTraits {
+        static float Eval(float a)
+        {
+            auto n = std::round(a / 2.f);
+            return a - (2.f * n);
+        }
 
-        float EvalSingle(float x, float y, float a) const override;
-        const std::string& GetName() const override;
+        static const char* GetName() { return "wrap"; }
     };
 
-    class PP_EXPORT WrapFunctionGenerator final : public IUnaryFunctionGenerator {
-    public:
-        IFunctionPtr Make(IFunctionPtr arg) override;
-        const std::string& GetName() const override;
-    };}
+    using WrapFunction = DefaultUnaryFunction<WrapTraits>;
+    using WrapFunctionGenerator = DefaultUnaryFunctionGenerator<WrapFunction>;
+}

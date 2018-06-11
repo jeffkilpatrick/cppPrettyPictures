@@ -22,7 +22,6 @@ cc_library(
         "fun/LogFunction.cc",
         "fun/NegateFunction.cc",
         "fun/NoiseFunction.cc",
-        "fun/RoundFunction.cc",
         "serialize/FunctionParser.cc",
         "serialize/FunctionSerializer.cc",
         "serialize/Scanner.cc",
