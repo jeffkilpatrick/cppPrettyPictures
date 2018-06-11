@@ -10,7 +10,6 @@ namespace pp {
     public:
         RgbToYCbCrFunction(IFunctionPtr fun);
 
-        Color Eval(float x, float y) const override;
         void EvalRow(const std::vector<float>& xs, float y, Color* out) const override;
         const std::string& GetName() const override;
     };
@@ -29,7 +28,6 @@ namespace pp {
     public:
         YCbCrToRgbFunction(IFunctionPtr fun);
 
-        Color Eval(float x, float y) const override;
         void EvalRow(const std::vector<float>& xs, float y, Color* out) const override;
         const std::string& GetName() const override;
     };

@@ -7,18 +7,6 @@ InnerProductFunction::InnerProductFunction(IFunctionPtr fun0, IFunctionPtr fun1)
     : IFunction(std::move(fun0), std::move(fun1))
 { }
 
-pp::Color InnerProductFunction::Eval(float x, float y) const
-{
-    auto a = GetArgs().at(0)->Eval(x, y);
-    auto b = GetArgs().at(1)->Eval(x, y);
-
-    auto ip = a.C1 * b.C1
-        + a.C2 * b.C2
-        + a.C3 * b.C3;
-
-    return Color{ ip };
-}
-
 void InnerProductFunction::EvalRow(const std::vector<float>& xs, float y, Color* out) const
 {
     m_buffers.at(0).resize(xs.size(), Color{0.f});

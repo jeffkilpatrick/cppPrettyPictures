@@ -10,7 +10,6 @@ namespace pp {
     public:
         InnerProductFunction(IFunctionPtr arg0, IFunctionPtr arg1);
 
-        Color Eval(float x, float y) const override;
         void EvalRow(const std::vector<float>& xs, float y, Color* out) const override;
         const std::string& GetName() const override;
     };

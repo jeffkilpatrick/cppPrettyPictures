@@ -22,7 +22,7 @@ static void SerializeFunction(std::ostream& s, const pp::IFunction& fun)
 
 static void SerializeConstant(std::ostream& s, const pp::ConstantFunction& fun)
 {
-    auto c = fun.Eval(0.f, 0.f);
+    const auto& c = fun.GetConstant();
 
     s << "const " << c.C1 << ' ' << c.C2 << ' ' << c.C3;
 }
@@ -30,7 +30,7 @@ static void SerializeConstant(std::ostream& s, const pp::ConstantFunction& fun)
 std::ostream& pp::operator<<(std::ostream& s, const IFunction& fun)
 {
     s << '(';
- 
+
     auto constFun = dynamic_cast<const pp::ConstantFunction*>(&fun);
     if (constFun)
     {

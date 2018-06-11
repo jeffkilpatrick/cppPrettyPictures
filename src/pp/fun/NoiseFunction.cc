@@ -104,13 +104,6 @@ GrayscaleNoiseFunction::GrayscaleNoiseFunction(IFunctionPtr arg)
     : IFunction(std::move(arg))
 { }
 
-pp::Color GrayscaleNoiseFunction::Eval(float x, float y) const
-{
-    auto c = GetArgs().at(0)->Eval(x, y);
-    auto gray = (c.C1 + c.C2 + c.C3) / 3.f;
-    return Color{ static_cast<float>(noise(x, y, gray)) };
-}
-
 void GrayscaleNoiseFunction::EvalRow(const std::vector<float>& xs, float y, pp::Color* out) const
 {
     auto& buf = m_buffers.at(0);

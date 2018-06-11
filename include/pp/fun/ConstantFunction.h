@@ -10,10 +10,10 @@ namespace pp {
     public:
         ConstantFunction(Color constant);
 
-        Color Eval(float x, float y) const override;
         void EvalRow(const std::vector<float>& xs, float y, Color* out) const override;
 
         const std::string& GetName() const override;
+        const Color& GetConstant() const;
 
     private:
         Color m_constant;
@@ -25,7 +25,7 @@ namespace pp {
         ConstantFunctionGenerator();
         IFunctionPtr Make() override;
         const std::string& GetName() const override;
- 
+
     private:
         std::mt19937 m_gen;
     };
