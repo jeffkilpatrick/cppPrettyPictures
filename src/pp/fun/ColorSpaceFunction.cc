@@ -30,17 +30,6 @@ const std::string& RgbToYCbCrFunction::GetName() const
     return RgbToYCbCrFunctionGenerator{}.GetName();
 }
 
-pp::IFunctionPtr pp::RgbToYCbCrFunctionGenerator::Make(IFunctionPtr fun)
-{
-    return std::make_unique<RgbToYCbCrFunction>(std::move(fun));
-}
-
-const std::string& pp::RgbToYCbCrFunctionGenerator::GetName() const
-{
-    static std::string name = "rgb-to-ycbcr";
-    return name;
-}
-
 // ---------------------------------------------------------------------
 
 YCbCrToRgbFunction::YCbCrToRgbFunction(IFunctionPtr fun)
@@ -68,15 +57,4 @@ void YCbCrToRgbFunction::EvalRow(const std::vector<float>& xs, float y, pp::Colo
 const std::string& YCbCrToRgbFunction::GetName() const
 {
     return YCbCrToRgbFunctionGenerator{}.GetName();
-}
-
-pp::IFunctionPtr pp::YCbCrToRgbFunctionGenerator::Make(IFunctionPtr fun)
-{
-    return std::make_unique<YCbCrToRgbFunction>(std::move(fun));
-}
-
-const std::string& pp::YCbCrToRgbFunctionGenerator::GetName() const
-{
-    static std::string name = "ycbcr-to-rgb";
-    return name;
 }
