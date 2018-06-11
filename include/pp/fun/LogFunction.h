@@ -1,39 +1,47 @@
 #pragma once
 
-#include "pp/fun/IFunction.h"
-#include "pp/fun/IFunctionGenerator.h"
+#include "pp/fun/DefaultFunction.h"
 
-#include <random>
+#include <cmath>
 
 namespace pp {
-    class PP_EXPORT ExpFunction final : public IUnaryFunction {
-    public:
-        ExpFunction(IFunctionPtr arg);
 
-        float EvalSingle(float x, float y, float a) const override;
-        const std::string& GetName() const override;
+    struct ExpTraits {
+        static float Eval(float a)
+        {
+            if (a > 5.f)
+            {
+                return std::exp(5.f);
+            }
+
+            return std::exp(a);
+        }
+
+        static const char* GetName() { return "exp"; }
     };
 
-    class PP_EXPORT ExpFunctionGenerator final : public IUnaryFunctionGenerator {
-    public:
-        IFunctionPtr Make(IFunctionPtr arg) override;
-        const std::string& GetName() const override;
-    };
+    using ExpFunction = DefaultUnaryFunction<ExpTraits>;
+    using ExpFunctionGenerator = DefaultUnaryFunctionGenerator<ExpFunction>;
 
     // ---------------------------------------------------------------------
 
-    class PP_EXPORT LogFunction final : public IUnaryFunction {
-    public:
-        LogFunction(IFunctionPtr arg);
+    struct LogTraits {
+        static float Eval(float a)
+        {
+            if (a < 0.f)
+            {
+                a *= -1.f;
+            }
 
-        float EvalSingle(float x, float y, float a) const override;
-        const std::string& GetName() const override;
+            a = std::max(1e-3f, a);
+
+            return std::log(a);
+        }
+
+        static const char* GetName() { return "ln"; }
     };
 
-    class PP_EXPORT LogFunctionGenerator final : public IUnaryFunctionGenerator {
-    public:
-        IFunctionPtr Make(IFunctionPtr arg) override;
-        const std::string& GetName() const override;
-    };
+    using LogFunction = DefaultUnaryFunction<LogTraits>;
+    using LogFunctionGenerator = DefaultUnaryFunctionGenerator<LogFunction>;
 
 }

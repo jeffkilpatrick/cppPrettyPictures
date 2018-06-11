@@ -19,7 +19,6 @@ cc_library(
         "fun/IFunction.cc",
         "fun/IFunctionGenerator.cc",
         "fun/InnerProductFunction.cc",
-        "fun/LogFunction.cc",
         "fun/NoiseFunction.cc",
         "serialize/FunctionParser.cc",
         "serialize/FunctionSerializer.cc",
