@@ -3,67 +3,72 @@
 #include "pp/fun/IFunction.h"
 #include "pp/fun/IFunctionGenerator.h"
 
+#include <cmath>
+
 namespace pp {
 
-    class PP_EXPORT AddFunction final : public IBinaryFunction {
+    template<typename TraitsT>
+    class PP_EXPORT ArithmeticFunction : public IBinaryFunction {
     public:
-        AddFunction(IFunctionPtr arg0, IFunctionPtr arg1);
-
-        float EvalSingle(float x, float y, float a0, float a1) const override;
+        using Traits = TraitsT;
+        ArithmeticFunction(IFunctionPtr arg0, IFunctionPtr arg1);
+        float EvalSingle(float x, float y, float a0, float a1) const final;
+        void EvalRow(const std::vector<float>& xs, float y, Color* out) const final;
         const std::string& GetName() const override;
     };
 
-    class PP_EXPORT AddFunctionGenerator final : public IBinaryFunctionGenerator {
+    template<typename GeneratedT>
+    class PP_EXPORT ArithmeticFunctionGenerator : public IBinaryFunctionGenerator {
     public:
-        IFunctionPtr Make(IFunctionPtr arg0, IFunctionPtr arg1) override;
         const std::string& GetName() const override;
+        IFunctionPtr Make(IFunctionPtr arg0, IFunctionPtr arg1) override;
     };
 
     // ---------------------------------------------------------------------------
 
-    class PP_EXPORT SubtractFunction final : public IBinaryFunction {
-    public:
-        SubtractFunction(IFunctionPtr arg0, IFunctionPtr arg1);
-
-        float EvalSingle(float x, float y, float a0, float a1) const override;
-        const std::string& GetName() const override;
+    struct AddTraits {
+        static float Eval(float a0, float a1) { return a0 + a1; }
+        static const char* GetName() { return "add"; }
     };
 
-    class PP_EXPORT SubtractFunctionGenerator final : public IBinaryFunctionGenerator {
-    public:
-        IFunctionPtr Make(IFunctionPtr arg0, IFunctionPtr arg1) override;
-        const std::string& GetName() const override;
-    };
+    using AddFunction = ArithmeticFunction<AddTraits>;
+    using AddFunctionGenerator = ArithmeticFunctionGenerator<AddFunction>;
 
     // ---------------------------------------------------------------------------
 
-    class PP_EXPORT MultiplyFunction final : public IBinaryFunction {
-    public:
-        MultiplyFunction(IFunctionPtr arg0, IFunctionPtr arg1);
-
-        float EvalSingle(float x, float y, float a0, float a1) const override;
-        const std::string& GetName() const override;
+    struct SubtractTraits {
+        static float Eval(float a0, float a1) { return a0 - a1; }
+        static const char* GetName() { return "sub"; }
     };
 
-    class PP_EXPORT MultiplyFunctionGenerator final : public IBinaryFunctionGenerator {
-    public:
-        IFunctionPtr Make(IFunctionPtr arg0, IFunctionPtr arg1) override;
-        const std::string& GetName() const override;
-    };
+    using SubtractFunction = ArithmeticFunction<SubtractTraits>;
+    using SubtractFunctionGenerator = ArithmeticFunctionGenerator<SubtractFunction>;
 
     // ---------------------------------------------------------------------------
 
-    class PP_EXPORT DivideFunction final : public IBinaryFunction {
-    public:
-        DivideFunction(IFunctionPtr arg0, IFunctionPtr arg1);
-
-        float EvalSingle(float x, float y, float a0, float a1) const override;
-        const std::string& GetName() const override;
+    struct MultiplyTraits {
+        static float Eval(float a0, float a1) { return a0 * a1; }
+        static const char* GetName() { return "mul"; }
     };
 
-    class PP_EXPORT DivideFunctionGenerator final : public IBinaryFunctionGenerator {
-    public:
-        IFunctionPtr Make(IFunctionPtr arg0, IFunctionPtr arg1) override;
-        const std::string& GetName() const override;
+    using MultiplyFunction = ArithmeticFunction<MultiplyTraits>;
+    using MultiplyFunctionGenerator = ArithmeticFunctionGenerator<MultiplyFunction>;
+
+    // ---------------------------------------------------------------------------
+
+    struct DivideTraits {
+        static float Eval(float a0, float a1)
+        {
+            if (std::abs(a1) < 1e-3f)
+            {
+                a1 = std::copysign(1e-3f, a1);
+            }
+
+            return a0 / a1;
+        }
+        static const char* GetName() { return "div"; }
     };
+
+    using DivideFunction = ArithmeticFunction<DivideTraits>;
+    using DivideFunctionGenerator = ArithmeticFunctionGenerator<DivideFunction>;
 }
