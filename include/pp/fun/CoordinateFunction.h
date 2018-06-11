@@ -10,6 +10,7 @@ namespace pp {
     class PP_EXPORT XFunction final : public INonaryFunction {
     public:
         float EvalSingle(float x, float y) const override;
+        void EvalRow(const std::vector<float>& xs, float y, Color* out) const override;
         const std::string& GetName() const override;
     };
 
@@ -24,6 +25,7 @@ namespace pp {
     class PP_EXPORT YFunction final : public INonaryFunction {
     public:
         float EvalSingle(float x, float y) const override;
+        void EvalRow(const std::vector<float>& xs, float y, Color* out) const override;
         const std::string& GetName() const override;
     };
 

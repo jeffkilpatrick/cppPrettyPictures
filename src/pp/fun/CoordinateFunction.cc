@@ -11,6 +11,15 @@ float XFunction::EvalSingle(float x, float y) const
     return x;
 }
 
+void XFunction::EvalRow(const std::vector<float>& xs, float y, Color* out) const
+{
+    for (auto x : xs)
+    {
+        *out = Color{x};
+        ++out;
+    }
+}
+
 const std::string& XFunction::GetName() const
 {
     return XFunctionGenerator{}.GetName();
@@ -32,6 +41,11 @@ const std::string& XFunctionGenerator::GetName() const
 float YFunction::EvalSingle(float x, float y) const
 {
     return y;
+}
+
+void YFunction::EvalRow(const std::vector<float>& xs, float y, Color* out) const
+{
+    std::fill(out, out + xs.size(), Color{y});
 }
 
 const std::string& YFunction::GetName() const
