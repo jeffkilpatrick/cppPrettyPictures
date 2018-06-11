@@ -3,13 +3,14 @@
 #include "pp/fun/DefaultFunction.h"
 #include "pp/fun/RoundFunction.h"
 
+#include <cmath>
+
 namespace pp {
 
     struct DissolveTraits {
         static float Eval(float x, float y, float a0, float a1, float a2)
         {
-            a2 = WrapTraits::Eval(x, y, a2);
-            a2 = a2 < 0.f ? -1.f * a2 : a2;
+            a2 = std::abs(WrapTraits::Eval(x, y, a2));
 
             return a0 * a2 + a1 * (1.0 - a2);
         }
