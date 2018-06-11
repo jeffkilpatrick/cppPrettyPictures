@@ -1,25 +1,22 @@
 #pragma once
 
-#include "pp/fun/IFunction.h"
-#include "pp/fun/IFunctionGenerator.h"
+#include "pp/fun/DefaultFunction.h"
 #include "pp/fun/RoundFunction.h"
 
 namespace pp {
 
-    class PP_EXPORT DissolveFunction final : public ITrinaryFunction {
-    public:
-        DissolveFunction(IFunctionPtr fun0, IFunctionPtr fun1, IFunctionPtr fun2);
+    struct DissolveTraits {
+        static float Eval(float x, float y, float a0, float a1, float a2)
+        {
+            a2 = WrapTraits::Eval(x, y, a2);
+            a2 = a2 < 0.f ? -1.f * a2 : a2;
 
-        float EvalSingle(float x, float y, float a0, float a1, float a2) const override;
-        const std::string& GetName() const override;
+            return a0 * a2 + a1 * (1.0 - a2);
+        }
 
-    private:
-        WrapFunction m_truncate;
+        static const char* GetName() { return "dissolve"; }
     };
 
-    class PP_EXPORT DissolveFunctionGenerator final : public ITrinaryFunctionGenerator {
-    public:
-        IFunctionPtr Make(IFunctionPtr arg0, IFunctionPtr arg1, IFunctionPtr arg2) override;
-        const std::string& GetName() const override;
-    };
+    using DissolveFunction = DefaultTrinaryFunction<DissolveTraits>;
+    using DissolveFunctionGenerator = DefaultTrinaryFunctionGenerator<DissolveFunction>;
 }
