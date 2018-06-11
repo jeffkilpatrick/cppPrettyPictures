@@ -1,37 +1,24 @@
 #pragma once
 
-#include "pp/fun/IFunction.h"
-#include "pp/fun/IFunctionGenerator.h"
-
-#include <random>
+#include "pp/fun/DefaultFunction.h"
 
 namespace pp {
 
-    class PP_EXPORT XFunction final : public INonaryFunction {
-    public:
-        float EvalSingle(float x, float y) const override;
-        void EvalRow(const std::vector<float>& xs, float y, Color* out) const override;
-        const std::string& GetName() const override;
+    struct XTraits {
+        static float Eval(float x, float y) { return x; }
+        static const char* GetName() { return "x"; }
     };
 
-    class XFunctionGenerator final : public INonaryFunctionGenerator {
-    public:
-        IFunctionPtr Make() override;
-        const std::string& GetName() const override;
-    };
+    using XFunction = DefaultNonaryFunction<XTraits>;
+    using XFunctionGenerator = DefaultNonaryFunctionGenerator<XFunction>;
 
     // ---------------------------------------------------------------------
 
-    class PP_EXPORT YFunction final : public INonaryFunction {
-    public:
-        float EvalSingle(float x, float y) const override;
-        void EvalRow(const std::vector<float>& xs, float y, Color* out) const override;
-        const std::string& GetName() const override;
+    struct YTraits {
+        static float Eval(float x, float y) { return y; }
+        static const char* GetName() { return "y"; }
     };
 
-    class YFunctionGenerator final : public INonaryFunctionGenerator {
-    public:
-        IFunctionPtr Make() override;
-        const std::string& GetName() const override;
-    };
+    using YFunction = DefaultNonaryFunction<YTraits>;
+    using YFunctionGenerator = DefaultNonaryFunctionGenerator<YFunction>;
 }

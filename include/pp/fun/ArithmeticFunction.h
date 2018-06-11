@@ -9,7 +9,7 @@ namespace pp {
     // ---------------------------------------------------------------------------
 
     struct AddTraits {
-        static float Eval(float a0, float a1) { return a0 + a1; }
+        static float Eval(float x, float y, float a0, float a1) { return a0 + a1; }
         static const char* GetName() { return "add"; }
     };
 
@@ -19,7 +19,7 @@ namespace pp {
     // ---------------------------------------------------------------------------
 
     struct SubtractTraits {
-        static float Eval(float a0, float a1) { return a0 - a1; }
+        static float Eval(float x, float y, float a0, float a1) { return a0 - a1; }
         static const char* GetName() { return "sub"; }
     };
 
@@ -29,7 +29,7 @@ namespace pp {
     // ---------------------------------------------------------------------------
 
     struct MultiplyTraits {
-        static float Eval(float a0, float a1) { return a0 * a1; }
+        static float Eval(float x, float y, float a0, float a1) { return a0 * a1; }
         static const char* GetName() { return "mul"; }
     };
 
@@ -39,7 +39,7 @@ namespace pp {
     // ---------------------------------------------------------------------------
 
     struct DivideTraits {
-        static float Eval(float a0, float a1)
+        static float Eval(float x, float y, float a0, float a1)
         {
             if (std::abs(a1) < 1e-3f)
             {

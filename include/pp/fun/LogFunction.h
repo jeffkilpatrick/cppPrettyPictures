@@ -7,7 +7,7 @@
 namespace pp {
 
     struct ExpTraits {
-        static float Eval(float a)
+        static float Eval(float x, float y, float a)
         {
             if (a > 5.f)
             {
@@ -26,7 +26,7 @@ namespace pp {
     // ---------------------------------------------------------------------
 
     struct LogTraits {
-        static float Eval(float a)
+        static float Eval(float x, float y, float a)
         {
             if (a < 0.f)
             {

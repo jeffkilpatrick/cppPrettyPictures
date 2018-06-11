@@ -7,7 +7,7 @@
 namespace pp {
 
     struct AtanTraits {
-        static float Eval(float a) { return std::atan(a); }
+        static float Eval(float x, float y, float a) { return std::atan(a); }
         static const char* GetName() { return "atan"; }
     };
 
@@ -17,7 +17,7 @@ namespace pp {
     // ---------------------------------------------------------------------
 
     struct CosTraits {
-        static float Eval(float a) { return std::cos(a); }
+        static float Eval(float x, float y, float a) { return std::cos(a); }
         static const char* GetName() { return "cos"; }
     };
 
@@ -27,7 +27,7 @@ namespace pp {
     // ---------------------------------------------------------------------
 
     struct SinTraits {
-        static float Eval(float a) { return std::sin(a); }
+        static float Eval(float x, float y, float a) { return std::sin(a); }
         static const char* GetName() { return "sin"; }
     };
 

@@ -14,7 +14,6 @@ cc_library(
         "Registry.cc",
         "fun/ConstantFunction.cc",
         "fun/ColorSpaceFunction.cc",
-        "fun/CoordinateFunction.cc",
         "fun/DissolveFunction.cc",
         "fun/IFunction.cc",
         "fun/IFunctionGenerator.cc",

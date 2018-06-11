@@ -6,6 +6,53 @@
 namespace pp {
 
     template<typename TraitsT>
+    class DefaultNonaryFunction : public INonaryFunction {
+    public:
+        using Traits = TraitsT;
+
+        const std::string& GetName() const override
+        {
+            static std::string name = TraitsT::GetName();
+            return name;
+        }
+
+        float EvalSingle(float x, float y) const override
+        {
+            return TraitsT::Eval(x, y);
+        }
+
+        void EvalRow(const std::vector<float>& xs, float y, Color* out) const override
+        {
+            for (size_t i = 0; i < xs.size(); ++i)
+            {
+                *out = Color{
+                    TraitsT::Eval(xs[i], y),
+                    TraitsT::Eval(xs[i], y),
+                    TraitsT::Eval(xs[i], y)
+                };
+                ++out;
+            }
+        }
+    };
+
+    template<typename GeneratedT>
+    class DefaultNonaryFunctionGenerator : public INonaryFunctionGenerator {
+    public:
+        const std::string& GetName() const override
+        {
+            static std::string name = GeneratedT::Traits::GetName();
+            return name;
+        }
+
+        IFunctionPtr Make() override
+        {
+            return std::make_unique<GeneratedT>();
+        }
+    };
+
+    // -----------------------------------------------------------------------
+
+    template<typename TraitsT>
     class DefaultUnaryFunction : public IUnaryFunction {
     public:
         using Traits = TraitsT;
@@ -22,7 +69,26 @@ namespace pp {
 
         float EvalSingle(float x, float y, float a) const override
         {
-            return TraitsT::Eval(a);
+            return TraitsT::Eval(x, y, a);
+        }
+
+        void EvalRow(const std::vector<float>& xs, float y, Color* out) const override
+        {
+            auto& buf = m_buffers.at(0);
+
+            buf.resize(xs.size(), Color{0.f});
+
+            GetArgs().at(0)->EvalRow(xs, y, buf.data());
+
+            for (size_t i = 0; i < xs.size(); ++i)
+            {
+                *out = Color{
+                    TraitsT::Eval(xs[i], y, buf[i].C1),
+                    TraitsT::Eval(xs[i], y, buf[i].C2),
+                    TraitsT::Eval(xs[i], y, buf[i].C3)
+                };
+                ++out;
+            }
         }
     };
 
@@ -60,7 +126,7 @@ namespace pp {
 
         float EvalSingle(float x, float y, float a0, float a1) const override
         {
-            return TraitsT::Eval(a0, a1);
+            return TraitsT::Eval(x, y, a0, a1);
         }
 
         void EvalRow(const std::vector<float>& xs, float y, Color* out) const override
@@ -77,9 +143,9 @@ namespace pp {
             for (size_t i = 0; i < xs.size(); ++i)
             {
                 *out = Color{
-                    TraitsT::Eval(buf0[i].C1, buf1[i].C1),
-                    TraitsT::Eval(buf0[i].C2, buf1[i].C2),
-                    TraitsT::Eval(buf0[i].C3, buf1[i].C3)
+                    TraitsT::Eval(xs[i], y, buf0[i].C1, buf1[i].C1),
+                    TraitsT::Eval(xs[i], y, buf0[i].C2, buf1[i].C2),
+                    TraitsT::Eval(xs[i], y, buf0[i].C3, buf1[i].C3)
                 };
                 ++out;
             }

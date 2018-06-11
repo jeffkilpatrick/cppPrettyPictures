@@ -7,7 +7,7 @@
 namespace pp {
 
     struct AbsTraits {
-        static float Eval(float a) { return std::abs(a); }
+        static float Eval(float x, float y, float a) { return std::abs(a); }
         static const char* GetName() { return "abs"; }
     };
 
@@ -17,7 +17,7 @@ namespace pp {
     // ---------------------------------------------------------------------
 
     struct ClipTraits {
-        static float Eval(float a)
+        static float Eval(float x, float y, float a)
         {
             a = std::min(a, 1.0f);
             a = std::max(a, -1.0f);
@@ -33,7 +33,7 @@ namespace pp {
     // ---------------------------------------------------------------------
 
     struct RoundDownTraits {
-        static float Eval(float a) { return std::floor(a); }
+        static float Eval(float x, float y, float a) { return std::floor(a); }
         static const char* GetName() { return "floor"; }
     };
 
@@ -43,7 +43,7 @@ namespace pp {
     // ---------------------------------------------------------------------
 
     struct RoundUpTraits {
-        static float Eval(float a) { return std::ceil(a); }
+        static float Eval(float x, float y, float a) { return std::ceil(a); }
         static const char* GetName() { return "ceil"; }
     };
 
@@ -53,7 +53,7 @@ namespace pp {
     // ---------------------------------------------------------------------
 
     struct WrapTraits {
-        static float Eval(float a)
+        static float Eval(float x, float y, float a)
         {
             auto n = std::round(a / 2.f);
             return a - (2.f * n);

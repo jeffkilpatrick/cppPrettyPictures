@@ -4,7 +4,7 @@
 
 namespace pp {
     struct NegateTraits {
-        static float Eval(float a) { return -1.f * a; }
+        static float Eval(float x, float y, float a) { return -1.f * a; }
         static const char* GetName() { return "neg"; }
     };
 
