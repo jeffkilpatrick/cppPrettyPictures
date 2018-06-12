@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
+#include "pp/fun/Registry.h"
 #include "pp/serialize/FunctionParser.h"
 #include "pp/serialize/FunctionSerializer.h"
-#include "pp/Registry.h"
 
 using pp::Parse;
 

@@ -1,7 +1,7 @@
-#include "pp/Eval.h"
 #include "pp/Export.h"
-#include "pp/Generate.h"
-#include "pp/Registry.h"
+#include "pp/expr/Eval.h"
+#include "pp/expr/Generate.h"
+#include "pp/fun/Registry.h"
 #include "pp/serialize/FunctionParser.h"
 #include "pp/serialize/FunctionSerializer.h"
 

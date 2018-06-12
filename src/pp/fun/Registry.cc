@@ -1,5 +1,3 @@
-#include "pp/Registry.h"
-
 #include "pp/fun/ArithmeticFunction.h"
 #include "pp/fun/ColorSpaceFunction.h"
 #include "pp/fun/ConstantFunction.h"
@@ -9,6 +7,7 @@
 #include "pp/fun/InnerProductFunction.h"
 #include "pp/fun/NegateFunction.h"
 #include "pp/fun/NoiseFunction.h"
+#include "pp/fun/Registry.h"
 #include "pp/fun/RoundFunction.h"
 #include "pp/fun/TrigFunction.h"
 
