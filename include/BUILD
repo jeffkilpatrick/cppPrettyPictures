@@ -6,6 +6,7 @@ cc_library(
         "pp/Color.h",
         "pp/Export.h",
         "pp/Image.h",
+        "pp/expr/Breed.h",
         "pp/expr/Eval.h",
         "pp/expr/Generate.h",
         "pp/fun/Arity.h",

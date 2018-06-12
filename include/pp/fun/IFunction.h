@@ -9,7 +9,7 @@
 
 namespace pp {
 
-    using IFunctionPtr = std::unique_ptr<class IFunction>;
+    using IFunctionPtr = std::shared_ptr<class IFunction>;
     using IFunctionPtrVec = std::vector<IFunctionPtr>;
 
     class PP_EXPORT IFunction

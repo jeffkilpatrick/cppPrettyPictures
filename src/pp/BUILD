@@ -12,6 +12,7 @@ cc_library(
         "Color.cc",
         "Export.cc",
         "Image.cc",
+        "expr/Breed.cc",
         "expr/Eval.cc",
         "expr/Generate.cc",
         "fun/ConstantFunction.cc",
