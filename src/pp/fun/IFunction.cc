@@ -36,6 +36,24 @@ const pp::IFunctionPtrVec& IFunction::GetArgs() const
     return m_args;
 }
 
+bool IFunction::Equals(const IFunction& other) const
+{
+    if (typeid(*this) != typeid(other))
+    {
+        return false;
+    }
+
+    for (size_t i = 0; i < GetArgs().size(); ++i)
+    {
+        if (!GetArgs().at(i)->Equals(*other.GetArgs().at(i)))
+        {
+            return false;
+        }
+    }
+
+    return true;
+}
+
 pp::Color IFunction::Eval(float x, float y) const
 {
     Color c{0.f};

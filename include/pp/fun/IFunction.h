@@ -22,6 +22,8 @@ namespace pp {
 
         const IFunctionPtrVec& GetArgs() const;
 
+        bool Equals(const IFunction& other) const;
+
     protected:
         IFunction();
         IFunction(IFunctionPtr arg0);

@@ -9,6 +9,7 @@
 
 namespace pp {
     class IFunction;
+    class IRandom;
     class Registry;
 
     /**
@@ -27,5 +28,14 @@ namespace pp {
 
         If the expressions are not of the same type, return one at random.
     **/
-    IFunctionPtr Breed(const IFunctionPtr& parent1, const IFunctionPtr& parent2, const Registry& registry);
+    IFunctionPtr Breed(
+        const IFunctionPtr& parent1,
+        const IFunctionPtr& parent2,
+        const Registry& registry,
+        IRandom& random);
+
+    IFunctionPtr Breed(
+        const IFunctionPtr& parent1,
+        const IFunctionPtr& parent2,
+        const Registry& registry);
 }

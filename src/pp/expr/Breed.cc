@@ -2,24 +2,27 @@
 #include "pp/fun/Arity.h"
 #include "pp/fun/IFunctionGenerator.h"
 #include "pp/fun/Registry.h"
+#include "pp/utility/Random.h"
 
 #include <random>
 
-pp::IFunctionPtr pp::Breed(const IFunctionPtr& parent1, const IFunctionPtr& parent2, const Registry& registry)
+pp::IFunctionPtr pp::Breed(
+    const IFunctionPtr& parent1,
+    const IFunctionPtr& parent2,
+    const Registry& registry,
+    IRandom& random)
 {
-    std::random_device r;
-
     if (typeid(parent1) != typeid(parent2))
     {
         // Non-compatible functions: pick one at random
-        return (r() % 2) ? parent1 : parent2;
+        return (random() % 2) ? parent1 : parent2;
     }
 
     // Compatible functions: randomly pick arguments
     auto args = parent1->GetArgs();
     for (size_t i = 0; i < args.size(); ++i)
     {
-        if (r() % 2)
+        if (random() % 2)
         {
             args[i] = parent2->GetArgs().at(i);
         }
@@ -43,4 +46,13 @@ pp::IFunctionPtr pp::Breed(const IFunctionPtr& parent1, const IFunctionPtr& pare
     }
 
     return nullptr;
+}
+
+pp::IFunctionPtr pp::Breed(
+    const IFunctionPtr& parent1,
+    const IFunctionPtr& parent2,
+    const Registry& registry)
+{
+    RandomDevice random;
+    return Breed(parent1, parent1, registry, random);
 }

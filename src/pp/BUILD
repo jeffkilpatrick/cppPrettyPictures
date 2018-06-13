@@ -26,6 +26,7 @@ cc_library(
         "serialize/FunctionSerializer.cc",
         "serialize/Scanner.cc",
         "serialize/Token.cc",
+        "utility/Random.cc",
     ],
 )
 

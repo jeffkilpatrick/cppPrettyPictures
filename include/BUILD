@@ -31,5 +31,6 @@ cc_library(
         "pp/serialize/Token.h",
         "pp/serialize/TokenType.h",
         "pp/utility/Exports.h",
+        "pp/utility/Random.h",
     ],
 )
