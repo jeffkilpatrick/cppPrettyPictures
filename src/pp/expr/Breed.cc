@@ -54,5 +54,5 @@ pp::IFunctionPtr pp::Breed(
     const Registry& registry)
 {
     RandomDevice random;
-    return Breed(parent1, parent1, registry, random);
+    return Breed(parent1, parent2, registry, random);
 }

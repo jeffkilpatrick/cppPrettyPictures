@@ -1,4 +1,5 @@
 #include "pp/Export.h"
+#include "pp/expr/Breed.h"
 #include "pp/expr/Eval.h"
 #include "pp/expr/Generate.h"
 #include "pp/fun/Registry.h"
@@ -14,6 +15,7 @@ struct Options {
     size_t Width{640};
     size_t Height{480};
     boost::optional<std::string> Expr;
+    boost::optional<std::string> BreedExpr;
     bool Render{false};
     std::string Png;
     std::string Bmp;
@@ -35,16 +37,16 @@ Options GetOptions(int argc, char* argv[])
 {
     Options opts;
     int c;
-    while ((c = getopt(argc, argv, "b:p:w:h:d:e:")) != -1)
+    while ((c = getopt(argc, argv, "B:P:w:h:d:e:b:")) != -1)
     {
         switch (c)
         {
-        case 'b':
+        case 'B':
             opts.Render = true;
             opts.Bmp = optarg;
             break;
 
-        case 'p':
+        case 'P':
             opts.Render = true;
             opts.Png = optarg;
             break;
@@ -64,6 +66,10 @@ Options GetOptions(int argc, char* argv[])
         case 'e':
             opts.Expr = optarg;
             break;
+
+        case 'b':
+            opts.BreedExpr = optarg;
+            break;
         }
     }
 
@@ -79,6 +85,13 @@ int main(int argc, char* argv[])
     auto e = opts.Expr
         ? pp::Parse(std::string(opts.Expr.get()), registry)
         : RandomExpression(registry, opts.MaxDepth);
+
+    if (opts.BreedExpr)
+    {
+        auto b = pp::Parse(std::string(opts.BreedExpr.get()), registry);
+        e = pp::Breed(e, b, registry);
+    }
+
     std::cout << *e << "\n";
 
     if (opts.Render)
