@@ -1,8 +1,8 @@
-#include "pp/Generate.h"
-#include "pp/Registry.h"
+#include "pp/expr/Generate.h"
 #include "pp/fun/Arity.h"
 #include "pp/fun/IFunction.h"
 #include "pp/fun/IFunctionGenerator.h"
+#include "pp/fun/Registry.h"
 
 using pp::Arity;
 

@@ -42,6 +42,11 @@ ConstantFunctionGenerator::ConstantFunctionGenerator()
     : m_gen{std::random_device{}()}
 { }
 
+pp::IFunctionPtr ConstantFunctionGenerator::Make(const Color& c) const
+{
+    return std::make_unique<ConstantFunction>(c);
+}
+
 pp::IFunctionPtr ConstantFunctionGenerator::Make()
 {
     // Deviation from spec: this is [-1, 1) instead of [-1, 1].
@@ -51,7 +56,7 @@ pp::IFunctionPtr ConstantFunctionGenerator::Make()
     auto c2 = dist(m_gen);
     auto c3 = dist(m_gen);
 
-    return std::make_unique<ConstantFunction>(Color{c1, c2, c3});
+    return Make(Color{c1, c2, c3});
 }
 
 const std::string& ConstantFunctionGenerator::GetName() const

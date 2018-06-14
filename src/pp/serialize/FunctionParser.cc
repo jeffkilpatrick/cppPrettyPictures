@@ -2,9 +2,9 @@
 #include "pp/fun/ConstantFunction.h"
 #include "pp/fun/IFunction.h"
 #include "pp/fun/IFunctionGenerator.h"
+#include "pp/fun/Registry.h"
 #include "pp/serialize/FunctionParser.h"
 #include "pp/serialize/Scanner.h"
-#include "pp/Registry.h"
 
 using pp::TokenType;
 

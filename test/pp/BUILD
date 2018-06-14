@@ -1,11 +1,25 @@
 cc_test(
+    name = "expr-test",
+    size = "small",
+    srcs = [
+        "expr/BreedTest.cc",
+        "expr/EvalTest.cc",
+        "expr/GenerateTest.cc",
+    ],
+    copts = [
+    ],
+    deps = [
+        "//include",
+        "//src/pp",
+        "@gtest//:main",
+    ],
+)
+
+cc_test(
     name = "fun-test",
     size = "small",
     srcs = [
-        "EvalTest.cc",
-        "GenerateTest.cc",
         "ImageTest.cc",
-        "RegistryTest.cc",
         "fun/ArithmeticFunctionTest.cc",
         "fun/ColorSpaceFunctionTest.cc",
         "fun/CoordinateFunctionTest.cc",
@@ -15,6 +29,7 @@ cc_test(
         "fun/LogFunctionTest.cc",
         "fun/NegateFunctionTest.cc",
         "fun/NoiseFunctionTest.cc",
+        "fun/RegistryTest.cc",
         "fun/RoundFunctionTest.cc",
         "fun/TrigFunctionTest.cc",
     ],
@@ -26,7 +41,6 @@ cc_test(
         "@gtest//:main",
     ],
 )
-
 
 cc_test(
     name = "serialize-test",

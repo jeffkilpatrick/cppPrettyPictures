@@ -1,18 +1,14 @@
 #pragma once
 
-#include "pp/utility/Exports.h"
-#include <memory>
+#include "pp/fun/IFunction.h"
 
 namespace pp {
 
     enum class Arity;
-    class IFunction;
 
     class PP_EXPORT IFunctionGenerator
     {
     public:
-        using IFunctionPtr = std::unique_ptr<IFunction>;
-
         virtual ~IFunctionGenerator();
         virtual const std::string& GetName() const = 0;
 

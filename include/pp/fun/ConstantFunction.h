@@ -24,6 +24,7 @@ namespace pp {
     public:
         ConstantFunctionGenerator();
         IFunctionPtr Make() override;
+        IFunctionPtr Make(const Color& c) const;
         const std::string& GetName() const override;
 
     private:

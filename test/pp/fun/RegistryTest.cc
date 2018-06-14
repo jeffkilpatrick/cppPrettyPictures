@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
-#include "pp/Registry.h"
 #include "pp/fun/IFunctionGenerator.h"
+#include "pp/fun/Registry.h"
 
 using pp::Registry;
 

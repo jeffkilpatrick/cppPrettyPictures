@@ -9,7 +9,7 @@
 
 namespace pp {
 
-    using IFunctionPtr = std::unique_ptr<class IFunction>;
+    using IFunctionPtr = std::shared_ptr<class IFunction>;
     using IFunctionPtrVec = std::vector<IFunctionPtr>;
 
     class PP_EXPORT IFunction
@@ -21,6 +21,8 @@ namespace pp {
         virtual const std::string& GetName() const = 0;
 
         const IFunctionPtrVec& GetArgs() const;
+
+        bool Equals(const IFunction& other) const;
 
     protected:
         IFunction();
