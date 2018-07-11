@@ -16,4 +16,5 @@ namespace pp {
         Export the given image to PNG.
     **/
     PP_EXPORT void WritePng(const std::string& path, const pp::Image& img);
+    PP_EXPORT std::vector<uint8_t> WritePng(const pp::Image& img);
 }

@@ -1,5 +1,10 @@
 #import <ScreenSaver/ScreenSaver.h>
 
-@interface PrettyScreenView : ScreenSaverView
+#include "pp/fun/Registry.h"
+
+@interface PrettyScreenView : ScreenSaverView {
+    @private pp::Registry registry;
+    @private size_t maxDepth;
+}
 
 @end
