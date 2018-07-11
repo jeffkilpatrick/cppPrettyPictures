@@ -8,7 +8,6 @@ load(
     "apple_bundle_version",
 )
 
-# TODO-jrk: Apparently, `bazel build //...` targets iOS here. Condition this on target?
 objc_library(
     name = "Sources",
     sdk_frameworks = [

@@ -1,3 +1,5 @@
+#if defined(OS_MACOSX)
+
 #import "PrettyScreenView.h"
 
 #include "pp/Export.h"
@@ -14,21 +16,6 @@
         self->maxDepth = 5;
     }
     return self;
-}
-
-- (void)startAnimation
-{
-    [super startAnimation];
-}
-
-- (void)stopAnimation
-{
-    [super stopAnimation];
-}
-
-- (void)drawRect:(NSRect)rect
-{
-    [super drawRect:rect];
 }
 
 - (void)animateOneFrame
@@ -65,3 +52,5 @@
 }
 
 @end
+
+#endif
