@@ -19,7 +19,7 @@ struct Options {
     bool Render{false};
     std::string Png;
     std::string Bmp;
-    size_t MaxDepth{5};
+    pp::Range Depth{1, 5};
 };
 
 size_t ScanSize(const std::string& str)
@@ -60,7 +60,7 @@ Options GetOptions(int argc, char* argv[])
             break;
 
         case 'd':
-            opts.MaxDepth = ScanSize(optarg);
+            opts.Depth.Max = ScanSize(optarg);
             break;
 
         case 'e':
@@ -84,7 +84,7 @@ int main(int argc, char* argv[])
 
     auto e = opts.Expr
         ? pp::Parse(std::string(opts.Expr.get()), registry)
-        : RandomExpression(registry, opts.MaxDepth);
+        : RandomExpression(registry, opts.Depth);
 
     if (opts.BreedExpr)
     {

@@ -22,6 +22,7 @@ namespace pp {
         IFunctionGeneratorPtr Get(const std::string& name) const;
         IFunctionGeneratorPtr GetRandom();
         IFunctionGeneratorPtr GetRandomNonary();
+        IFunctionGeneratorPtr GetRandomNonNonary();
 
     private:
         std::mt19937 m_gen;

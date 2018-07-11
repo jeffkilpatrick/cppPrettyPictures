@@ -78,3 +78,9 @@ pp::IFunctionGeneratorPtr Registry::GetRandomNonary()
     auto r = m_gen() % 3;
     return m_registry.at(r)();
 }
+
+pp::IFunctionGeneratorPtr Registry::GetRandomNonNonary()
+{
+    auto r = (m_gen() % (m_registry.size() - 3)) + 3;
+    return m_registry.at(r)();
+}

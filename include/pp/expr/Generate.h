@@ -5,5 +5,10 @@
 namespace pp {
     class Registry;
 
-    PP_EXPORT IFunctionPtr RandomExpression(Registry& r, size_t maxDepth = 20);
+    struct Range {
+        uint16_t Min{1};
+        uint16_t Max{5};
+    };
+
+    PP_EXPORT IFunctionPtr RandomExpression(Registry& r, Range depth);
 }

@@ -12,7 +12,7 @@
 @synthesize expression;
 @synthesize image;
 
-- (instancetype)initWithRegistry:(pp::Registry*)r size:(NSSize)s maxDepth:(size_t)maxD;
+- (instancetype)initWithRegistry:(pp::Registry*)r size:(NSSize)s depth:(pp::Range)d;
 {
     self = [super init];
 
@@ -20,7 +20,7 @@
         image = nil;
         registry = r;
         size = s;
-        maxDepth = maxD;
+        depth = d;
     }
 
     return self;
@@ -28,7 +28,7 @@
 
 -(void)main {
     // Create a random image expression
-    auto expr = RandomExpression(*self->registry, self->maxDepth);
+    auto expr = RandomExpression(*self->registry, self->depth);
     auto exprStr = pp::Serialize(*expr);
     expression = [NSString stringWithUTF8String:exprStr.c_str()];
 
@@ -52,7 +52,7 @@
 @implementation PrettyScreenView
 
 -(RenderOperation*)makeRenderer {
-    return [[RenderOperation alloc] initWithRegistry:&registry size:[self bounds].size maxDepth:maxDepth];
+    return [[RenderOperation alloc] initWithRegistry:&registry size:[self bounds].size depth:depth];
 }
 
 - (instancetype)initWithFrame:(NSRect)frame isPreview:(BOOL)isPreview
@@ -60,7 +60,8 @@
     self = [super initWithFrame:frame isPreview:isPreview];
     if (self) {
         [self setAnimationTimeInterval:3.0];
-        self->maxDepth = 5;
+        self->depth.Min = 2;
+        self->depth.Max = 5;
         self->renderQueue = [[NSOperationQueue alloc] init];
         self->renderer = nil;
     }
