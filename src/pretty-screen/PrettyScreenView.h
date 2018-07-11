@@ -9,6 +9,7 @@
 }
 
 @property NSImage* image;
+@property NSString* expression;
 
 - (instancetype)initWithRegistry:(pp::Registry*)registry size:(NSSize)size maxDepth:(size_t)maxDepth;
 @end

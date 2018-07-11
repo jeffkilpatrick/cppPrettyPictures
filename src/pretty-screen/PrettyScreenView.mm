@@ -5,9 +5,11 @@
 #include "pp/Export.h"
 #include "pp/expr/Eval.h"
 #include "pp/expr/Generate.h"
+#include "pp/serialize/FunctionSerializer.h"
 
 @implementation RenderOperation
 
+@synthesize expression;
 @synthesize image;
 
 - (instancetype)initWithRegistry:(pp::Registry*)r size:(NSSize)s maxDepth:(size_t)maxD;
@@ -27,6 +29,8 @@
 -(void)main {
     // Create a random image expression
     auto expr = RandomExpression(*self->registry, self->maxDepth);
+    auto exprStr = pp::Serialize(*expr);
+    expression = [NSString stringWithUTF8String:exprStr.c_str()];
 
     // Turn the expression into pixel values
     auto ppimage = Eval(*expr, size.width, size.height);
@@ -73,6 +77,9 @@
     [renderer waitUntilFinished];
 
     [renderer.image drawInRect:[self bounds]];
+
+    NSDictionary<NSAttributedStringKey, id>* attrs = @{};
+    [renderer.expression drawInRect:[self bounds] withAttributes:attrs];
 
     renderer = [self makeRenderer];
     [renderQueue addOperation:renderer];
