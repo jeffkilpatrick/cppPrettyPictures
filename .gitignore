@@ -1,4 +1,15 @@
+# General
+*.pyc
+
+# Bazel
 bazel-*
+
+# Tulsi
+tulsi-workspace
+tulsigen-*
+*.tulsiconf-user
+
+# Editors
 *.sublime-workspace
-*.tulsiproj
 .vscode
+xcuserdata
