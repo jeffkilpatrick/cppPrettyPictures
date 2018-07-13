@@ -21,6 +21,9 @@ objc_library(
         "PrettyScreenView.h",
         "PrettyScreenView.mm",
     ],
+    xibs = [
+        "ConfigureSheet.xib",
+    ],
 )
 
 apple_bundle_version(

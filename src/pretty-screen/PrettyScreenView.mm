@@ -7,6 +7,15 @@
 #include "pp/expr/Generate.h"
 #include "pp/serialize/FunctionSerializer.h"
 
+static NSString* ModuleName()
+{
+    // TODO-jrk: Get this from the bundle
+    return @"org.bouncingsheep.PrettyScreen";
+}
+
+static NSString* const MinDepthKey = @"MinDepth";
+static NSString* const MaxDepthKey = @"MaxDepth";
+
 @implementation RenderOperation
 
 @synthesize expression;
@@ -31,6 +40,7 @@
     auto expr = RandomExpression(*self->registry, self->depth);
     auto exprStr = pp::Serialize(*expr);
     expression = [NSString stringWithUTF8String:exprStr.c_str()];
+    expression = [NSString stringWithFormat:@"%@\nDepth: (%d, %d)", expression, self->depth.Min, self->depth.Max];
 
     // Turn the expression into pixel values
     auto ppimage = Eval(*expr, size.width, size.height);
@@ -52,16 +62,27 @@
 @implementation PrettyScreenView
 
 -(RenderOperation*)makeRenderer {
-    return [[RenderOperation alloc] initWithRegistry:&registry size:[self bounds].size depth:depth];
+    auto defaults = [ScreenSaverDefaults defaultsForModuleWithName:ModuleName()];
+    pp::Range d;
+    d.Min = [defaults integerForKey:MinDepthKey];
+    d.Max = [defaults integerForKey:MaxDepthKey];
+
+    return [[RenderOperation alloc] initWithRegistry:&registry size:[self bounds].size depth:d];
 }
 
 - (instancetype)initWithFrame:(NSRect)frame isPreview:(BOOL)isPreview
 {
     self = [super initWithFrame:frame isPreview:isPreview];
     if (self) {
+
+        // Register default values
+        auto defaults = [ScreenSaverDefaults defaultsForModuleWithName:ModuleName()];
+        [defaults registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys:
+            [NSNumber numberWithInt:2], MinDepthKey,
+            [NSNumber numberWithInt:5], MaxDepthKey,
+            nil]];
+
         [self setAnimationTimeInterval:3.0];
-        self->depth.Min = 2;
-        self->depth.Max = 5;
         self->renderQueue = [[NSOperationQueue alloc] init];
         self->renderer = nil;
     }
@@ -88,12 +109,41 @@
 
 - (BOOL)hasConfigureSheet
 {
-    return NO;
+    return YES;
 }
 
 - (NSWindow*)configureSheet
 {
-    return nil;
+    if (!configSheet) {
+        // TODO-jrk: don't use deprecated API
+//        if (![[NSBundle mainBundle] loadNibNamed:@"ConfigureSheet" owner:self topLevelObjects:nil]) {
+        if (![NSBundle loadNibNamed:@"ConfigureSheet" owner:self]) {
+            NSLog(@"Failed to load configure sheet");
+            NSBeep();
+        }
+    }
+
+    auto defaults = [ScreenSaverDefaults defaultsForModuleWithName:ModuleName()];
+    [minDepthSlider setIntValue:(int)[defaults integerForKey:MinDepthKey]];
+    [maxDepthSlider setIntValue:(int)[defaults integerForKey:MaxDepthKey]];
+
+    return configSheet;
+}
+
+- (IBAction)cancelClick:(id)sender
+{
+    [[NSApplication sharedApplication] endSheet:configSheet];
+}
+
+- (IBAction)okClick:(id)sender
+{
+    auto defaults = [ScreenSaverDefaults defaultsForModuleWithName:ModuleName()];
+    [defaults setInteger:[minDepthSlider intValue] forKey:MinDepthKey];
+    [defaults setInteger:[maxDepthSlider intValue] forKey:MaxDepthKey];
+
+    [defaults synchronize];
+
+    [[NSApplication sharedApplication] endSheet:configSheet];
 }
 
 @end

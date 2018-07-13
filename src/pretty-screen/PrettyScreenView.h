@@ -17,9 +17,12 @@
 
 
 @interface PrettyScreenView : ScreenSaverView {
-    @private
+    IBOutlet id configSheet;
+    IBOutlet id minDepthSlider;
+    IBOutlet id maxDepthSlider;
+
+@private
     pp::Registry registry;
-    pp::Range depth;
     NSOperationQueue* renderQueue;
     RenderOperation* renderer;
 }

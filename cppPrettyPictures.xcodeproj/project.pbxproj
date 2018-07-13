@@ -99,6 +99,7 @@
 		43D68C28F2BD18AD00000000 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = "src/pretty-screen/Info.plist"; sourceTree = "<group>"; };
 		43D68C28F4B255FE00000000 /* Scanner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Scanner.h; path = include/pp/serialize/Scanner.h; sourceTree = "<group>"; };
 		43D68C28F9DD56CF00000000 /* IFunctionGenerator.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = IFunctionGenerator.cc; path = src/pp/fun/IFunctionGenerator.cc; sourceTree = "<group>"; };
+		4CD0511820F8FBF100DA1F53 /* ConfigureSheet.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ConfigureSheet.xib; path = "src/pretty-screen/ConfigureSheet.xib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -294,6 +295,7 @@
 				43D68C28F2BD18AD00000000 /* Info.plist */,
 				43D68C284C2AE2A300000000 /* PrettyScreenView.h */,
 				43D68C28789A02E900000000 /* PrettyScreenView.mm */,
+				4CD0511820F8FBF100DA1F53 /* ConfigureSheet.xib */,
 			);
 			name = "pretty-screen";
 			sourceTree = "<group>";
