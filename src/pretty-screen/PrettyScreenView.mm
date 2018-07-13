@@ -120,9 +120,7 @@ static NSString* const MaxDepthKey = @"MaxDepth";
 - (NSWindow*)configureSheet
 {
     if (!configSheet) {
-        // TODO-jrk: don't use deprecated API
-//        if (![[NSBundle mainBundle] loadNibNamed:@"ConfigureSheet" owner:self topLevelObjects:nil]) {
-        if (![NSBundle loadNibNamed:@"ConfigureSheet" owner:self]) {
+        if (![SaverBundle() loadNibNamed:@"ConfigureSheet" owner:self topLevelObjects:nil]) {
             NSLog(@"Failed to load configure sheet");
             NSBeep();
         }
