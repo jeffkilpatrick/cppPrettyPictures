@@ -50,7 +50,7 @@ static NSString* const ShowExprKey = @"ShowExpr";
     expression = [NSString stringWithUTF8String:exprStr.c_str()];
 
     // Turn the expression into pixel values
-    auto ppimage = Eval(*expr, size.width, size.height);
+    auto ppimage = Eval(*expr, 2 * size.width, 2 * size.height);
 
     // Turn the image into a PNG. BMP would be faster, but the PNG
     // library more easily supports getting the encoded data without
@@ -118,6 +118,7 @@ static NSString* const ShowExprKey = @"ShowExpr";
         NSDictionary<NSAttributedStringKey, id>* attrs = @{};
         [renderer.expression drawInRect:[self bounds] withAttributes:attrs];
     }
+    NSLog(@"Pretty picture: %@", renderer.expression);
 
     // Start computing the next image
     renderer = [self makeRenderer];
