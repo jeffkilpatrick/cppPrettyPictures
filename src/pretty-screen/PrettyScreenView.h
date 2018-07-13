@@ -24,6 +24,7 @@
     IBOutlet id minDepthLabel;
     IBOutlet id maxDepthSlider;
     IBOutlet id maxDepthLabel;
+    IBOutlet id showExpressionBox;
 
 @private
     pp::Registry registry;

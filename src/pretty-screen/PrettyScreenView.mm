@@ -20,6 +20,7 @@ static NSString* ModuleName()
 static NSString* const DelayKey = @"Delay";
 static NSString* const MinDepthKey = @"MinDepth";
 static NSString* const MaxDepthKey = @"MaxDepth";
+static NSString* const ShowExprKey = @"ShowExpr";
 
 @implementation RenderOperation
 
@@ -43,6 +44,8 @@ static NSString* const MaxDepthKey = @"MaxDepth";
 -(void)main {
     // Create a random image expression
     auto expr = RandomExpression(*self->registry, self->depth);
+
+    // Serialize the expression
     auto exprStr = pp::Serialize(*expr);
     expression = [NSString stringWithUTF8String:exprStr.c_str()];
 
@@ -85,6 +88,7 @@ static NSString* const MaxDepthKey = @"MaxDepth";
             [NSNumber numberWithInt:3], DelayKey,
             [NSNumber numberWithInt:2], MinDepthKey,
             [NSNumber numberWithInt:5], MaxDepthKey,
+            [NSNumber numberWithBool:YES], ShowExprKey,
             nil]];
 
         [self setAnimationTimeInterval:[defaults integerForKey:DelayKey]];
@@ -96,18 +100,26 @@ static NSString* const MaxDepthKey = @"MaxDepth";
 
 - (void)animateOneFrame
 {
+    // Create a render op the first time we run
     if (!renderer) {
         renderer = [self makeRenderer];
         [renderQueue addOperation:renderer];
     }
 
+    // Make sure rendering is finished
     [renderer waitUntilFinished];
 
+    // Draw the image into this view
     [renderer.image drawInRect:[self bounds]];
 
-    NSDictionary<NSAttributedStringKey, id>* attrs = @{};
-    [renderer.expression drawInRect:[self bounds] withAttributes:attrs];
+    // Perhaps display the expression
+    auto defaults = [ScreenSaverDefaults defaultsForModuleWithName:ModuleName()];
+    if ([defaults boolForKey:ShowExprKey]) {
+        NSDictionary<NSAttributedStringKey, id>* attrs = @{};
+        [renderer.expression drawInRect:[self bounds] withAttributes:attrs];
+    }
 
+    // Start computing the next image
     renderer = [self makeRenderer];
     [renderQueue addOperation:renderer];
 }
@@ -133,6 +145,7 @@ static NSString* const MaxDepthKey = @"MaxDepth";
     [minDepthLabel setIntValue:(int)[defaults integerForKey:MinDepthKey]];
     [maxDepthSlider setIntValue:(int)[defaults integerForKey:MaxDepthKey]];
     [maxDepthLabel setIntValue:(int)[defaults integerForKey:MaxDepthKey]];
+    [showExpressionBox setState:[defaults boolForKey:ShowExprKey]];
 
     return configSheet;
 }
@@ -148,6 +161,7 @@ static NSString* const MaxDepthKey = @"MaxDepth";
     [defaults setInteger:[delaySlider intValue] forKey:DelayKey];
     [defaults setInteger:[minDepthSlider intValue] forKey:MinDepthKey];
     [defaults setInteger:[maxDepthSlider intValue] forKey:MaxDepthKey];
+    [defaults setBool:[showExpressionBox state] forKey:ShowExprKey];
 
     [defaults synchronize];
 
