@@ -7,12 +7,17 @@
 #include "pp/expr/Generate.h"
 #include "pp/serialize/FunctionSerializer.h"
 
-static NSString* ModuleName()
+static NSBundle* SaverBundle()
 {
-    // TODO-jrk: Get this from the bundle
-    return @"org.bouncingsheep.PrettyScreen";
+    return [NSBundle bundleForClass:[PrettyScreenView class]];
 }
 
+static NSString* ModuleName()
+{
+    return [SaverBundle() bundleIdentifier];
+}
+
+static NSString* const DelayKey = @"Delay";
 static NSString* const MinDepthKey = @"MinDepth";
 static NSString* const MaxDepthKey = @"MaxDepth";
 
@@ -40,7 +45,6 @@ static NSString* const MaxDepthKey = @"MaxDepth";
     auto expr = RandomExpression(*self->registry, self->depth);
     auto exprStr = pp::Serialize(*expr);
     expression = [NSString stringWithUTF8String:exprStr.c_str()];
-    expression = [NSString stringWithFormat:@"%@\nDepth: (%d, %d)", expression, self->depth.Min, self->depth.Max];
 
     // Turn the expression into pixel values
     auto ppimage = Eval(*expr, size.width, size.height);
@@ -78,11 +82,12 @@ static NSString* const MaxDepthKey = @"MaxDepth";
         // Register default values
         auto defaults = [ScreenSaverDefaults defaultsForModuleWithName:ModuleName()];
         [defaults registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys:
+            [NSNumber numberWithInt:3], DelayKey,
             [NSNumber numberWithInt:2], MinDepthKey,
             [NSNumber numberWithInt:5], MaxDepthKey,
             nil]];
 
-        [self setAnimationTimeInterval:3.0];
+        [self setAnimationTimeInterval:[defaults integerForKey:DelayKey]];
         self->renderQueue = [[NSOperationQueue alloc] init];
         self->renderer = nil;
     }
@@ -124,8 +129,12 @@ static NSString* const MaxDepthKey = @"MaxDepth";
     }
 
     auto defaults = [ScreenSaverDefaults defaultsForModuleWithName:ModuleName()];
+    [delaySlider setIntValue:(int)[defaults integerForKey:DelayKey]];
+    [delayLabel setIntValue:(int)[defaults integerForKey:DelayKey]];
     [minDepthSlider setIntValue:(int)[defaults integerForKey:MinDepthKey]];
+    [minDepthLabel setIntValue:(int)[defaults integerForKey:MinDepthKey]];
     [maxDepthSlider setIntValue:(int)[defaults integerForKey:MaxDepthKey]];
+    [maxDepthLabel setIntValue:(int)[defaults integerForKey:MaxDepthKey]];
 
     return configSheet;
 }
@@ -138,10 +147,13 @@ static NSString* const MaxDepthKey = @"MaxDepth";
 - (IBAction)okClick:(id)sender
 {
     auto defaults = [ScreenSaverDefaults defaultsForModuleWithName:ModuleName()];
+    [defaults setInteger:[delaySlider intValue] forKey:DelayKey];
     [defaults setInteger:[minDepthSlider intValue] forKey:MinDepthKey];
     [defaults setInteger:[maxDepthSlider intValue] forKey:MaxDepthKey];
 
     [defaults synchronize];
+
+    [self setAnimationTimeInterval:[defaults integerForKey:DelayKey]];
 
     [[NSApplication sharedApplication] endSheet:configSheet];
 }

@@ -18,8 +18,12 @@
 
 @interface PrettyScreenView : ScreenSaverView {
     IBOutlet id configSheet;
+    IBOutlet id delaySlider;
+    IBOutlet id delayLabel;
     IBOutlet id minDepthSlider;
+    IBOutlet id minDepthLabel;
     IBOutlet id maxDepthSlider;
+    IBOutlet id maxDepthLabel;
 
 @private
     pp::Registry registry;
