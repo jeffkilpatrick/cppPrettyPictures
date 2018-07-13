@@ -1,0 +1,954 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E6AF49470010C78600000000 /* Token.cc in Sources */ = {isa = PBXBuildFile; fileRef = 43D68C280010C78600000000 /* Token.cc */; };
+		E6AF494700BD9F8B00000000 /* Export.cc in Sources */ = {isa = PBXBuildFile; fileRef = 43D68C2800BD9F8B00000000 /* Export.cc */; };
+		E6AF494709E07D4B00000000 /* Image.cc in Sources */ = {isa = PBXBuildFile; fileRef = 43D68C2809E07D4B00000000 /* Image.cc */; };
+		E6AF49470E4F72B900000000 /* Registry.cc in Sources */ = {isa = PBXBuildFile; fileRef = 43D68C280E4F72B900000000 /* Registry.cc */; };
+		E6AF49471474559600000000 /* Generate.cc in Sources */ = {isa = PBXBuildFile; fileRef = 43D68C281474559600000000 /* Generate.cc */; };
+		E6AF494721E7618300000000 /* Color.cc in Sources */ = {isa = PBXBuildFile; fileRef = 43D68C2821E7618300000000 /* Color.cc */; };
+		E6AF49472576D2C200000000 /* ColorSpaceFunction.cc in Sources */ = {isa = PBXBuildFile; fileRef = 43D68C282576D2C200000000 /* ColorSpaceFunction.cc */; };
+		E6AF4947288DEC1800000000 /* FunctionParser.cc in Sources */ = {isa = PBXBuildFile; fileRef = 43D68C28288DEC1800000000 /* FunctionParser.cc */; };
+		E6AF49472BEDAF3700000000 /* ConstantFunction.cc in Sources */ = {isa = PBXBuildFile; fileRef = 43D68C282BEDAF3700000000 /* ConstantFunction.cc */; };
+		E6AF49473F05857E00000000 /* Breed.cc in Sources */ = {isa = PBXBuildFile; fileRef = 43D68C283F05857E00000000 /* Breed.cc */; };
+		E6AF4947432FC59600000000 /* Random.cc in Sources */ = {isa = PBXBuildFile; fileRef = 43D68C28432FC59600000000 /* Random.cc */; };
+		E6AF49474E06C8D900000000 /* NoiseFunction.cc in Sources */ = {isa = PBXBuildFile; fileRef = 43D68C284E06C8D900000000 /* NoiseFunction.cc */; };
+		E6AF49475C1C47DE00000000 /* FunctionSerializer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 43D68C285C1C47DE00000000 /* FunctionSerializer.cc */; };
+		E6AF494769A3C04400000000 /* Eval.cc in Sources */ = {isa = PBXBuildFile; fileRef = 43D68C2869A3C04400000000 /* Eval.cc */; };
+		E6AF4947789A02E900000000 /* PrettyScreenView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 43D68C28789A02E900000000 /* PrettyScreenView.mm */; };
+		E6AF4947C6EC536700000000 /* IFunction.cc in Sources */ = {isa = PBXBuildFile; fileRef = 43D68C28C6EC536700000000 /* IFunction.cc */; };
+		E6AF4947ECEE6B4100000000 /* InnerProductFunction.cc in Sources */ = {isa = PBXBuildFile; fileRef = 43D68C28ECEE6B4100000000 /* InnerProductFunction.cc */; };
+		E6AF4947F9DD56CF00000000 /* IFunctionGenerator.cc in Sources */ = {isa = PBXBuildFile; fileRef = 43D68C28F9DD56CF00000000 /* IFunctionGenerator.cc */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		819366726921D83500000000 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7E7BD0EAB099F40A00000000 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ECCC95946921D83400000000;
+		};
+		81936672F6B8CEE900000000 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7E7BD0EAB099F40A00000000 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3D31C5E6F6B8CEE800000000;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		43D68C280010C78600000000 /* Token.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Token.cc; path = src/pp/serialize/Token.cc; sourceTree = "<group>"; };
+		43D68C2800BD9F8B00000000 /* Export.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Export.cc; path = src/pp/Export.cc; sourceTree = "<group>"; };
+		43D68C2809E07D4B00000000 /* Image.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Image.cc; path = src/pp/Image.cc; sourceTree = "<group>"; };
+		43D68C280A42FB7B00000000 /* NoiseFunction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NoiseFunction.h; path = include/pp/fun/NoiseFunction.h; sourceTree = "<group>"; };
+		43D68C280E4F72B900000000 /* Registry.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Registry.cc; path = src/pp/fun/Registry.cc; sourceTree = "<group>"; };
+		43D68C280E7B01BE00000000 /* FunctionParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FunctionParser.h; path = include/pp/serialize/FunctionParser.h; sourceTree = "<group>"; };
+		43D68C281015206D00000000 /* Export.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Export.h; path = include/pp/Export.h; sourceTree = "<group>"; };
+		43D68C2811A9E32D00000000 /* Image.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Image.h; path = include/pp/Image.h; sourceTree = "<group>"; };
+		43D68C281432382900000000 /* NegateFunction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NegateFunction.h; path = include/pp/fun/NegateFunction.h; sourceTree = "<group>"; };
+		43D68C281474559600000000 /* Generate.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Generate.cc; path = src/pp/expr/Generate.cc; sourceTree = "<group>"; };
+		43D68C2821E7618300000000 /* Color.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Color.cc; path = src/pp/Color.cc; sourceTree = "<group>"; };
+		43D68C2823A6F24400000000 /* FunctionSerializer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FunctionSerializer.h; path = include/pp/serialize/FunctionSerializer.h; sourceTree = "<group>"; };
+		43D68C282576D2C200000000 /* ColorSpaceFunction.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ColorSpaceFunction.cc; path = src/pp/fun/ColorSpaceFunction.cc; sourceTree = "<group>"; };
+		43D68C28288DEC1800000000 /* FunctionParser.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = FunctionParser.cc; path = src/pp/serialize/FunctionParser.cc; sourceTree = "<group>"; };
+		43D68C282AD9579700000000 /* DissolveFunction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DissolveFunction.h; path = include/pp/fun/DissolveFunction.h; sourceTree = "<group>"; };
+		43D68C282BEDAF3700000000 /* ConstantFunction.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ConstantFunction.cc; path = src/pp/fun/ConstantFunction.cc; sourceTree = "<group>"; };
+		43D68C283DAC380200000000 /* lib_idx_pp_0DD27CFB_macos_min10.13.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = lib_idx_pp_0DD27CFB_macos_min10.13.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		43D68C283F05857E00000000 /* Breed.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Breed.cc; path = src/pp/expr/Breed.cc; sourceTree = "<group>"; };
+		43D68C28432FC59600000000 /* Random.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Random.cc; path = src/pp/utility/Random.cc; sourceTree = "<group>"; };
+		43D68C284C2AE2A300000000 /* PrettyScreenView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PrettyScreenView.h; path = "src/pretty-screen/PrettyScreenView.h"; sourceTree = "<group>"; };
+		43D68C284E06C8D900000000 /* NoiseFunction.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = NoiseFunction.cc; path = src/pp/fun/NoiseFunction.cc; sourceTree = "<group>"; };
+		43D68C28531C442A00000000 /* TokenType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TokenType.h; path = include/pp/serialize/TokenType.h; sourceTree = "<group>"; };
+		43D68C28533D7A4700000000 /* InnerProductFunction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = InnerProductFunction.h; path = include/pp/fun/InnerProductFunction.h; sourceTree = "<group>"; };
+		43D68C285461B7AC00000000 /* Token.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Token.h; path = include/pp/serialize/Token.h; sourceTree = "<group>"; };
+		43D68C2854CE56A900000000 /* TrigFunction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TrigFunction.h; path = include/pp/fun/TrigFunction.h; sourceTree = "<group>"; };
+		43D68C285C1C47DE00000000 /* FunctionSerializer.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = FunctionSerializer.cc; path = src/pp/serialize/FunctionSerializer.cc; sourceTree = "<group>"; };
+		43D68C285F3B299C00000000 /* Breed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Breed.h; path = include/pp/expr/Breed.h; sourceTree = "<group>"; };
+		43D68C28608F4E6A00000000 /* Eval.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Eval.h; path = include/pp/expr/Eval.h; sourceTree = "<group>"; };
+		43D68C2860BC7DE200000000 /* Exports.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Exports.h; path = include/pp/utility/Exports.h; sourceTree = "<group>"; };
+		43D68C286239098F00000000 /* RoundFunction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RoundFunction.h; path = include/pp/fun/RoundFunction.h; sourceTree = "<group>"; };
+		43D68C2869A3C04400000000 /* Eval.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Eval.cc; path = src/pp/expr/Eval.cc; sourceTree = "<group>"; };
+		43D68C286B6425E000000000 /* lib_idx_Sources_23540042_macos_min10.13.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = lib_idx_Sources_23540042_macos_min10.13.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		43D68C286B9EF63400000000 /* Random.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Random.h; path = include/pp/utility/Random.h; sourceTree = "<group>"; };
+		43D68C286C6B080900000000 /* IFunction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IFunction.h; path = include/pp/fun/IFunction.h; sourceTree = "<group>"; };
+		43D68C2873E6E67500000000 /* ArithmeticFunction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ArithmeticFunction.h; path = include/pp/fun/ArithmeticFunction.h; sourceTree = "<group>"; };
+		43D68C287427A52A00000000 /* DefaultFunction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DefaultFunction.h; path = include/pp/fun/DefaultFunction.h; sourceTree = "<group>"; };
+		43D68C28750D52B200000000 /* PrettyScreen-Info-binary.plist */ = {isa = PBXFileReference; explicitFileType = text.plist; name = "PrettyScreen-Info-binary.plist"; path = "tulsi-workspace/_tulsi-includes/x/x/src/pretty-screen/PrettyScreen-Info-binary.plist"; sourceTree = "<group>"; };
+		43D68C28789A02E900000000 /* PrettyScreenView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = PrettyScreenView.mm; path = "src/pretty-screen/PrettyScreenView.mm"; sourceTree = "<group>"; };
+		43D68C2879F8497F00000000 /* ColorSpaceFunction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ColorSpaceFunction.h; path = include/pp/fun/ColorSpaceFunction.h; sourceTree = "<group>"; };
+		43D68C287D658FB100000000 /* IFunctionGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IFunctionGenerator.h; path = include/pp/fun/IFunctionGenerator.h; sourceTree = "<group>"; };
+		43D68C28801021F500000000 /* Arity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Arity.h; path = include/pp/fun/Arity.h; sourceTree = "<group>"; };
+		43D68C2891455B9B00000000 /* ConstantFunction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ConstantFunction.h; path = include/pp/fun/ConstantFunction.h; sourceTree = "<group>"; };
+		43D68C289675AAB400000000 /* Generate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Generate.h; path = include/pp/expr/Generate.h; sourceTree = "<group>"; };
+		43D68C28A2E4A66100000000 /* CoordinateFunction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CoordinateFunction.h; path = include/pp/fun/CoordinateFunction.h; sourceTree = "<group>"; };
+		43D68C28B1163BD700000000 /* BUILD */ = {isa = PBXFileReference; lastKnownFileType = text; name = BUILD; path = "src/pretty-screen/BUILD"; sourceTree = "<group>"; };
+		43D68C28B8E9625700000000 /* BUILD */ = {isa = PBXFileReference; lastKnownFileType = text; name = BUILD; path = src/pp/BUILD; sourceTree = "<group>"; };
+		43D68C28C6EC536700000000 /* IFunction.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = IFunction.cc; path = src/pp/fun/IFunction.cc; sourceTree = "<group>"; };
+		43D68C28C73065E500000000 /* BUILD */ = {isa = PBXFileReference; lastKnownFileType = text; name = BUILD; path = include/BUILD; sourceTree = "<group>"; };
+		43D68C28C7782F0400000000 /* PrettyScreen.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = PrettyScreen.saver; sourceTree = BUILT_PRODUCTS_DIR; };
+		43D68C28D418E9A500000000 /* Color.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Color.h; path = include/pp/Color.h; sourceTree = "<group>"; };
+		43D68C28DA6FD3BF00000000 /* LogFunction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LogFunction.h; path = include/pp/fun/LogFunction.h; sourceTree = "<group>"; };
+		43D68C28ECEE6B4100000000 /* InnerProductFunction.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = InnerProductFunction.cc; path = src/pp/fun/InnerProductFunction.cc; sourceTree = "<group>"; };
+		43D68C28F1FA2F5B00000000 /* Registry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Registry.h; path = include/pp/fun/Registry.h; sourceTree = "<group>"; };
+		43D68C28F2BD18AD00000000 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = "src/pretty-screen/Info.plist"; sourceTree = "<group>"; };
+		43D68C28F4B255FE00000000 /* Scanner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Scanner.h; path = include/pp/serialize/Scanner.h; sourceTree = "<group>"; };
+		43D68C28F9DD56CF00000000 /* IFunctionGenerator.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = IFunctionGenerator.cc; path = src/pp/fun/IFunctionGenerator.cc; sourceTree = "<group>"; };
+		4CD0511820F8FBF100DA1F53 /* ConfigureSheet.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ConfigureSheet.xib; path = "src/pretty-screen/ConfigureSheet.xib"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		966FB6DE01CD2F4A00000000 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				43D68C28C73065E500000000 /* BUILD */,
+				966FB6DE88D1844B00000000 /* pp */,
+			);
+			name = include;
+			sourceTree = "<group>";
+		};
+		966FB6DE0562C2F700000000 /* Indexer */ = {
+			isa = PBXGroup;
+			children = (
+				43D68C286B6425E000000000 /* lib_idx_Sources_23540042_macos_min10.13.a */,
+				43D68C283DAC380200000000 /* lib_idx_pp_0DD27CFB_macos_min10.13.a */,
+			);
+			name = Indexer;
+			sourceTree = "<group>";
+		};
+		966FB6DE07201E0200000000 /* _tulsi-includes */ = {
+			isa = PBXGroup;
+			children = (
+				966FB6DE88DDC84A00000000 /* x */,
+			);
+			name = "_tulsi-includes";
+			sourceTree = "<group>";
+		};
+		966FB6DE2BD1037D00000000 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				966FB6DE0562C2F700000000 /* Indexer */,
+				43D68C28C7782F0400000000 /* PrettyScreen.saver */,
+				966FB6DE07201E0200000000 /* _tulsi-includes */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		966FB6DE5038D2F000000000 /* serialize */ = {
+			isa = PBXGroup;
+			children = (
+				43D68C280E7B01BE00000000 /* FunctionParser.h */,
+				43D68C2823A6F24400000000 /* FunctionSerializer.h */,
+				43D68C28F4B255FE00000000 /* Scanner.h */,
+				43D68C285461B7AC00000000 /* Token.h */,
+				43D68C28531C442A00000000 /* TokenType.h */,
+			);
+			name = serialize;
+			sourceTree = "<group>";
+		};
+		966FB6DE5038D2F000000001 /* serialize */ = {
+			isa = PBXGroup;
+			children = (
+				43D68C28288DEC1800000000 /* FunctionParser.cc */,
+				43D68C285C1C47DE00000000 /* FunctionSerializer.cc */,
+				43D68C280010C78600000000 /* Token.cc */,
+			);
+			name = serialize;
+			sourceTree = "<group>";
+		};
+		966FB6DE6A0660D200000000 /* expr */ = {
+			isa = PBXGroup;
+			children = (
+				43D68C285F3B299C00000000 /* Breed.h */,
+				43D68C28608F4E6A00000000 /* Eval.h */,
+				43D68C289675AAB400000000 /* Generate.h */,
+			);
+			name = expr;
+			sourceTree = "<group>";
+		};
+		966FB6DE6A0660D200000001 /* expr */ = {
+			isa = PBXGroup;
+			children = (
+				43D68C283F05857E00000000 /* Breed.cc */,
+				43D68C2869A3C04400000000 /* Eval.cc */,
+				43D68C281474559600000000 /* Generate.cc */,
+			);
+			name = expr;
+			sourceTree = "<group>";
+		};
+		966FB6DE88D1844B00000000 /* pp */ = {
+			isa = PBXGroup;
+			children = (
+				43D68C28D418E9A500000000 /* Color.h */,
+				43D68C281015206D00000000 /* Export.h */,
+				43D68C2811A9E32D00000000 /* Image.h */,
+				966FB6DE6A0660D200000000 /* expr */,
+				966FB6DE962F698D00000000 /* fun */,
+				966FB6DE5038D2F000000000 /* serialize */,
+				966FB6DEDA89BDBA00000000 /* utility */,
+			);
+			name = pp;
+			sourceTree = "<group>";
+		};
+		966FB6DE88D1844B00000001 /* pp */ = {
+			isa = PBXGroup;
+			children = (
+				43D68C28B8E9625700000000 /* BUILD */,
+				43D68C2821E7618300000000 /* Color.cc */,
+				43D68C2800BD9F8B00000000 /* Export.cc */,
+				43D68C2809E07D4B00000000 /* Image.cc */,
+				966FB6DE6A0660D200000001 /* expr */,
+				966FB6DE962F698D00000001 /* fun */,
+				966FB6DE5038D2F000000001 /* serialize */,
+				966FB6DEDA89BDBA00000001 /* utility */,
+			);
+			name = pp;
+			sourceTree = "<group>";
+		};
+		966FB6DE88DDC84A00000000 /* x */ = {
+			isa = PBXGroup;
+			children = (
+				966FB6DE88DDC84A00000001 /* x */,
+			);
+			name = x;
+			sourceTree = "<group>";
+		};
+		966FB6DE88DDC84A00000001 /* x */ = {
+			isa = PBXGroup;
+			children = (
+				966FB6DE97B5B88200000000 /* src */,
+			);
+			name = x;
+			sourceTree = "<group>";
+		};
+		966FB6DE962F698D00000000 /* fun */ = {
+			isa = PBXGroup;
+			children = (
+				43D68C2873E6E67500000000 /* ArithmeticFunction.h */,
+				43D68C28801021F500000000 /* Arity.h */,
+				43D68C2879F8497F00000000 /* ColorSpaceFunction.h */,
+				43D68C2891455B9B00000000 /* ConstantFunction.h */,
+				43D68C28A2E4A66100000000 /* CoordinateFunction.h */,
+				43D68C287427A52A00000000 /* DefaultFunction.h */,
+				43D68C282AD9579700000000 /* DissolveFunction.h */,
+				43D68C286C6B080900000000 /* IFunction.h */,
+				43D68C287D658FB100000000 /* IFunctionGenerator.h */,
+				43D68C28533D7A4700000000 /* InnerProductFunction.h */,
+				43D68C28DA6FD3BF00000000 /* LogFunction.h */,
+				43D68C281432382900000000 /* NegateFunction.h */,
+				43D68C280A42FB7B00000000 /* NoiseFunction.h */,
+				43D68C28F1FA2F5B00000000 /* Registry.h */,
+				43D68C286239098F00000000 /* RoundFunction.h */,
+				43D68C2854CE56A900000000 /* TrigFunction.h */,
+			);
+			name = fun;
+			sourceTree = "<group>";
+		};
+		966FB6DE962F698D00000001 /* fun */ = {
+			isa = PBXGroup;
+			children = (
+				43D68C282576D2C200000000 /* ColorSpaceFunction.cc */,
+				43D68C282BEDAF3700000000 /* ConstantFunction.cc */,
+				43D68C28C6EC536700000000 /* IFunction.cc */,
+				43D68C28F9DD56CF00000000 /* IFunctionGenerator.cc */,
+				43D68C28ECEE6B4100000000 /* InnerProductFunction.cc */,
+				43D68C284E06C8D900000000 /* NoiseFunction.cc */,
+				43D68C280E4F72B900000000 /* Registry.cc */,
+			);
+			name = fun;
+			sourceTree = "<group>";
+		};
+		966FB6DE97B5B88200000000 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				966FB6DEBDE0AB4300000000 /* pretty-screen */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		966FB6DE97B5B88200000001 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				966FB6DE88D1844B00000001 /* pp */,
+				966FB6DEBDE0AB4300000001 /* pretty-screen */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		966FB6DEBDE0AB4300000000 /* pretty-screen */ = {
+			isa = PBXGroup;
+			children = (
+				43D68C28750D52B200000000 /* PrettyScreen-Info-binary.plist */,
+			);
+			name = "pretty-screen";
+			sourceTree = "<group>";
+		};
+		966FB6DEBDE0AB4300000001 /* pretty-screen */ = {
+			isa = PBXGroup;
+			children = (
+				43D68C28B1163BD700000000 /* BUILD */,
+				43D68C28F2BD18AD00000000 /* Info.plist */,
+				43D68C284C2AE2A300000000 /* PrettyScreenView.h */,
+				43D68C28789A02E900000000 /* PrettyScreenView.mm */,
+				4CD0511820F8FBF100DA1F53 /* ConfigureSheet.xib */,
+			);
+			name = "pretty-screen";
+			sourceTree = "<group>";
+		};
+		966FB6DEDA89BDBA00000000 /* utility */ = {
+			isa = PBXGroup;
+			children = (
+				43D68C2860BC7DE200000000 /* Exports.h */,
+				43D68C286B9EF63400000000 /* Random.h */,
+			);
+			name = utility;
+			sourceTree = "<group>";
+		};
+		966FB6DEDA89BDBA00000001 /* utility */ = {
+			isa = PBXGroup;
+			children = (
+				43D68C28432FC59600000000 /* Random.cc */,
+			);
+			name = utility;
+			sourceTree = "<group>";
+		};
+		966FB6DEE342F69A00000000 /* mainGroup */ = {
+			isa = PBXGroup;
+			children = (
+				966FB6DE2BD1037D00000000 /* Products */,
+				966FB6DE01CD2F4A00000000 /* include */,
+				966FB6DE97B5B88200000001 /* src */,
+			);
+			name = mainGroup;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		ECCC95946921D83400000000 /* _bazel_clean_ */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "\"/Users/kilpatjr/.local/bin/bazel\" \"bazel-bin\"";
+			buildConfigurationList = DE475583CA83BF7E00000000 /* Build configuration list for PBXLegacyTarget "_bazel_clean_" */;
+			buildPhases = (
+			);
+			buildToolPath = "${PROJECT_FILE_PATH}/.tulsi/Scripts/bazel_clean.sh";
+			buildWorkingDirectory = "";
+			dependencies = (
+			);
+			name = _bazel_clean_;
+			passBuildSettingsInEnvironment = 1;
+			productName = _bazel_clean_;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXNativeTarget section */
+		3D31C5E6208BC28E00000000 /* _idx_Sources_23540042_macos_min10.13 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE47558395AE551D00000000 /* Build configuration list for PBXNativeTarget "_idx_Sources_23540042_macos_min10.13" */;
+			buildPhases = (
+				605793E20000000000000000 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4DAD0B426921D83500000000 /* PBXTargetDependency */,
+				4DAD0B42F6B8CEE900000000 /* PBXTargetDependency */,
+			);
+			name = _idx_Sources_23540042_macos_min10.13;
+			productName = _idx_Sources_23540042_macos_min10.13;
+			productReference = 43D68C286B6425E000000000 /* lib_idx_Sources_23540042_macos_min10.13.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		3D31C5E670D6B7AA00000000 /* PrettyScreen */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE47558373489E0B00000000 /* Build configuration list for PBXNativeTarget "PrettyScreen" */;
+			buildPhases = (
+				84B4227136178C9100000000 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4DAD0B426921D83500000000 /* PBXTargetDependency */,
+			);
+			name = PrettyScreen;
+			productName = PrettyScreen;
+			productReference = 43D68C28C7782F0400000000 /* PrettyScreen.saver */;
+			productType = "com.apple.product-type.bundle";
+		};
+		3D31C5E6F6B8CEE800000000 /* _idx_pp_0DD27CFB_macos_min10.13 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE475583F5E460AA00000000 /* Build configuration list for PBXNativeTarget "_idx_pp_0DD27CFB_macos_min10.13" */;
+			buildPhases = (
+				605793E20000000000000001 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4DAD0B426921D83500000000 /* PBXTargetDependency */,
+			);
+			name = _idx_pp_0DD27CFB_macos_min10.13;
+			productName = _idx_pp_0DD27CFB_macos_min10.13;
+			productReference = 43D68C283DAC380200000000 /* lib_idx_pp_0DD27CFB_macos_min10.13.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7E7BD0EAB099F40A00000000 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0900;
+			};
+			buildConfigurationList = DE4755836019814400000000 /* Build configuration list for PBXProject "cppPrettyPictures" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 966FB6DEE342F69A00000000 /* mainGroup */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3D31C5E670D6B7AA00000000 /* PrettyScreen */,
+				ECCC95946921D83400000000 /* _bazel_clean_ */,
+				3D31C5E6208BC28E00000000 /* _idx_Sources_23540042_macos_min10.13 */,
+				3D31C5E6F6B8CEE800000000 /* _idx_pp_0DD27CFB_macos_min10.13 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		84B4227136178C9100000000 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 0;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "set -e\n\nexec \"${PROJECT_FILE_PATH}/.tulsi/Scripts/bazel_build.py\" //src/pretty-screen:PrettyScreen --bazel \"/Users/kilpatjr/.local/bin/bazel\" --bazel_bin_path \"bazel-bin\" --verbose --bazel_options  -- --bazel_startup_options  -- ";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		605793E20000000000000000 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				E6AF4947789A02E900000000 /* PrettyScreenView.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		605793E20000000000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				E6AF494721E7618300000000 /* Color.cc in Sources */,
+				E6AF494700BD9F8B00000000 /* Export.cc in Sources */,
+				E6AF494709E07D4B00000000 /* Image.cc in Sources */,
+				E6AF49473F05857E00000000 /* Breed.cc in Sources */,
+				E6AF494769A3C04400000000 /* Eval.cc in Sources */,
+				E6AF49471474559600000000 /* Generate.cc in Sources */,
+				E6AF49472BEDAF3700000000 /* ConstantFunction.cc in Sources */,
+				E6AF49472576D2C200000000 /* ColorSpaceFunction.cc in Sources */,
+				E6AF4947C6EC536700000000 /* IFunction.cc in Sources */,
+				E6AF4947F9DD56CF00000000 /* IFunctionGenerator.cc in Sources */,
+				E6AF4947ECEE6B4100000000 /* InnerProductFunction.cc in Sources */,
+				E6AF49474E06C8D900000000 /* NoiseFunction.cc in Sources */,
+				E6AF49470E4F72B900000000 /* Registry.cc in Sources */,
+				E6AF4947288DEC1800000000 /* FunctionParser.cc in Sources */,
+				E6AF49475C1C47DE00000000 /* FunctionSerializer.cc in Sources */,
+				E6AF49470010C78600000000 /* Token.cc in Sources */,
+				E6AF4947432FC59600000000 /* Random.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4DAD0B426921D83500000000 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ECCC95946921D83400000000 /* _bazel_clean_ */;
+			targetProxy = 819366726921D83500000000 /* PBXContainerItemProxy */;
+		};
+		4DAD0B42F6B8CEE900000000 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3D31C5E6F6B8CEE800000000 /* _idx_pp_0DD27CFB_macos_min10.13 */;
+			targetProxy = 81936672F6B8CEE900000000 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		44936BD67EED3C4D00000000 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "";
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(TULSI_BWRS)",
+					"$(TULSI_WR)/bazel-bin",
+					"$(TULSI_WR)/bazel-genfiles",
+					"$(TULSI_BWRS)/_tulsi-includes/x/x",
+				);
+				ONLY_ACTIVE_ARCH = YES;
+				PYTHONIOENCODING = utf8;
+				SDKROOT = macosx;
+				TULSI_BWRS = "${TULSI_WR}/tulsi-workspace";
+				TULSI_DIRECT_DBG_PREFIX_MAP = YES;
+				TULSI_PROJECT = cppPrettyPictures;
+				TULSI_VERSION = 0.4.202376144.20180627;
+				TULSI_WR = "$(SRCROOT)";
+			};
+			name = Debug;
+		};
+		44936BD67EED3C4D00000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Stub Launch Image";
+				BAZEL_TARGET = "//src/pretty-screen:PrettyScreen";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				INFOPLIST_FILE = "${PROJECT_FILE_PATH}/.tulsi/Resources/StubInfoPlist.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = org.bouncingsheep.PrettyScreen;
+				PRODUCT_NAME = PrettyScreen;
+				SDKROOT = macosx;
+				TULSI_BUILD_PATH = "src/pretty-screen";
+				TULSI_SWIFT_DEPENDENCY = NO;
+				WRAPPER_EXTENSION = saver;
+			};
+			name = Debug;
+		};
+		44936BD67EED3C4D00000002 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(TULSI_BWRS)/tools/cpp/gcc3",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				OTHER_CFLAGS = (
+					"-D_FORTIFY_SOURCE=1",
+					"-D__DATE__=\"redacted\"",
+					"-D__TIMESTAMP__=\"redacted\"",
+					"-D__TIME__=\"redacted\"",
+				);
+				PRODUCT_NAME = _idx_Sources_23540042_macos_min10.13;
+				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = "$(TULSI_WR)";
+			};
+			name = Debug;
+		};
+		44936BD67EED3C4D00000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(TULSI_BWRS)/tools/cpp/gcc3",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				OTHER_CFLAGS = (
+					"-Werror",
+					"-Wall",
+					"-D_FORTIFY_SOURCE=1",
+					"-D__DATE__=\"redacted\"",
+					"-D__TIMESTAMP__=\"redacted\"",
+					"-D__TIME__=\"redacted\"",
+				);
+				PRODUCT_NAME = _idx_pp_0DD27CFB_macos_min10.13;
+				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = "$(TULSI_WR)";
+			};
+			name = Debug;
+		};
+		44936BD6A3D45CE900000000 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "";
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				GCC_PREPROCESSOR_DEFINITIONS = "NDEBUG=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(TULSI_BWRS)",
+					"$(TULSI_WR)/bazel-bin",
+					"$(TULSI_WR)/bazel-genfiles",
+					"$(TULSI_BWRS)/_tulsi-includes/x/x",
+				);
+				ONLY_ACTIVE_ARCH = YES;
+				PYTHONIOENCODING = utf8;
+				SDKROOT = macosx;
+				TULSI_BWRS = "${TULSI_WR}/tulsi-workspace";
+				TULSI_DIRECT_DBG_PREFIX_MAP = YES;
+				TULSI_MUST_USE_DSYM = YES;
+				TULSI_PROJECT = cppPrettyPictures;
+				TULSI_VERSION = 0.4.202376144.20180627;
+				TULSI_WR = "$(SRCROOT)";
+			};
+			name = Release;
+		};
+		44936BD6A3D45CE900000001 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Stub Launch Image";
+				BAZEL_TARGET = "//src/pretty-screen:PrettyScreen";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_PREPROCESSOR_DEFINITIONS = "NDEBUG=1";
+				INFOPLIST_FILE = "${PROJECT_FILE_PATH}/.tulsi/Resources/StubInfoPlist.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = org.bouncingsheep.PrettyScreen;
+				PRODUCT_NAME = PrettyScreen;
+				SDKROOT = macosx;
+				TULSI_BUILD_PATH = "src/pretty-screen";
+				TULSI_MUST_USE_DSYM = YES;
+				TULSI_SWIFT_DEPENDENCY = NO;
+				WRAPPER_EXTENSION = saver;
+			};
+			name = Release;
+		};
+		44936BD6A3D45CE900000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = "NDEBUG=1";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(TULSI_BWRS)/tools/cpp/gcc3",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				OTHER_CFLAGS = (
+					"-D_FORTIFY_SOURCE=1",
+					"-D__DATE__=\"redacted\"",
+					"-D__TIMESTAMP__=\"redacted\"",
+					"-D__TIME__=\"redacted\"",
+				);
+				PRODUCT_NAME = _idx_Sources_23540042_macos_min10.13;
+				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = "$(TULSI_WR)";
+			};
+			name = Release;
+		};
+		44936BD6A3D45CE900000003 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = "NDEBUG=1";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(TULSI_BWRS)/tools/cpp/gcc3",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				OTHER_CFLAGS = (
+					"-Werror",
+					"-Wall",
+					"-D_FORTIFY_SOURCE=1",
+					"-D__DATE__=\"redacted\"",
+					"-D__TIMESTAMP__=\"redacted\"",
+					"-D__TIME__=\"redacted\"",
+				);
+				PRODUCT_NAME = _idx_pp_0DD27CFB_macos_min10.13;
+				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = "$(TULSI_WR)";
+			};
+			name = Release;
+		};
+		44936BD6C928366700000000 /* __TulsiTestRunner_Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "";
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "-help";
+				OTHER_LDFLAGS = "-help";
+				OTHER_SWIFT_FLAGS = "-help";
+				PYTHONIOENCODING = utf8;
+				SDKROOT = macosx;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(PRODUCT_NAME).h";
+				TULSI_BWRS = "${TULSI_WR}/tulsi-workspace";
+				TULSI_DIRECT_DBG_PREFIX_MAP = YES;
+				TULSI_PROJECT = cppPrettyPictures;
+				TULSI_VERSION = 0.4.202376144.20180627;
+				TULSI_WR = "$(SRCROOT)";
+			};
+			name = __TulsiTestRunner_Debug;
+		};
+		44936BD6C928366700000001 /* __TulsiTestRunner_Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Stub Launch Image";
+				BAZEL_TARGET = "//src/pretty-screen:PrettyScreen";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "${PROJECT_FILE_PATH}/.tulsi/Resources/StubInfoPlist.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "-help";
+				OTHER_LDFLAGS = "-help";
+				OTHER_SWIFT_FLAGS = "-help";
+				PRODUCT_BUNDLE_IDENTIFIER = org.bouncingsheep.PrettyScreen;
+				PRODUCT_NAME = PrettyScreen;
+				SDKROOT = macosx;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(PRODUCT_NAME).h";
+				TULSI_BUILD_PATH = "src/pretty-screen";
+				TULSI_SWIFT_DEPENDENCY = NO;
+				WRAPPER_EXTENSION = saver;
+			};
+			name = __TulsiTestRunner_Debug;
+		};
+		44936BD6FCBCA00300000000 /* __TulsiTestRunner_Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "";
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_PREPROCESSOR_DEFINITIONS = "NDEBUG=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "-help";
+				OTHER_LDFLAGS = "-help";
+				OTHER_SWIFT_FLAGS = "-help";
+				PYTHONIOENCODING = utf8;
+				SDKROOT = macosx;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(PRODUCT_NAME).h";
+				TULSI_BWRS = "${TULSI_WR}/tulsi-workspace";
+				TULSI_DIRECT_DBG_PREFIX_MAP = YES;
+				TULSI_MUST_USE_DSYM = YES;
+				TULSI_PROJECT = cppPrettyPictures;
+				TULSI_VERSION = 0.4.202376144.20180627;
+				TULSI_WR = "$(SRCROOT)";
+			};
+			name = __TulsiTestRunner_Release;
+		};
+		44936BD6FCBCA00300000001 /* __TulsiTestRunner_Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Stub Launch Image";
+				BAZEL_TARGET = "//src/pretty-screen:PrettyScreen";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_PREPROCESSOR_DEFINITIONS = "NDEBUG=1";
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "${PROJECT_FILE_PATH}/.tulsi/Resources/StubInfoPlist.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "-help";
+				OTHER_LDFLAGS = "-help";
+				OTHER_SWIFT_FLAGS = "-help";
+				PRODUCT_BUNDLE_IDENTIFIER = org.bouncingsheep.PrettyScreen;
+				PRODUCT_NAME = PrettyScreen;
+				SDKROOT = macosx;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(PRODUCT_NAME).h";
+				TULSI_BUILD_PATH = "src/pretty-screen";
+				TULSI_MUST_USE_DSYM = YES;
+				TULSI_SWIFT_DEPENDENCY = NO;
+				WRAPPER_EXTENSION = saver;
+			};
+			name = __TulsiTestRunner_Release;
+		};
+		4CD0511020F7AE7300DA1F53 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = _bazel_clean_;
+			};
+			name = Debug;
+		};
+		4CD0511120F7AE7300DA1F53 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				PRODUCT_NAME = _bazel_clean_;
+			};
+			name = Release;
+		};
+		4CD0511220F7AE7300DA1F53 /* __TulsiTestRunner_Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = _bazel_clean_;
+			};
+			name = __TulsiTestRunner_Debug;
+		};
+		4CD0511320F7AE7300DA1F53 /* __TulsiTestRunner_Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = _bazel_clean_;
+			};
+			name = __TulsiTestRunner_Release;
+		};
+		4CD0511420F7AE7300DA1F53 /* __TulsiTestRunner_Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = _idx_Sources_23540042_macos_min10.13;
+			};
+			name = __TulsiTestRunner_Debug;
+		};
+		4CD0511520F7AE7300DA1F53 /* __TulsiTestRunner_Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = _idx_Sources_23540042_macos_min10.13;
+			};
+			name = __TulsiTestRunner_Release;
+		};
+		4CD0511620F7AE7300DA1F53 /* __TulsiTestRunner_Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = _idx_pp_0DD27CFB_macos_min10.13;
+			};
+			name = __TulsiTestRunner_Debug;
+		};
+		4CD0511720F7AE7300DA1F53 /* __TulsiTestRunner_Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = _idx_pp_0DD27CFB_macos_min10.13;
+			};
+			name = __TulsiTestRunner_Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DE4755836019814400000000 /* Build configuration list for PBXProject "cppPrettyPictures" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44936BD67EED3C4D00000000 /* Debug */,
+				44936BD6A3D45CE900000000 /* Release */,
+				44936BD6C928366700000000 /* __TulsiTestRunner_Debug */,
+				44936BD6FCBCA00300000000 /* __TulsiTestRunner_Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DE47558373489E0B00000000 /* Build configuration list for PBXNativeTarget "PrettyScreen" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44936BD67EED3C4D00000001 /* Debug */,
+				44936BD6A3D45CE900000001 /* Release */,
+				44936BD6C928366700000001 /* __TulsiTestRunner_Debug */,
+				44936BD6FCBCA00300000001 /* __TulsiTestRunner_Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DE47558395AE551D00000000 /* Build configuration list for PBXNativeTarget "_idx_Sources_23540042_macos_min10.13" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44936BD67EED3C4D00000002 /* Debug */,
+				44936BD6A3D45CE900000002 /* Release */,
+				4CD0511420F7AE7300DA1F53 /* __TulsiTestRunner_Debug */,
+				4CD0511520F7AE7300DA1F53 /* __TulsiTestRunner_Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DE475583CA83BF7E00000000 /* Build configuration list for PBXLegacyTarget "_bazel_clean_" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CD0511020F7AE7300DA1F53 /* Debug */,
+				4CD0511120F7AE7300DA1F53 /* Release */,
+				4CD0511220F7AE7300DA1F53 /* __TulsiTestRunner_Debug */,
+				4CD0511320F7AE7300DA1F53 /* __TulsiTestRunner_Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DE475583F5E460AA00000000 /* Build configuration list for PBXNativeTarget "_idx_pp_0DD27CFB_macos_min10.13" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44936BD67EED3C4D00000003 /* Debug */,
+				44936BD6A3D45CE900000003 /* Release */,
+				4CD0511620F7AE7300DA1F53 /* __TulsiTestRunner_Debug */,
+				4CD0511720F7AE7300DA1F53 /* __TulsiTestRunner_Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7E7BD0EAB099F40A00000000 /* Project object */;
+}

@@ -1,0 +1,12 @@
+{
+  "configDefaults" : {
+    "optionSet" : {
+
+    }
+  },
+  "projectName" : "cppPrettyPictures",
+  "packages" : [
+    "src/pretty-screen"
+  ],
+  "workspaceRoot" : ".."
+}

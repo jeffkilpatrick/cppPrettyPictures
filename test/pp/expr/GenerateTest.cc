@@ -9,7 +9,7 @@ using pp::Registry;
 
 TEST(GenerateTest, Basics) {
     Registry r;
-    auto e = RandomExpression(r);
+    auto e = RandomExpression(r, pp::Range{});
     ASSERT_NE(nullptr, e);
 
     EXPECT_FALSE(Serialize(*e).empty());

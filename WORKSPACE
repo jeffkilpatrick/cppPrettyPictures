@@ -30,3 +30,15 @@ new_http_archive(
     build_file = "lodepng.BUILD",
     strip_prefix = "lodepng-81cf5de55f7eb3b5bf9116400a8adc050bde6633",
 )
+
+git_repository(
+    name = "build_bazel_rules_apple",
+    remote = "https://github.com/bazelbuild/rules_apple.git",
+    tag = "0.6.0",
+)
+
+load(
+    "@build_bazel_rules_apple//apple:repositories.bzl",
+    "apple_rules_dependencies",
+)
+apple_rules_dependencies()

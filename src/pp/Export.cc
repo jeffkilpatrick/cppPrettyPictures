@@ -32,3 +32,17 @@ void pp::WritePng(const std::string& path, const pp::Image& img)
         throw std::runtime_error(msg);
     }
 }
+
+std::vector<uint8_t> pp::WritePng(const pp::Image& img)
+{
+    std::vector<uint8_t> encodedData;
+
+    auto error = lodepng::encode(encodedData, img.ToRGBA(), img.GetWidth(), img.GetHeight());
+    if (error)
+    {
+        std::string msg = std::string("Failed to encode: ") + lodepng_error_text(error);
+        throw std::runtime_error(msg);
+    }
+
+    return encodedData;
+}

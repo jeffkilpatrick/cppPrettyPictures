@@ -1,0 +1,51 @@
+{
+  "sourceFilters" : [
+    "include/...",
+    "src/..."
+  ],
+  "buildTargets" : [
+    "//src/pretty-screen:PrettyScreen"
+  ],
+  "projectName" : "cppPrettyPictures",
+  "optionSet" : {
+    "BazelBuildOptionsDebug" : {
+      "p" : ""
+    },
+    "BazelBuildStartupOptionsRelease" : {
+      "p" : ""
+    },
+    "LaunchActionPreActionScript" : {
+      "p" : ""
+    },
+    "LaunchActionPostActionScript" : {
+      "p" : ""
+    },
+    "EnvironmentVariables" : {
+      "p" : ""
+    },
+    "BuildActionPreActionScript" : {
+      "p" : ""
+    },
+    "CommandlineArguments" : {
+      "p" : ""
+    },
+    "TestActionPreActionScript" : {
+      "p" : ""
+    },
+    "TestActionPostActionScript" : {
+      "p" : ""
+    },
+    "BazelBuildStartupOptionsDebug" : {
+      "p" : ""
+    },
+    "BuildActionPostActionScript" : {
+      "p" : ""
+    },
+    "BazelBuildOptionsRelease" : {
+      "p" : ""
+    }
+  },
+  "additionalFilePaths" : [
+    "src/pretty-screen/BUILD"
+  ]
+}
