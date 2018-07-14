@@ -22,7 +22,22 @@ static NSString* const MinDepthKey = @"MinDepth";
 static NSString* const MaxDepthKey = @"MaxDepth";
 static NSString* const ShowExprKey = @"ShowExpr";
 
+#pragma mark ------------------------------------------------------------------
+
+@interface RenderOperation : NSOperation
+
+@property (strong, nonatomic) NSImage* image;
+@property (strong, nonatomic) NSString* expression;
+
+- (instancetype)initWithRegistry:(pp::Registry*)registry size:(NSSize)size depth:(pp::Range)depth;
+@end
+
 @implementation RenderOperation
+{
+    pp::Registry* _registry;
+    NSSize _size;
+    pp::Range _depth;
+}
 
 @synthesize expression;
 @synthesize image;
@@ -33,9 +48,9 @@ static NSString* const ShowExprKey = @"ShowExpr";
 
     if (self) {
         image = nil;
-        registry = r;
-        size = s;
-        depth = d;
+        _registry = r;
+        _size = s;
+        _depth = d;
     }
 
     return self;
@@ -43,14 +58,14 @@ static NSString* const ShowExprKey = @"ShowExpr";
 
 -(void)main {
     // Create a random image expression
-    auto expr = RandomExpression(*self->registry, self->depth);
+    auto expr = RandomExpression(*_registry, _depth);
 
     // Serialize the expression
     auto exprStr = pp::Serialize(*expr);
     expression = [NSString stringWithUTF8String:exprStr.c_str()];
 
     // Turn the expression into pixel values
-    auto ppimage = Eval(*expr, 2 * size.width, 2 * size.height);
+    auto ppimage = Eval(*expr, 2 * _size.width, 2 * _size.height);
 
     // Turn the image into a PNG. BMP would be faster, but the PNG
     // library more easily supports getting the encoded data without
@@ -67,6 +82,11 @@ static NSString* const ShowExprKey = @"ShowExpr";
 #pragma mark ------------------------------------------------------------------
 
 @implementation PrettyScreenView
+{
+    pp::Registry _registry;
+    NSOperationQueue* _renderQueue;
+    RenderOperation* _renderer;
+}
 
 -(RenderOperation*)makeRenderer {
     auto defaults = [ScreenSaverDefaults defaultsForModuleWithName:ModuleName()];
@@ -74,7 +94,7 @@ static NSString* const ShowExprKey = @"ShowExpr";
     d.Min = [defaults integerForKey:MinDepthKey];
     d.Max = [defaults integerForKey:MaxDepthKey];
 
-    return [[RenderOperation alloc] initWithRegistry:&registry size:[self bounds].size depth:d];
+    return [[RenderOperation alloc] initWithRegistry:&_registry size:[self bounds].size depth:d];
 }
 
 - (instancetype)initWithFrame:(NSRect)frame isPreview:(BOOL)isPreview
@@ -92,37 +112,38 @@ static NSString* const ShowExprKey = @"ShowExpr";
             nil]];
 
         [self setAnimationTimeInterval:[defaults integerForKey:DelayKey]];
-        self->renderQueue = [[NSOperationQueue alloc] init];
-        self->renderer = nil;
+        _renderQueue = [[NSOperationQueue alloc] init];
+        _renderer = nil;
     }
+
     return self;
 }
 
 - (void)animateOneFrame
 {
     // Create a render op the first time we run
-    if (!renderer) {
-        renderer = [self makeRenderer];
-        [renderQueue addOperation:renderer];
+    if (!_renderer) {
+        _renderer = [self makeRenderer];
+        [_renderQueue addOperation:_renderer];
     }
 
     // Make sure rendering is finished
-    [renderer waitUntilFinished];
+    [_renderer waitUntilFinished];
 
     // Draw the image into this view
-    [renderer.image drawInRect:[self bounds]];
+    [_renderer.image drawInRect:[self bounds]];
 
     // Perhaps display the expression
     auto defaults = [ScreenSaverDefaults defaultsForModuleWithName:ModuleName()];
     if ([defaults boolForKey:ShowExprKey]) {
         NSDictionary<NSAttributedStringKey, id>* attrs = @{};
-        [renderer.expression drawInRect:[self bounds] withAttributes:attrs];
+        [_renderer.expression drawInRect:[self bounds] withAttributes:attrs];
     }
-    NSLog(@"Pretty picture: %@", renderer.expression);
+    NSLog(@"Pretty picture: %@", _renderer.expression);
 
     // Start computing the next image
-    renderer = [self makeRenderer];
-    [renderQueue addOperation:renderer];
+    _renderer = [self makeRenderer];
+    [_renderQueue addOperation:_renderer];
 }
 
 - (BOOL)hasConfigureSheet
