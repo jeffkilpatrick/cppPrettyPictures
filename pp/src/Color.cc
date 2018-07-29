@@ -8,11 +8,12 @@ bool pp::operator==(const Color& a, const Color& b)
 {
     return a.C1 == b.C1
         && a.C2 == b.C2
-        && a.C3 == b.C3;
+        && a.C3 == b.C3
+        && a.A == b.A;
 }
 
 std::ostream& pp::operator<<(std::ostream& s, const Color& c)
 {
-    s << "Color{" << c.C1 << ", " << c.C2 << ", " << c.C3 << "}";
+    s << "Color{" << c.C1 << ", " << c.C2 << ", " << c.C3 << ", " << c.A << "}";
     return s;
 }
