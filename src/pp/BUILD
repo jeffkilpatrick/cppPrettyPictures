@@ -6,6 +6,7 @@ cc_library(
         "//include",
         "@boost//:variant",
         "@libbmp//:main",
+        "@libpng//:main",
         "@lodepng//:main",
     ],
     srcs = [
