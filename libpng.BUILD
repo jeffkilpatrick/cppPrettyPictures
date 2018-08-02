@@ -40,6 +40,6 @@ cc_library(
     includes = [
     	"."
     ],
-    linkopts = ["-lm"],
+    linkopts = ["-lm", "-lz"],
     visibility = ["//visibility:public"],
 )
