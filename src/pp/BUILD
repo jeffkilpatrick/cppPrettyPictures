@@ -7,7 +7,6 @@ cc_library(
         "@boost//:variant",
         "@libbmp//:main",
         "@libpng//:main",
-        "@lodepng//:main",
     ],
     srcs = [
         "Color.cc",
