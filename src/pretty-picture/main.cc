@@ -92,7 +92,8 @@ int main(int argc, char* argv[])
         e = pp::Breed(e, b, registry);
     }
 
-    std::cout << *e << "\n";
+    auto exprStr = pp::Serialize(*e);
+    std::cout << exprStr << "\n";
 
     if (opts.Render)
     {
@@ -105,7 +106,7 @@ int main(int argc, char* argv[])
 
         if (!opts.Png.empty())
         {
-            pp::WritePng(opts.Png, image);
+            pp::WritePng(opts.Png, image, exprStr);
         }
     }
 

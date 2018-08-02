@@ -55,7 +55,7 @@ static NSString* const ShowExprKey = @"ShowExpr";
     // Turn the image into a PNG. BMP would be faster, but the PNG
     // library more easily supports getting the encoded data without
     // creating a temporary file.
-    auto pngData = pp::WritePng(ppimage);
+    auto pngData = pp::WritePng(ppimage, exprStr);
 
     // Turn the PNG into an NSImage
     auto nsdata = [NSData dataWithBytes:pngData.data() length:pngData.size()];

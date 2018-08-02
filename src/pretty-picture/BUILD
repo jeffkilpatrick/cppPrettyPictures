@@ -9,7 +9,5 @@ cc_binary(
         "//include",
         "//src/pp",
         "@boost//:optional",
-        "@libbmp//:main",
-        "@lodepng//:main",
     ]
 )
