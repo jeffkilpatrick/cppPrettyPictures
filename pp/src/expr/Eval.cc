@@ -10,14 +10,14 @@ pp::Image pp::Eval(const pp::IFunction& f, size_t width, size_t height)
     xs.reserve(width);
     for (int x = 0; x < width; ++x)
     {
-        int half_width = width / 2;
+        int half_width = static_cast<int>(width) / 2;
         auto x_pos = (x - half_width) / static_cast<float>(half_width);
         xs.push_back(x_pos);
     }
 
     for (int y = 0; y < height; ++y)
     {
-        int half_height = height / 2;
+        int half_height = static_cast<int>(height) / 2;
         auto y_pos = (y - half_height) / static_cast<float>(half_height);
 
         f.EvalRow(xs, y_pos, img.GetRow(y));

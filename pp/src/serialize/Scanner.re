@@ -80,6 +80,4 @@ Token Scanner::NextImpl()
         "-"? [0-9]? "." [0-9]+         { return LexReal(start, m_cursor); }
         letter ("-"|letter|[0-9])*     { return LexIdentifier(start, m_cursor); }
     */
-
-    throw std::domain_error("Illegal token");
 }
