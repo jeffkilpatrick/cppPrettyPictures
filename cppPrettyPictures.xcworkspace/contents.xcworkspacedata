@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:PrettyViewer/PrettyViewer.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:external/googletest/googletest/xcode/gtest.xcodeproj">
    </FileRef>
    <FileRef

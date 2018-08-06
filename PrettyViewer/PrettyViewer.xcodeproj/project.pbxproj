@@ -7,143 +7,159 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4C6501D32118B439002FCAD4 /* main.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4C6501D22118B439002FCAD4 /* main.cc */; };
-		4C65023E2118BF21002FCAD4 /* libpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C65023D2118BF21002FCAD4 /* libpp.a */; };
-		4C6502402118BF39002FCAD4 /* libpng16.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C65023F2118BF39002FCAD4 /* libpng16.a */; };
+		4C2430782119090100A4930E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2430772119090100A4930E /* AppDelegate.m */; };
+		4C24307B2119090100A4930E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C24307A2119090100A4930E /* ViewController.m */; };
+		4C24307D2119090200A4930E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C24307C2119090200A4930E /* Assets.xcassets */; };
+		4C2430802119090200A4930E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C24307E2119090200A4930E /* Main.storyboard */; };
+		4C2430832119090200A4930E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2430822119090200A4930E /* main.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		4C6501C52118B3FD002FCAD4 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		4C6501C72118B3FD002FCAD4 /* pretty-picture */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "pretty-picture"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4C6501D22118B439002FCAD4 /* main.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cc; sourceTree = "<group>"; };
-		4C6501D52118B44E002FCAD4 /* libpp.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libpp.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		4C65023D2118BF21002FCAD4 /* libpp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libpp.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		4C65023F2118BF39002FCAD4 /* libpng16.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpng16.a; path = ../../../../../usr/local/Cellar/libpng/1.6.35/lib/libpng16.a; sourceTree = "<group>"; };
+		4C2430732119090100A4930E /* PrettyViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PrettyViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C2430762119090100A4930E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4C2430772119090100A4930E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4C2430792119090100A4930E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		4C24307A2119090100A4930E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		4C24307C2119090200A4930E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4C24307F2119090200A4930E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4C2430812119090200A4930E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C2430822119090200A4930E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4C2430842119090200A4930E /* PrettyViewer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PrettyViewer.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		4C6501C42118B3FD002FCAD4 /* Frameworks */ = {
+		4C2430702119090100A4930E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C6502402118BF39002FCAD4 /* libpng16.a in Frameworks */,
-				4C65023E2118BF21002FCAD4 /* libpp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4C6501BE2118B3FD002FCAD4 = {
+		4C24306A2119090100A4930E = {
 			isa = PBXGroup;
 			children = (
-				4C6501D12118B439002FCAD4 /* src */,
-				4C6501C82118B3FD002FCAD4 /* Products */,
-				4C6501D42118B44E002FCAD4 /* Frameworks */,
+				4C2430752119090100A4930E /* PrettyViewer */,
+				4C2430742119090100A4930E /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		4C6501C82118B3FD002FCAD4 /* Products */ = {
+		4C2430742119090100A4930E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4C6501C72118B3FD002FCAD4 /* pretty-picture */,
+				4C2430732119090100A4930E /* PrettyViewer.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4C6501D12118B439002FCAD4 /* src */ = {
+		4C2430752119090100A4930E /* PrettyViewer */ = {
 			isa = PBXGroup;
 			children = (
-				4C6501D22118B439002FCAD4 /* main.cc */,
+				4C2430762119090100A4930E /* AppDelegate.h */,
+				4C2430772119090100A4930E /* AppDelegate.m */,
+				4C2430792119090100A4930E /* ViewController.h */,
+				4C24307A2119090100A4930E /* ViewController.m */,
+				4C24307C2119090200A4930E /* Assets.xcassets */,
+				4C24307E2119090200A4930E /* Main.storyboard */,
+				4C2430812119090200A4930E /* Info.plist */,
+				4C2430822119090200A4930E /* main.m */,
+				4C2430842119090200A4930E /* PrettyViewer.entitlements */,
 			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		4C6501D42118B44E002FCAD4 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				4C65023F2118BF39002FCAD4 /* libpng16.a */,
-				4C65023D2118BF21002FCAD4 /* libpp.a */,
-				4C6501D52118B44E002FCAD4 /* libpp.dylib */,
-			);
-			name = Frameworks;
+			path = PrettyViewer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4C6501C62118B3FD002FCAD4 /* pretty-picture */ = {
+		4C2430722119090100A4930E /* PrettyViewer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4C6501CE2118B3FD002FCAD4 /* Build configuration list for PBXNativeTarget "pretty-picture" */;
+			buildConfigurationList = 4C2430872119090200A4930E /* Build configuration list for PBXNativeTarget "PrettyViewer" */;
 			buildPhases = (
-				4C6501C32118B3FD002FCAD4 /* Sources */,
-				4C6501C42118B3FD002FCAD4 /* Frameworks */,
-				4C6501C52118B3FD002FCAD4 /* CopyFiles */,
+				4C24306F2119090100A4930E /* Sources */,
+				4C2430702119090100A4930E /* Frameworks */,
+				4C2430712119090100A4930E /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "pretty-picture";
-			productName = "pretty-picture";
-			productReference = 4C6501C72118B3FD002FCAD4 /* pretty-picture */;
-			productType = "com.apple.product-type.tool";
+			name = PrettyViewer;
+			productName = PrettyViewer;
+			productReference = 4C2430732119090100A4930E /* PrettyViewer.app */;
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		4C6501BF2118B3FD002FCAD4 /* Project object */ = {
+		4C24306B2119090100A4930E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Jeff Kilpatrick";
 				TargetAttributes = {
-					4C6501C62118B3FD002FCAD4 = {
+					4C2430722119090100A4930E = {
 						CreatedOnToolsVersion = 9.4.1;
 					};
 				};
 			};
-			buildConfigurationList = 4C6501C22118B3FD002FCAD4 /* Build configuration list for PBXProject "pretty-picture" */;
+			buildConfigurationList = 4C24306E2119090100A4930E /* Build configuration list for PBXProject "PrettyViewer" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
-			mainGroup = 4C6501BE2118B3FD002FCAD4;
-			productRefGroup = 4C6501C82118B3FD002FCAD4 /* Products */;
+			mainGroup = 4C24306A2119090100A4930E;
+			productRefGroup = 4C2430742119090100A4930E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4C6501C62118B3FD002FCAD4 /* pretty-picture */,
+				4C2430722119090100A4930E /* PrettyViewer */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		4C2430712119090100A4930E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C24307D2119090200A4930E /* Assets.xcassets in Resources */,
+				4C2430802119090200A4930E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		4C6501C32118B3FD002FCAD4 /* Sources */ = {
+		4C24306F2119090100A4930E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C6501D32118B439002FCAD4 /* main.cc in Sources */,
+				4C24307B2119090100A4930E /* ViewController.m in Sources */,
+				4C2430832119090200A4930E /* main.m in Sources */,
+				4C2430782119090100A4930E /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		4C24307E2119090200A4930E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C24307F2119090200A4930E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
-		4C6501CC2118B3FD002FCAD4 /* Debug */ = {
+		4C2430852119090200A4930E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -194,10 +210,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/../pp/include",
-					/usr/local/include,
-				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -205,7 +217,7 @@
 			};
 			name = Debug;
 		};
-		4C6501CD2118B3FD002FCAD4 /* Release */ = {
+		4C2430862119090200A4930E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -250,38 +262,44 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/../pp/include",
-					/usr/local/include,
-				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};
 			name = Release;
 		};
-		4C6501CF2118B3FD002FCAD4 /* Debug */ = {
+		4C2430882119090200A4930E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PrettyViewer/PrettyViewer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = N6FX62WWJ8;
-				LIBRARY_SEARCH_PATHS = (
+				INFOPLIST_FILE = PrettyViewer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
-					/usr/local/Cellar/libpng/1.6.35/lib,
+					"@executable_path/../Frameworks",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.bouncingsheep.PrettyViewer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		4C6501D02118B3FD002FCAD4 /* Release */ = {
+		4C2430892119090200A4930E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PrettyViewer/PrettyViewer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = N6FX62WWJ8;
-				LIBRARY_SEARCH_PATHS = (
+				INFOPLIST_FILE = PrettyViewer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
-					/usr/local/Cellar/libpng/1.6.35/lib,
+					"@executable_path/../Frameworks",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.bouncingsheep.PrettyViewer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -289,25 +307,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4C6501C22118B3FD002FCAD4 /* Build configuration list for PBXProject "pretty-picture" */ = {
+		4C24306E2119090100A4930E /* Build configuration list for PBXProject "PrettyViewer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4C6501CC2118B3FD002FCAD4 /* Debug */,
-				4C6501CD2118B3FD002FCAD4 /* Release */,
+				4C2430852119090200A4930E /* Debug */,
+				4C2430862119090200A4930E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4C6501CE2118B3FD002FCAD4 /* Build configuration list for PBXNativeTarget "pretty-picture" */ = {
+		4C2430872119090200A4930E /* Build configuration list for PBXNativeTarget "PrettyViewer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4C6501CF2118B3FD002FCAD4 /* Debug */,
-				4C6501D02118B3FD002FCAD4 /* Release */,
+				4C2430882119090200A4930E /* Debug */,
+				4C2430892119090200A4930E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 4C6501BF2118B3FD002FCAD4 /* Project object */;
+	rootObject = 4C24306B2119090100A4930E /* Project object */;
 }

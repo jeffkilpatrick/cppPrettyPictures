@@ -1,11 +1,6 @@
-#if defined(OS_MACOSX)
-
 #import "PrettyScreenView.h"
 
-#include "pp/Export.h"
-#include "pp/expr/Eval.h"
-#include "pp/expr/Generate.h"
-#include "pp/serialize/FunctionSerializer.h"
+#include "pp/expr/EvalOperation.h"
 
 static NSBundle* SaverBundle()
 {
@@ -22,79 +17,20 @@ static NSString* const MinDepthKey = @"MinDepth";
 static NSString* const MaxDepthKey = @"MaxDepth";
 static NSString* const ShowExprKey = @"ShowExpr";
 
-#pragma mark ------------------------------------------------------------------
-
-@interface RenderOperation : NSOperation
-
-@property (strong, nonatomic) NSImage* image;
-@property (strong, nonatomic) NSString* expression;
-
-- (instancetype)initWithRegistry:(pp::Registry*)registry size:(NSSize)size depth:(pp::Range)depth;
-@end
-
-@implementation RenderOperation
-{
-    pp::Registry* _registry;
-    NSSize _size;
-    pp::Range _depth;
-}
-
-@synthesize expression;
-@synthesize image;
-
-- (instancetype)initWithRegistry:(pp::Registry*)r size:(NSSize)s depth:(pp::Range)d;
-{
-    self = [super init];
-
-    if (self) {
-        image = nil;
-        _registry = r;
-        _size = s;
-        _depth = d;
-    }
-
-    return self;
-}
-
--(void)main {
-    // Create a random image expression
-    auto expr = RandomExpression(*_registry, _depth);
-
-    // Serialize the expression
-    auto exprStr = pp::Serialize(*expr);
-    expression = [NSString stringWithUTF8String:exprStr.c_str()];
-
-    // Turn the expression into pixel values
-    auto ppimage = Eval(*expr, 2 * _size.width, 2 * _size.height);
-
-    // Turn the image into a PNG. BMP would be faster, but the PNG
-    // library more easily supports getting the encoded data without
-    // creating a temporary file.
-    auto pngData = pp::WritePng(ppimage, exprStr);
-
-    // Turn the PNG into an NSImage
-    auto nsdata = [NSData dataWithBytes:pngData.data() length:pngData.size()];
-    image = [[NSImage alloc] initWithData:nsdata];
-}
-
-@end
-
-#pragma mark ------------------------------------------------------------------
-
 @implementation PrettyScreenView
 {
     pp::Registry _registry;
     NSOperationQueue* _renderQueue;
-    RenderOperation* _renderer;
+    EvalOperation* _renderer;
 }
 
--(RenderOperation*)makeRenderer {
+-(EvalOperation*)makeEvaluator {
     auto defaults = [ScreenSaverDefaults defaultsForModuleWithName:ModuleName()];
     pp::Range d;
     d.Min = [defaults integerForKey:MinDepthKey];
     d.Max = [defaults integerForKey:MaxDepthKey];
 
-    return [[RenderOperation alloc] initWithRegistry:&_registry size:[self bounds].size depth:d];
+    return [[EvalOperation alloc] initWithRegistry:&_registry size:[self bounds].size depth:d];
 }
 
 - (instancetype)initWithFrame:(NSRect)frame isPreview:(BOOL)isPreview
@@ -123,7 +59,7 @@ static NSString* const ShowExprKey = @"ShowExpr";
 {
     // Create a render op the first time we run
     if (!_renderer) {
-        _renderer = [self makeRenderer];
+        _renderer = [self makeEvaluator];
         [_renderQueue addOperation:_renderer];
     }
 
@@ -142,7 +78,7 @@ static NSString* const ShowExprKey = @"ShowExpr";
     NSLog(@"Pretty picture: %@", _renderer.expression);
 
     // Start computing the next image
-    _renderer = [self makeRenderer];
+    _renderer = [self makeEvaluator];
     [_renderQueue addOperation:_renderer];
 }
 
@@ -193,5 +129,3 @@ static NSString* const ShowExprKey = @"ShowExpr";
 }
 
 @end
-
-#endif

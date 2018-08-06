@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4C24304F2118FE3A00A4930E /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C24304E2118FE3A00A4930E /* gtest.framework */; };
 		4C2430512118FE4F00A4930E /* libgtest_main.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C2430502118FE4F00A4930E /* libgtest_main.a */; };
+		4C24308E2119149E00A4930E /* EvalOperation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4C24308D2119149E00A4930E /* EvalOperation.mm */; };
 		4C65022A2118BE29002FCAD4 /* Eval.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4C65011A2118A7C1002FCAD4 /* Eval.cc */; };
 		4C65022B2118BE29002FCAD4 /* Breed.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4C65011B2118A7C1002FCAD4 /* Breed.cc */; };
 		4C65022C2118BE29002FCAD4 /* Generate.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4C65011C2118A7C1002FCAD4 /* Generate.cc */; };
@@ -78,6 +79,8 @@
 /* Begin PBXFileReference section */
 		4C24304E2118FE3A00A4930E /* gtest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = gtest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C2430502118FE4F00A4930E /* libgtest_main.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgtest_main.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C24308C2119145300A4930E /* EvalOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EvalOperation.h; sourceTree = "<group>"; };
+		4C24308D2119149E00A4930E /* EvalOperation.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = EvalOperation.mm; sourceTree = "<group>"; };
 		4C6501102118A7C1002FCAD4 /* Image.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Image.cc; sourceTree = "<group>"; };
 		4C6501122118A7C1002FCAD4 /* NoiseFunction.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NoiseFunction.cc; sourceTree = "<group>"; };
 		4C6501132118A7C1002FCAD4 /* IFunctionGenerator.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IFunctionGenerator.cc; sourceTree = "<group>"; };
@@ -224,6 +227,7 @@
 				4C65011A2118A7C1002FCAD4 /* Eval.cc */,
 				4C65011B2118A7C1002FCAD4 /* Breed.cc */,
 				4C65011C2118A7C1002FCAD4 /* Generate.cc */,
+				4C24308D2119149E00A4930E /* EvalOperation.mm */,
 			);
 			path = expr;
 			sourceTree = "<group>";
@@ -298,6 +302,7 @@
 				4C65018C2118A9EE002FCAD4 /* Breed.h */,
 				4C65018D2118A9EE002FCAD4 /* Generate.h */,
 				4C65018E2118A9EE002FCAD4 /* Eval.h */,
+				4C24308C2119145300A4930E /* EvalOperation.h */,
 			);
 			path = expr;
 			sourceTree = "<group>";
@@ -476,6 +481,7 @@
 				4C6502302118BE31002FCAD4 /* IFunction.cc in Sources */,
 				4C6502312118BE31002FCAD4 /* InnerProductFunction.cc in Sources */,
 				4C6502322118BE31002FCAD4 /* Registry.cc in Sources */,
+				4C24308E2119149E00A4930E /* EvalOperation.mm in Sources */,
 				4C6502332118BE31002FCAD4 /* ConstantFunction.cc in Sources */,
 				4C6502342118BE31002FCAD4 /* FunctionParser.cc in Sources */,
 				4C6502352118BE31002FCAD4 /* FunctionSerializer.cc in Sources */,
