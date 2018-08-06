@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C24304F2118FE3A00A4930E /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C24304E2118FE3A00A4930E /* gtest.framework */; };
+		4C2430512118FE4F00A4930E /* libgtest_main.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C2430502118FE4F00A4930E /* libgtest_main.a */; };
 		4C65022A2118BE29002FCAD4 /* Eval.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4C65011A2118A7C1002FCAD4 /* Eval.cc */; };
 		4C65022B2118BE29002FCAD4 /* Breed.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4C65011B2118A7C1002FCAD4 /* Breed.cc */; };
 		4C65022C2118BE29002FCAD4 /* Generate.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4C65011C2118A7C1002FCAD4 /* Generate.cc */; };
@@ -25,8 +27,6 @@
 		4C6502392118BE31002FCAD4 /* Color.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4C6501232118A7C1002FCAD4 /* Color.cc */; };
 		4C65023A2118BE31002FCAD4 /* Export.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4C6501222118A7C1002FCAD4 /* Export.cc */; };
 		4C65023B2118BE31002FCAD4 /* Image.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4C6501102118A7C1002FCAD4 /* Image.cc */; };
-		4C6502772118F9DD002FCAD4 /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C65026A2118F9BF002FCAD4 /* gtest.framework */; };
-		4C65029D2118FA2A002FCAD4 /* BreedTest.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4C6502892118FA2A002FCAD4 /* BreedTest.cc */; };
 		4C6502A22118FA65002FCAD4 /* ImageTest.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4C6502792118FA2A002FCAD4 /* ImageTest.cc */; };
 		4C6502A32118FA84002FCAD4 /* NoiseFunctionTest.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4C65027B2118FA2A002FCAD4 /* NoiseFunctionTest.cc */; };
 		4C6502A42118FA84002FCAD4 /* ArithmeticFunctionTest.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4C65027C2118FA2A002FCAD4 /* ArithmeticFunctionTest.cc */; };
@@ -47,7 +47,6 @@
 		4C6502B32118FA84002FCAD4 /* ScannerTest.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4C65028D2118FA2A002FCAD4 /* ScannerTest.cc */; };
 		4C6502B42118FA84002FCAD4 /* FunctionSerializerTest.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4C65028E2118FA2A002FCAD4 /* FunctionSerializerTest.cc */; };
 		4C6502B52118FACA002FCAD4 /* libpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C65021F2118BDFD002FCAD4 /* libpp.a */; };
-		4C6502B62118FAE7002FCAD4 /* libgtest_main.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C65026E2118F9BF002FCAD4 /* libgtest_main.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -64,58 +63,6 @@
 		};
 /* End PBXBuildRule section */
 
-/* Begin PBXContainerItemProxy section */
-		4C6502692118F9BF002FCAD4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4C65025D2118F9BF002FCAD4 /* gtest.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 4539C8FF0EC27F6400A70F4C;
-			remoteInfo = "gtest-framework";
-		};
-		4C65026B2118F9BF002FCAD4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4C65025D2118F9BF002FCAD4 /* gtest.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 40C848FA101A209C0083642A;
-			remoteInfo = "gtest-static";
-		};
-		4C65026D2118F9BF002FCAD4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4C65025D2118F9BF002FCAD4 /* gtest.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 40C8490B101A217E0083642A;
-			remoteInfo = "gtest_main-static";
-		};
-		4C65026F2118F9BF002FCAD4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4C65025D2118F9BF002FCAD4 /* gtest.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 40899F430FFA7184000B29AE;
-			remoteInfo = "gtest_unittest-framework";
-		};
-		4C6502712118F9BF002FCAD4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4C65025D2118F9BF002FCAD4 /* gtest.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 40C84987101A36850083642A;
-			remoteInfo = "gtest_unittest-static";
-		};
-		4C6502732118F9BF002FCAD4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4C65025D2118F9BF002FCAD4 /* gtest.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 4089A0130FFACEFC000B29AE;
-			remoteInfo = "sample1_unittest-framework";
-		};
-		4C6502752118F9BF002FCAD4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4C65025D2118F9BF002FCAD4 /* gtest.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 40C84997101A36A60083642A;
-			remoteInfo = "sample1_unittest-static";
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		4C6502542118F985002FCAD4 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -129,6 +76,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4C24304E2118FE3A00A4930E /* gtest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = gtest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C2430502118FE4F00A4930E /* libgtest_main.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgtest_main.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C6501102118A7C1002FCAD4 /* Image.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Image.cc; sourceTree = "<group>"; };
 		4C6501122118A7C1002FCAD4 /* NoiseFunction.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NoiseFunction.cc; sourceTree = "<group>"; };
 		4C6501132118A7C1002FCAD4 /* IFunctionGenerator.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IFunctionGenerator.cc; sourceTree = "<group>"; };
@@ -179,7 +128,6 @@
 		4C6501B72118AB55002FCAD4 /* libpng16.16.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpng16.16.dylib; path = ../../../../../usr/local/Cellar/libpng/1.6.35/lib/libpng16.16.dylib; sourceTree = "<group>"; };
 		4C65021F2118BDFD002FCAD4 /* libpp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libpp.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C6502562118F985002FCAD4 /* ppTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ppTest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4C65025D2118F9BF002FCAD4 /* gtest.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = gtest.xcodeproj; path = ../external/googletest/googletest/xcode/gtest.xcodeproj; sourceTree = "<group>"; };
 		4C6502792118FA2A002FCAD4 /* ImageTest.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ImageTest.cc; sourceTree = "<group>"; };
 		4C65027B2118FA2A002FCAD4 /* NoiseFunctionTest.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NoiseFunctionTest.cc; sourceTree = "<group>"; };
 		4C65027C2118FA2A002FCAD4 /* ArithmeticFunctionTest.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ArithmeticFunctionTest.cc; sourceTree = "<group>"; };
@@ -213,9 +161,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C6502B62118FAE7002FCAD4 /* libgtest_main.a in Frameworks */,
+				4C2430512118FE4F00A4930E /* libgtest_main.a in Frameworks */,
+				4C24304F2118FE3A00A4930E /* gtest.framework in Frameworks */,
 				4C6502B52118FACA002FCAD4 /* libpp.a in Frameworks */,
-				4C6502772118F9DD002FCAD4 /* gtest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,24 +326,11 @@
 		4C6501B62118AB54002FCAD4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4C65025D2118F9BF002FCAD4 /* gtest.xcodeproj */,
+				4C2430502118FE4F00A4930E /* libgtest_main.a */,
+				4C24304E2118FE3A00A4930E /* gtest.framework */,
 				4C6501B72118AB55002FCAD4 /* libpng16.16.dylib */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		4C65025E2118F9BF002FCAD4 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				4C65026A2118F9BF002FCAD4 /* gtest.framework */,
-				4C65026C2118F9BF002FCAD4 /* libgtest.a */,
-				4C65026E2118F9BF002FCAD4 /* libgtest_main.a */,
-				4C6502702118F9BF002FCAD4 /* gtest_unittest-framework */,
-				4C6502722118F9BF002FCAD4 /* gtest_unittest */,
-				4C6502742118F9BF002FCAD4 /* sample1_unittest-framework */,
-				4C6502762118F9BF002FCAD4 /* sample1_unittest-static */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		4C6502782118FA2A002FCAD4 /* test */ = {
@@ -523,12 +458,6 @@
 			mainGroup = 4C6500F82118A71A002FCAD4;
 			productRefGroup = 4C6501022118A71A002FCAD4 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 4C65025E2118F9BF002FCAD4 /* Products */;
-					ProjectRef = 4C65025D2118F9BF002FCAD4 /* gtest.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				4C65021E2118BDFD002FCAD4 /* pp */,
@@ -536,58 +465,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		4C65026A2118F9BF002FCAD4 /* gtest.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = gtest.framework;
-			remoteRef = 4C6502692118F9BF002FCAD4 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		4C65026C2118F9BF002FCAD4 /* libgtest.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libgtest.a;
-			remoteRef = 4C65026B2118F9BF002FCAD4 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		4C65026E2118F9BF002FCAD4 /* libgtest_main.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libgtest_main.a;
-			remoteRef = 4C65026D2118F9BF002FCAD4 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		4C6502702118F9BF002FCAD4 /* gtest_unittest-framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = "gtest_unittest-framework";
-			remoteRef = 4C65026F2118F9BF002FCAD4 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		4C6502722118F9BF002FCAD4 /* gtest_unittest */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = gtest_unittest;
-			remoteRef = 4C6502712118F9BF002FCAD4 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		4C6502742118F9BF002FCAD4 /* sample1_unittest-framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = "sample1_unittest-framework";
-			remoteRef = 4C6502732118F9BF002FCAD4 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		4C6502762118F9BF002FCAD4 /* sample1_unittest-static */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = "sample1_unittest-static";
-			remoteRef = 4C6502752118F9BF002FCAD4 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4C65021B2118BDFD002FCAD4 /* Sources */ = {
@@ -609,7 +486,6 @@
 				4C65023A2118BE31002FCAD4 /* Export.cc in Sources */,
 				4C65023B2118BE31002FCAD4 /* Image.cc in Sources */,
 				4C65022A2118BE29002FCAD4 /* Eval.cc in Sources */,
-				4C65029D2118FA2A002FCAD4 /* BreedTest.cc in Sources */,
 				4C65022B2118BE29002FCAD4 /* Breed.cc in Sources */,
 				4C65022C2118BE29002FCAD4 /* Generate.cc in Sources */,
 				4C65022D2118BE29002FCAD4 /* NoiseFunction.cc in Sources */,
@@ -684,12 +560,14 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -745,7 +623,9 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
