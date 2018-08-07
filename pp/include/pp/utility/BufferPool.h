@@ -8,6 +8,7 @@
 namespace pp {
     class PP_EXPORT BufferPool {
     public:
+        ~BufferPool();
         BufferPool(const BufferPool&) = delete;
         BufferPool& operator=(const BufferPool&) = delete;
 
@@ -21,7 +22,7 @@ namespace pp {
         void Return(BufferPtr buffer);
 
     private:
-        BufferPool() = default;
+        BufferPool();
 
         Pool m_pool;
         std::mutex m_mutex;

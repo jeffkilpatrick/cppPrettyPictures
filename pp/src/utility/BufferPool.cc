@@ -2,6 +2,9 @@
 
 using pp::BufferPool;
 
+BufferPool::~BufferPool() = default;
+BufferPool::BufferPool() = default;
+
 /*static*/ BufferPool& BufferPool::Instance()
 {
     static BufferPool s_pool;
@@ -10,7 +13,6 @@ using pp::BufferPool;
 
 BufferPool::BufferPtr BufferPool::Get()
 {
-    // TODO-jrk: read/write lock and only get exclusive lock if we need to pull from the pool
     std::lock_guard<std::mutex> lock(m_mutex);
     if (m_pool.empty()) {
         return std::make_unique<Buffer>();
