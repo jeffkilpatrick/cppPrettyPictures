@@ -34,6 +34,7 @@
         _registry = r;
         _depth = d;
         _size = s;
+        _duration = nil;
 
         _expr = RandomExpression(*_registry, _depth);
 
@@ -51,6 +52,7 @@
         _registry = nil;
         _size = size;
         _expr = std::move(expr);
+        _duration = nil;
 
         auto exprStr = pp::Serialize(*_expr);
         expression = [NSString stringWithUTF8String:exprStr.c_str()];
@@ -60,6 +62,8 @@
 }
 
 - (void)main {
+    auto start = [NSDate date];
+
     // Turn the expression into pixel values
     auto ppimage = Eval(*_expr, 2 * _size.width, 2 * _size.height);
 
@@ -71,6 +75,8 @@
     // Turn the PNG into an NSImage
     auto nsdata = [NSData dataWithBytes:pngData.data() length:pngData.size()];
     image = [[NSImage alloc] initWithData:nsdata];
+
+    _duration = [NSNumber numberWithDouble:-1.0 * start.timeIntervalSinceNow];
 }
 
 @end
