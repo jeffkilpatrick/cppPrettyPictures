@@ -25,7 +25,9 @@ namespace pp {
         uint8_t GetR(size_t x, size_t y) const;
         uint8_t GetG(size_t x, size_t y) const;
         uint8_t GetB(size_t x, size_t y) const;
+        uint8_t GetA(size_t x, size_t y) const;
 
+        std::vector<uint8_t> ToRGB() const;
         std::vector<uint8_t> ToRGBA() const;
 
     private:

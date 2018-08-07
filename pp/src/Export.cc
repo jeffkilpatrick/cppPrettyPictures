@@ -64,7 +64,8 @@ namespace
         png_set_IHDR(
             ptrs.png,
             ptrs.info,
-            img.GetWidth(), img.GetHeight(),
+            static_cast<png_uint_32>(img.GetWidth()),
+            static_cast<png_uint_32>(img.GetHeight()),
             8,
             PNG_COLOR_TYPE_RGBA,
             PNG_INTERLACE_NONE,

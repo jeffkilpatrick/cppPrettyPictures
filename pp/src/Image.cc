@@ -68,6 +68,29 @@ uint8_t Image::GetB(size_t x, size_t y) const
     return (GetPixel(x, y).C3 + 1.f) * 128.f;
 }
 
+uint8_t Image::GetA(size_t x, size_t y) const
+{
+    return (GetPixel(x, y).A + 1.f) * 128.f;
+}
+
+std::vector<uint8_t> Image::ToRGB() const
+{
+    std::vector<uint8_t> rgba(GetWidth() * GetHeight());
+
+    for (size_t x = 0; x < GetWidth(); x++)
+    {
+        for (size_t y = 0; y < GetHeight(); y++)
+        {
+            auto idx = (x + (y * GetWidth())) * 4;
+            rgba[idx]     = GetR(x, y);
+            rgba[idx + 1] = GetG(x, y);
+            rgba[idx + 2] = GetB(x, y);
+        }
+    }
+
+    return rgba;
+}
+
 std::vector<uint8_t> Image::ToRGBA() const
 {
     std::vector<uint8_t> rgba(GetWidth() * GetHeight() * 4, 0xFF);

@@ -1,11 +1,6 @@
-#if defined(OS_MACOSX)
-
 #import "PrettyScreenView.h"
 
-#include "pp/Export.h"
-#include "pp/expr/Eval.h"
-#include "pp/expr/Generate.h"
-#include "pp/serialize/FunctionSerializer.h"
+#include "pp/expr/EvalOperation.h"
 
 static NSBundle* SaverBundle()
 {
@@ -22,59 +17,20 @@ static NSString* const MinDepthKey = @"MinDepth";
 static NSString* const MaxDepthKey = @"MaxDepth";
 static NSString* const ShowExprKey = @"ShowExpr";
 
-@implementation RenderOperation
-
-@synthesize expression;
-@synthesize image;
-
-- (instancetype)initWithRegistry:(pp::Registry*)r size:(NSSize)s depth:(pp::Range)d;
-{
-    self = [super init];
-
-    if (self) {
-        image = nil;
-        registry = r;
-        size = s;
-        depth = d;
-    }
-
-    return self;
-}
-
--(void)main {
-    // Create a random image expression
-    auto expr = RandomExpression(*self->registry, self->depth);
-
-    // Serialize the expression
-    auto exprStr = pp::Serialize(*expr);
-    expression = [NSString stringWithUTF8String:exprStr.c_str()];
-
-    // Turn the expression into pixel values
-    auto ppimage = Eval(*expr, 2 * size.width, 2 * size.height);
-
-    // Turn the image into a PNG. BMP would be faster, but the PNG
-    // library more easily supports getting the encoded data without
-    // creating a temporary file.
-    auto pngData = pp::WritePng(ppimage, exprStr);
-
-    // Turn the PNG into an NSImage
-    auto nsdata = [NSData dataWithBytes:pngData.data() length:pngData.size()];
-    image = [[NSImage alloc] initWithData:nsdata];
-}
-
-@end
-
-#pragma mark ------------------------------------------------------------------
-
 @implementation PrettyScreenView
+{
+    pp::Registry _registry;
+    NSOperationQueue* _renderQueue;
+    EvalOperation* _renderer;
+}
 
--(RenderOperation*)makeRenderer {
+-(EvalOperation*)makeEvaluator {
     auto defaults = [ScreenSaverDefaults defaultsForModuleWithName:ModuleName()];
     pp::Range d;
     d.Min = [defaults integerForKey:MinDepthKey];
     d.Max = [defaults integerForKey:MaxDepthKey];
 
-    return [[RenderOperation alloc] initWithRegistry:&registry size:[self bounds].size depth:d];
+    return [[EvalOperation alloc] initWithRegistry:&_registry size:[self bounds].size depth:d];
 }
 
 - (instancetype)initWithFrame:(NSRect)frame isPreview:(BOOL)isPreview
@@ -92,37 +48,38 @@ static NSString* const ShowExprKey = @"ShowExpr";
             nil]];
 
         [self setAnimationTimeInterval:[defaults integerForKey:DelayKey]];
-        self->renderQueue = [[NSOperationQueue alloc] init];
-        self->renderer = nil;
+        _renderQueue = [[NSOperationQueue alloc] init];
+        _renderer = nil;
     }
+
     return self;
 }
 
 - (void)animateOneFrame
 {
     // Create a render op the first time we run
-    if (!renderer) {
-        renderer = [self makeRenderer];
-        [renderQueue addOperation:renderer];
+    if (!_renderer) {
+        _renderer = [self makeEvaluator];
+        [_renderQueue addOperation:_renderer];
     }
 
     // Make sure rendering is finished
-    [renderer waitUntilFinished];
+    [_renderer waitUntilFinished];
 
     // Draw the image into this view
-    [renderer.image drawInRect:[self bounds]];
+    [_renderer.image drawInRect:[self bounds]];
 
     // Perhaps display the expression
     auto defaults = [ScreenSaverDefaults defaultsForModuleWithName:ModuleName()];
     if ([defaults boolForKey:ShowExprKey]) {
         NSDictionary<NSAttributedStringKey, id>* attrs = @{};
-        [renderer.expression drawInRect:[self bounds] withAttributes:attrs];
+        [_renderer.expression drawInRect:[self bounds] withAttributes:attrs];
     }
-    NSLog(@"Pretty picture: %@", renderer.expression);
+    NSLog(@"Pretty picture: %@", _renderer.expression);
 
     // Start computing the next image
-    renderer = [self makeRenderer];
-    [renderQueue addOperation:renderer];
+    _renderer = [self makeEvaluator];
+    [_renderQueue addOperation:_renderer];
 }
 
 - (BOOL)hasConfigureSheet
@@ -172,5 +129,3 @@ static NSString* const ShowExprKey = @"ShowExpr";
 }
 
 @end
-
-#endif

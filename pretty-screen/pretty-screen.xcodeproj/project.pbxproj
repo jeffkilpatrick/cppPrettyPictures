@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C2430922119175600A4930E /* libpng16.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C2430912119175600A4930E /* libpng16.a */; };
+		4C2430942119176B00A4930E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C2430932119176B00A4930E /* Cocoa.framework */; };
+		4C2430962119177900A4930E /* ScreenSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C2430952119177900A4930E /* ScreenSaver.framework */; };
 		4C6501F32118B5D1002FCAD4 /* PrettyScreenView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C6501EF2118B5D1002FCAD4 /* PrettyScreenView.h */; };
 		4C6501F42118B5D1002FCAD4 /* PrettyScreenView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4C6501F02118B5D1002FCAD4 /* PrettyScreenView.mm */; };
 		4C6501F52118B5D1002FCAD4 /* ConfigureSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C6501F12118B5D1002FCAD4 /* ConfigureSheet.xib */; };
@@ -14,6 +17,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C24308F2119173500A4930E /* libpng16.16.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpng16.16.dylib; path = /Users/kilpatjr/src/cppPrettyPictures/pp/../../../../../usr/local/Cellar/libpng/1.6.35/lib/libpng16.16.dylib; sourceTree = "<absolute>"; };
+		4C2430912119175600A4930E /* libpng16.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpng16.a; path = ../../../../../usr/local/Cellar/libpng/1.6.35/lib/libpng16.a; sourceTree = "<group>"; };
+		4C2430932119176B00A4930E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		4C2430952119177900A4930E /* ScreenSaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScreenSaver.framework; path = System/Library/Frameworks/ScreenSaver.framework; sourceTree = SDKROOT; };
 		4C6501E12118B595002FCAD4 /* PrettyPictures.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PrettyPictures.saver; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C6501EF2118B5D1002FCAD4 /* PrettyScreenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrettyScreenView.h; sourceTree = "<group>"; };
 		4C6501F02118B5D1002FCAD4 /* PrettyScreenView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PrettyScreenView.mm; sourceTree = "<group>"; };
@@ -27,7 +34,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C2430962119177900A4930E /* ScreenSaver.framework in Frameworks */,
+				4C2430942119176B00A4930E /* Cocoa.framework in Frameworks */,
 				4C6502422118BF64002FCAD4 /* libpp.a in Frameworks */,
+				4C2430922119175600A4930E /* libpng16.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,7 +75,11 @@
 		4C6501F72118B631002FCAD4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4C2430952119177900A4930E /* ScreenSaver.framework */,
+				4C2430932119176B00A4930E /* Cocoa.framework */,
+				4C2430912119175600A4930E /* libpng16.a */,
 				4C6502412118BF64002FCAD4 /* libpp.a */,
+				4C24308F2119173500A4930E /* libpng16.16.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -207,6 +221,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../pp/include";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -259,6 +274,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../pp/include";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
@@ -273,6 +289,10 @@
 				DEVELOPMENT_TEAM = N6FX62WWJ8;
 				INFOPLIST_FILE = "$(SRCROOT)/src/Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/libpng/1.6.35/lib,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.bouncingsheep.pretty-screen";
 				PRODUCT_NAME = PrettyPictures;
 				WRAPPER_EXTENSION = saver;
@@ -287,6 +307,10 @@
 				DEVELOPMENT_TEAM = N6FX62WWJ8;
 				INFOPLIST_FILE = "$(SRCROOT)/src/Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/libpng/1.6.35/lib,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.bouncingsheep.pretty-screen";
 				PRODUCT_NAME = PrettyPictures;
 				WRAPPER_EXTENSION = saver;
