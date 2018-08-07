@@ -12,6 +12,9 @@
 		4C24307D2119090200A4930E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C24307C2119090200A4930E /* Assets.xcassets */; };
 		4C2430802119090200A4930E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C24307E2119090200A4930E /* Main.storyboard */; };
 		4C2430832119090200A4930E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2430822119090200A4930E /* main.m */; };
+		4C2430992119186900A4930E /* PrettyPictureView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4C2430982119186900A4930E /* PrettyPictureView.mm */; };
+		4C24309C21192D5F00A4930E /* libpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C24309B21192D5F00A4930E /* libpp.a */; };
+		4C24309E21192D7800A4930E /* libpng16.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C24309D21192D7800A4930E /* libpng16.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +28,10 @@
 		4C2430812119090200A4930E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C2430822119090200A4930E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4C2430842119090200A4930E /* PrettyViewer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PrettyViewer.entitlements; sourceTree = "<group>"; };
+		4C2430972119186900A4930E /* PrettyPictureView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrettyPictureView.h; sourceTree = "<group>"; };
+		4C2430982119186900A4930E /* PrettyPictureView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PrettyPictureView.mm; sourceTree = "<group>"; };
+		4C24309B21192D5F00A4930E /* libpp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libpp.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C24309D21192D7800A4930E /* libpng16.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpng16.a; path = ../../../../../usr/local/Cellar/libpng/1.6.35/lib/libpng16.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +39,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C24309E21192D7800A4930E /* libpng16.a in Frameworks */,
+				4C24309C21192D5F00A4930E /* libpp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +52,7 @@
 			children = (
 				4C2430752119090100A4930E /* PrettyViewer */,
 				4C2430742119090100A4930E /* Products */,
+				4C24309A21192D5F00A4930E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -66,8 +76,19 @@
 				4C2430812119090200A4930E /* Info.plist */,
 				4C2430822119090200A4930E /* main.m */,
 				4C2430842119090200A4930E /* PrettyViewer.entitlements */,
+				4C2430972119186900A4930E /* PrettyPictureView.h */,
+				4C2430982119186900A4930E /* PrettyPictureView.mm */,
 			);
 			path = PrettyViewer;
+			sourceTree = "<group>";
+		};
+		4C24309A21192D5F00A4930E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4C24309D21192D7800A4930E /* libpng16.a */,
+				4C24309B21192D5F00A4930E /* libpp.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C24307B2119090100A4930E /* ViewController.m in Sources */,
+				4C2430992119186900A4930E /* PrettyPictureView.mm in Sources */,
 				4C2430832119090200A4930E /* main.m in Sources */,
 				4C2430782119090100A4930E /* AppDelegate.m in Sources */,
 			);
@@ -210,6 +232,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../pp/include";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -262,6 +285,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../pp/include";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
@@ -281,6 +305,10 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/libpng/1.6.35/lib,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.bouncingsheep.PrettyViewer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -298,6 +326,10 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/libpng/1.6.35/lib,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.bouncingsheep.PrettyViewer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
