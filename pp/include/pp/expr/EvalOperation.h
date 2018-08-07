@@ -19,5 +19,6 @@
 @property (strong, nonatomic) NSString* expression;
 
 - (instancetype)initWithRegistry:(pp::Registry*)registry size:(NSSize)size depth:(pp::Range)depth;
+- (instancetype)initWithExpression:(pp::IFunctionPtr)expr size:(NSSize)size;
 @end
 

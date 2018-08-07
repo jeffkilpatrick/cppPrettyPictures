@@ -17,8 +17,9 @@
 @implementation EvalOperation
 {
     pp::Registry* _registry;
-    NSSize _size;
     pp::Range _depth;
+    NSSize _size;
+    pp::IFunctionPtr _expr;
 }
 
 @synthesize expression;
@@ -31,28 +32,41 @@
     if (self) {
         image = nil;
         _registry = r;
-        _size = s;
         _depth = d;
+        _size = s;
+
+        _expr = RandomExpression(*_registry, _depth);
+
+        auto exprStr = pp::Serialize(*_expr);
+        expression = [NSString stringWithUTF8String:exprStr.c_str()];
     }
 
     return self;
 }
 
--(void)main {
-    // Create a random image expression
-    auto expr = RandomExpression(*_registry, _depth);
+- (instancetype)initWithExpression:(pp::IFunctionPtr)expr size:(NSSize)size {
+    self = [super init];
 
-    // Serialize the expression
-    auto exprStr = pp::Serialize(*expr);
-    expression = [NSString stringWithUTF8String:exprStr.c_str()];
+    if (self) {
+        _registry = nil;
+        _size = size;
+        _expr = std::move(expr);
 
+        auto exprStr = pp::Serialize(*_expr);
+        expression = [NSString stringWithUTF8String:exprStr.c_str()];
+    }
+
+    return self;
+}
+
+- (void)main {
     // Turn the expression into pixel values
-    auto ppimage = Eval(*expr, 2 * _size.width, 2 * _size.height);
+    auto ppimage = Eval(*_expr, 2 * _size.width, 2 * _size.height);
 
     // Turn the image into a PNG. BMP would be faster, but the PNG
     // library more easily supports getting the encoded data without
     // creating a temporary file.
-    auto pngData = pp::WritePng(ppimage, exprStr);
+    auto pngData = pp::WritePng(ppimage, [expression UTF8String]);
 
     // Turn the PNG into an NSImage
     auto nsdata = [NSData dataWithBytes:pngData.data() length:pngData.size()];
