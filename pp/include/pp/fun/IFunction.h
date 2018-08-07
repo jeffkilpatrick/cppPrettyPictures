@@ -30,8 +30,6 @@ namespace pp {
         IFunction(IFunctionPtr arg0, IFunctionPtr arg1);
         IFunction(IFunctionPtr arg0, IFunctionPtr arg1, IFunctionPtr arg2);
 
-        mutable std::vector<std::vector<Color>> m_buffers;
-
     private:
         IFunctionPtrVec m_args;
     };

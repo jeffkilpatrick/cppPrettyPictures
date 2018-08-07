@@ -10,6 +10,8 @@
 		4C24304F2118FE3A00A4930E /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C24304E2118FE3A00A4930E /* gtest.framework */; };
 		4C2430512118FE4F00A4930E /* libgtest_main.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C2430502118FE4F00A4930E /* libgtest_main.a */; };
 		4C24308E2119149E00A4930E /* EvalOperation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4C24308D2119149E00A4930E /* EvalOperation.mm */; };
+		4C2430A02119F18000A4930E /* BufferPool.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C24309F2119F18000A4930E /* BufferPool.h */; };
+		4C2430A22119F32600A4930E /* BufferPool.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4C2430A12119F32600A4930E /* BufferPool.cc */; };
 		4C65022A2118BE29002FCAD4 /* Eval.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4C65011A2118A7C1002FCAD4 /* Eval.cc */; };
 		4C65022B2118BE29002FCAD4 /* Breed.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4C65011B2118A7C1002FCAD4 /* Breed.cc */; };
 		4C65022C2118BE29002FCAD4 /* Generate.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4C65011C2118A7C1002FCAD4 /* Generate.cc */; };
@@ -81,6 +83,8 @@
 		4C2430502118FE4F00A4930E /* libgtest_main.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libgtest_main.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C24308C2119145300A4930E /* EvalOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EvalOperation.h; sourceTree = "<group>"; };
 		4C24308D2119149E00A4930E /* EvalOperation.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = EvalOperation.mm; sourceTree = "<group>"; };
+		4C24309F2119F18000A4930E /* BufferPool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BufferPool.h; sourceTree = "<group>"; };
+		4C2430A12119F32600A4930E /* BufferPool.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BufferPool.cc; sourceTree = "<group>"; };
 		4C6501102118A7C1002FCAD4 /* Image.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Image.cc; sourceTree = "<group>"; };
 		4C6501122118A7C1002FCAD4 /* NoiseFunction.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NoiseFunction.cc; sourceTree = "<group>"; };
 		4C6501132118A7C1002FCAD4 /* IFunctionGenerator.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IFunctionGenerator.cc; sourceTree = "<group>"; };
@@ -247,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				4C6501252118A7C1002FCAD4 /* Random.cc */,
+				4C2430A12119F32600A4930E /* BufferPool.cc */,
 			);
 			path = utility;
 			sourceTree = "<group>";
@@ -324,6 +329,7 @@
 			children = (
 				4C6501972118A9EE002FCAD4 /* Exports.h */,
 				4C6501982118A9EE002FCAD4 /* Random.h */,
+				4C24309F2119F18000A4930E /* BufferPool.h */,
 			);
 			path = utility;
 			sourceTree = "<group>";
@@ -395,6 +401,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C2430A02119F18000A4930E /* BufferPool.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,6 +486,7 @@
 				4C65022E2118BE31002FCAD4 /* IFunctionGenerator.cc in Sources */,
 				4C65022F2118BE31002FCAD4 /* ColorSpaceFunction.cc in Sources */,
 				4C6502302118BE31002FCAD4 /* IFunction.cc in Sources */,
+				4C2430A22119F32600A4930E /* BufferPool.cc in Sources */,
 				4C6502312118BE31002FCAD4 /* InnerProductFunction.cc in Sources */,
 				4C6502322118BE31002FCAD4 /* Registry.cc in Sources */,
 				4C24308E2119149E00A4930E /* EvalOperation.mm in Sources */,
@@ -533,7 +541,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -597,7 +605,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
