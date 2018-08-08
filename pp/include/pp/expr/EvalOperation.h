@@ -17,10 +17,7 @@
 
 @property (strong, nonatomic) NSImage* image;
 @property (strong, nonatomic) NSString* expression;
-<<<<<<< HEAD
 @property (strong, nonatomic) NSNumber* duration;
-=======
->>>>>>> origin/master
 
 - (instancetype)initWithRegistry:(pp::Registry*)registry size:(NSSize)size depth:(pp::Range)depth;
 - (instancetype)initWithExpression:(pp::IFunctionPtr)expr size:(NSSize)size;
