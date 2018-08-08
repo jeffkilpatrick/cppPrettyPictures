@@ -73,9 +73,10 @@ static NSString* const ShowExprKey = @"ShowExpr";
     auto defaults = [ScreenSaverDefaults defaultsForModuleWithName:ModuleName()];
     if ([defaults boolForKey:ShowExprKey]) {
         NSDictionary<NSAttributedStringKey, id>* attrs = @{};
-        [_renderer.expression drawInRect:[self bounds] withAttributes:attrs];
+        NSString* label = [NSString stringWithFormat:@"%.1fs: %@", [_renderer.duration doubleValue], _renderer.expression];
+        [label drawInRect:[self bounds] withAttributes:attrs];
     }
-    NSLog(@"Pretty picture: %@", _renderer.expression);
+    NSLog(@"Pretty picture (%.1f): %@", [_renderer.duration doubleValue], _renderer.expression);
 
     // Start computing the next image
     _renderer = [self makeEvaluator];

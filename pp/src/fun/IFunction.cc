@@ -1,4 +1,5 @@
 #include "pp/fun/IFunction.h"
+#include "pp/utility/BufferPool.h"
 
 using pp::IFunction;
 using pp::INonaryFunction;
@@ -11,20 +12,17 @@ IFunction::~IFunction() = default;
 IFunction::IFunction() = default;
 
 IFunction::IFunction(IFunctionPtr arg0)
-    : m_buffers(1, std::vector<Color>{})
 {
     m_args.emplace_back(std::move(arg0));
 }
 
 IFunction::IFunction(IFunctionPtr arg0, IFunctionPtr arg1)
-    : m_buffers(2, std::vector<Color>{})
 {
     m_args.emplace_back(std::move(arg0));
     m_args.emplace_back(std::move(arg1));
 }
 
 IFunction::IFunction(IFunctionPtr arg0, IFunctionPtr arg1, IFunctionPtr arg2)
-    : m_buffers(3, std::vector<Color>{})
 {
     m_args.emplace_back(std::move(arg0));
     m_args.emplace_back(std::move(arg1));
@@ -72,19 +70,22 @@ IUnaryFunction::IUnaryFunction(IFunctionPtr arg)
 
 void IUnaryFunction::EvalRow(const std::vector<float>& xs, float y, Color* out) const
 {
-    m_buffers.at(0).resize(xs.size(), Color{0.f});
+    auto buf = BufferPool::Instance().Get();
+    buf->resize(xs.size(), Color{0.f});
 
-    GetArgs().at(0)->EvalRow(xs, y, m_buffers.at(0).data());
+    GetArgs().at(0)->EvalRow(xs, y, buf->data());
 
     for (size_t i = 0; i < xs.size(); ++i)
     {
         *out = Color{
-            EvalSingle(xs[i], y, m_buffers.at(0)[i].C1),
-            EvalSingle(xs[i], y, m_buffers.at(0)[i].C2),
-            EvalSingle(xs[i], y, m_buffers.at(0)[i].C3)
+            EvalSingle(xs[i], y, (*buf)[i].C1),
+            EvalSingle(xs[i], y, (*buf)[i].C2),
+            EvalSingle(xs[i], y, (*buf)[i].C3)
         };
         ++out;
     }
+
+    BufferPool::Instance().Return(std::move(buf));
 }
 
 // ----------------------------------------------------------
@@ -95,21 +96,27 @@ IBinaryFunction::IBinaryFunction(IFunctionPtr fun0, IFunctionPtr fun1)
 
 void IBinaryFunction::EvalRow(const std::vector<float>& xs, float y, Color* out) const
 {
-    m_buffers.at(0).resize(xs.size(), Color{0.f});
-    m_buffers.at(1).resize(xs.size(), Color{0.f});
+    auto buf0 = BufferPool::Instance().Get();
+    auto buf1 = BufferPool::Instance().Get();
 
-    GetArgs().at(0)->EvalRow(xs, y, m_buffers.at(0).data());
-    GetArgs().at(1)->EvalRow(xs, y, m_buffers.at(1).data());
+    buf0->resize(xs.size(), Color{0.f});
+    buf1->resize(xs.size(), Color{0.f});
+
+    GetArgs().at(0)->EvalRow(xs, y, buf0->data());
+    GetArgs().at(1)->EvalRow(xs, y, buf1->data());
 
     for (size_t i = 0; i < xs.size(); ++i)
     {
         *out = Color{
-            EvalSingle(xs[i], y, m_buffers.at(0)[i].C1, m_buffers.at(1)[i].C1),
-            EvalSingle(xs[i], y, m_buffers.at(0)[i].C2, m_buffers.at(1)[i].C2),
-            EvalSingle(xs[i], y, m_buffers.at(0)[i].C3, m_buffers.at(1)[i].C3)
+            EvalSingle(xs[i], y, (*buf0)[i].C1, (*buf1)[i].C1),
+            EvalSingle(xs[i], y, (*buf0)[i].C2, (*buf1)[i].C2),
+            EvalSingle(xs[i], y, (*buf0)[i].C3, (*buf1)[i].C3)
         };
         ++out;
     }
+
+    BufferPool::Instance().Return(std::move(buf1));
+    BufferPool::Instance().Return(std::move(buf0));
 }
 
 // ----------------------------------------------------------
@@ -120,21 +127,29 @@ ITrinaryFunction::ITrinaryFunction(IFunctionPtr fun0, IFunctionPtr fun1, IFuncti
 
 void ITrinaryFunction::EvalRow(const std::vector<float>& xs, float y, Color* out) const
 {
-    m_buffers.at(0).resize(xs.size(), Color{0.f});
-    m_buffers.at(1).resize(xs.size(), Color{0.f});
-    m_buffers.at(2).resize(xs.size(), Color{0.f});
+    auto buf0 = BufferPool::Instance().Get();
+    auto buf1 = BufferPool::Instance().Get();
+    auto buf2 = BufferPool::Instance().Get();
 
-    GetArgs().at(0)->EvalRow(xs, y, m_buffers.at(0).data());
-    GetArgs().at(1)->EvalRow(xs, y, m_buffers.at(1).data());
-    GetArgs().at(2)->EvalRow(xs, y, m_buffers.at(2).data());
+    buf0->resize(xs.size(), Color{0.f});
+    buf1->resize(xs.size(), Color{0.f});
+    buf2->resize(xs.size(), Color{0.f});
+
+    GetArgs().at(0)->EvalRow(xs, y, buf0->data());
+    GetArgs().at(1)->EvalRow(xs, y, buf1->data());
+    GetArgs().at(2)->EvalRow(xs, y, buf2->data());
 
     for (size_t i = 0; i < xs.size(); ++i)
     {
         *out = Color{
-            EvalSingle(xs[i], y, m_buffers.at(0)[i].C1, m_buffers.at(1)[i].C1, m_buffers.at(2)[i].C1),
-            EvalSingle(xs[i], y, m_buffers.at(0)[i].C2, m_buffers.at(1)[i].C2, m_buffers.at(2)[i].C2),
-            EvalSingle(xs[i], y, m_buffers.at(0)[i].C3, m_buffers.at(1)[i].C3, m_buffers.at(2)[i].C3)
+            EvalSingle(xs[i], y, (*buf0)[i].C1, (*buf1)[i].C1, (*buf2)[i].C1),
+            EvalSingle(xs[i], y, (*buf0)[i].C2, (*buf1)[i].C2, (*buf2)[i].C2),
+            EvalSingle(xs[i], y, (*buf0)[i].C3, (*buf1)[i].C3, (*buf2)[i].C3)
         };
         ++out;
     }
+
+    BufferPool::Instance().Return(std::move(buf2));
+    BufferPool::Instance().Return(std::move(buf1));
+    BufferPool::Instance().Return(std::move(buf0));
 }

@@ -35,20 +35,29 @@
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
-    
+
+    // Non-live resize? Def need to render the whole thing
+    if (![self inLiveResize]) {
+        _renderer = nil;
+    }
+
     // Create a render op the first time we run
     if (!_renderer) {
         _renderer = [self makeEvaluator];
         [_renderQueue addOperation:_renderer];
     }
 
-    NSLog(@"Pretty picture: %@", _renderer.expression);
-
     // Make sure rendering is finished
     [_renderer waitUntilFinished];
 
+    NSLog(@"Pretty picture (%.1fs): %@", [_renderer.duration doubleValue], _renderer.expression);
+
     // Draw the image into this view
     [_renderer.image drawInRect:[self bounds]];
+}
+
+- (void)viewDidEndLiveResize {
+    [self setNeedsDisplay:YES];
 }
 
 @end

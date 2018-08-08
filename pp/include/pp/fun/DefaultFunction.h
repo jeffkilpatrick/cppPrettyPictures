@@ -2,6 +2,7 @@
 
 #include "pp/fun/IFunction.h"
 #include "pp/fun/IFunctionGenerator.h"
+#include "pp/utility/BufferPool.h"
 
 namespace pp {
 
@@ -74,21 +75,23 @@ namespace pp {
 
         void EvalRow(const std::vector<float>& xs, float y, Color* out) const override
         {
-            auto& buf = m_buffers.at(0);
+            auto buf = BufferPool::Instance().Get();
 
-            buf.resize(xs.size(), Color{0.f});
+            buf->resize(xs.size(), Color{0.f});
 
-            GetArgs().at(0)->EvalRow(xs, y, buf.data());
+            GetArgs().at(0)->EvalRow(xs, y, buf->data());
 
             for (size_t i = 0; i < xs.size(); ++i)
             {
                 *out = Color{
-                    TraitsT::Eval(xs[i], y, buf[i].C1),
-                    TraitsT::Eval(xs[i], y, buf[i].C2),
-                    TraitsT::Eval(xs[i], y, buf[i].C3)
+                    TraitsT::Eval(xs[i], y, (*buf)[i].C1),
+                    TraitsT::Eval(xs[i], y, (*buf)[i].C2),
+                    TraitsT::Eval(xs[i], y, (*buf)[i].C3)
                 };
                 ++out;
             }
+
+            BufferPool::Instance().Return(std::move(buf));
         }
     };
 
@@ -131,24 +134,27 @@ namespace pp {
 
         void EvalRow(const std::vector<float>& xs, float y, Color* out) const override
         {
-            auto& buf0 = m_buffers.at(0);
-            auto& buf1 = m_buffers.at(1);
+            auto buf0 = BufferPool::Instance().Get();
+            auto buf1 = BufferPool::Instance().Get();
 
-            buf0.resize(xs.size(), Color{0.f});
-            buf1.resize(xs.size(), Color{0.f});
+            buf0->resize(xs.size(), Color{0.f});
+            buf1->resize(xs.size(), Color{0.f});
 
-            GetArgs().at(0)->EvalRow(xs, y, buf0.data());
-            GetArgs().at(1)->EvalRow(xs, y, buf1.data());
+            GetArgs().at(0)->EvalRow(xs, y, buf0->data());
+            GetArgs().at(1)->EvalRow(xs, y, buf1->data());
 
             for (size_t i = 0; i < xs.size(); ++i)
             {
                 *out = Color{
-                    TraitsT::Eval(xs[i], y, buf0[i].C1, buf1[i].C1),
-                    TraitsT::Eval(xs[i], y, buf0[i].C2, buf1[i].C2),
-                    TraitsT::Eval(xs[i], y, buf0[i].C3, buf1[i].C3)
+                    TraitsT::Eval(xs[i], y, (*buf0)[i].C1, (*buf1)[i].C1),
+                    TraitsT::Eval(xs[i], y, (*buf0)[i].C2, (*buf1)[i].C2),
+                    TraitsT::Eval(xs[i], y, (*buf0)[i].C3, (*buf1)[i].C3)
                 };
                 ++out;
             }
+
+            BufferPool::Instance().Return(std::move(buf1));
+            BufferPool::Instance().Return(std::move(buf0));
         }
     };
 
@@ -191,27 +197,31 @@ namespace pp {
 
         void EvalRow(const std::vector<float>& xs, float y, Color* out) const override
         {
-            auto& buf0 = m_buffers.at(0);
-            auto& buf1 = m_buffers.at(1);
-            auto& buf2 = m_buffers.at(2);
+            auto buf0 = BufferPool::Instance().Get();
+            auto buf1 = BufferPool::Instance().Get();
+            auto buf2 = BufferPool::Instance().Get();
 
-            buf0.resize(xs.size(), Color{0.f});
-            buf1.resize(xs.size(), Color{0.f});
-            buf2.resize(xs.size(), Color{0.f});
+            buf0->resize(xs.size(), Color{0.f});
+            buf1->resize(xs.size(), Color{0.f});
+            buf2->resize(xs.size(), Color{0.f});
 
-            GetArgs().at(0)->EvalRow(xs, y, buf0.data());
-            GetArgs().at(1)->EvalRow(xs, y, buf1.data());
-            GetArgs().at(2)->EvalRow(xs, y, buf2.data());
+            GetArgs().at(0)->EvalRow(xs, y, buf0->data());
+            GetArgs().at(1)->EvalRow(xs, y, buf1->data());
+            GetArgs().at(2)->EvalRow(xs, y, buf2->data());
 
             for (size_t i = 0; i < xs.size(); ++i)
             {
                 *out = Color{
-                    TraitsT::Eval(xs[i], y, buf0[i].C1, buf1[i].C1, buf2[i].C1),
-                    TraitsT::Eval(xs[i], y, buf0[i].C2, buf1[i].C2, buf2[i].C2),
-                    TraitsT::Eval(xs[i], y, buf0[i].C3, buf1[i].C3, buf2[i].C3)
+                    TraitsT::Eval(xs[i], y, (*buf0)[i].C1, (*buf1)[i].C1, (*buf2)[i].C1),
+                    TraitsT::Eval(xs[i], y, (*buf0)[i].C2, (*buf1)[i].C2, (*buf2)[i].C2),
+                    TraitsT::Eval(xs[i], y, (*buf0)[i].C3, (*buf1)[i].C3, (*buf2)[i].C3)
                 };
                 ++out;
             }
+
+            BufferPool::Instance().Return(std::move(buf2));
+            BufferPool::Instance().Return(std::move(buf1));
+            BufferPool::Instance().Return(std::move(buf0));
         }
     };
 
