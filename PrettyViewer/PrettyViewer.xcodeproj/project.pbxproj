@@ -307,7 +307,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/usr/local/Cellar/libpng/1.6.35/lib,
+					/usr/local/lib,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.bouncingsheep.PrettyViewer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -329,7 +329,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/usr/local/Cellar/libpng/1.6.35/lib,
+					/usr/local/lib,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.bouncingsheep.PrettyViewer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
