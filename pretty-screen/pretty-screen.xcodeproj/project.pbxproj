@@ -291,7 +291,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/usr/local/Cellar/libpng/1.6.35/lib,
+					/usr/local/lib,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.bouncingsheep.pretty-screen";
 				PRODUCT_NAME = PrettyPictures;
@@ -309,7 +309,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/usr/local/Cellar/libpng/1.6.35/lib,
+					/usr/local/lib,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.bouncingsheep.pretty-screen";
 				PRODUCT_NAME = PrettyPictures;
